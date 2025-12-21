@@ -1,0 +1,14 @@
+name = "Open Vehicle Garage";
+picture = "a3ovg-logo.paa";
+actionName = "Website";
+action = "https://gitlab.perfect-co.de/arma3/a3ovg";
+description = "Open Vehicle Garage v0.0.0";
+logo = "a3ovg-logo.paa";
+logoOver = "a3ovg-logo.paa";
+tooltip = "Open Vehicle Garage";
+tooltipOwned = "Open Vehicle Garage Owned";
+overview = "An open source vehicle garage system for Arma 3 mods.";
+author = "UnseenKill/gor3Splatter";
+overviewPicture = "a3ovg-logo.paa";
+overviewText = "Open Vehicle Garage";
+overviewFootnote = "<br /><br /><t color='#999999'>This content is under Arma Public License Share Alike (APL-SA) License.<br />Press <t /><t color='#19d3ff'>Left Shift + P<t /><t color='#999999'> to open the store page for more information.<t />";

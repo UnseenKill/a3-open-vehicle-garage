@@ -1,0 +1,12 @@
+name = "Open Vehicle Garage"
+author = "UnseenKill/gor3Splatter"
+prefix = "A3OVG"
+mainprefix = "z"
+
+[files]
+include = [
+    "a3ovg-logo.paa",
+    "LICENSE",
+    "README.md",
+    "mod.cpp"
+]
