@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="API">
+        <Key ID="STR_A3OVG_API_Component">
+            <English>A3OVG - API Component</English>
+            <German>A3OVG - API Komponente</German>
+        </Key>
+    </Package>
+</Project>
