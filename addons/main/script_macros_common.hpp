@@ -3,8 +3,17 @@
 
 #define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
 #define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
+#define A3OVG_FUNCTION_PREAMBLE(function) \
+    TRACE_1(function,_this); \
+    if isNull(localNamespace getVariable[QEGVAR(core,configVerified), configNull]) exitWith { \
+        ERROR_3(QUOTE(ARR_2(Configuration not found. Abort call to '%1' from %2,line %3.)),function,__FILE__,__LINE__); \
+        if (hasInterface) then { \
+            [localize LSTRING(ConfigVerificationFailed)] call BIS_fnc_error; \
+        }; \
+    };
+
 #define A3OVG_GET_CONFIG(var) \
-    private var = localNamespace getVariable[QGVAR(configVerified), configNull]; \
+    private var = localNamespace getVariable[QEGVAR(core,configVerified), configNull]; \
     if !assert(!isNull(var)) exitWith {}
 
 // HEMTT complains about padded arguments; the original macro has a newline in it

@@ -15,7 +15,7 @@ Example:
     (end example)
 
 Returns:
-    <BOOL>
+    Nothing
 
 Scope:
     Client
@@ -23,15 +23,14 @@ Scope:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNCMAIN(openGarage),_this);
+A3OVG_FUNCTION_PREAMBLE(QFUNCMAIN(openGarage));
 
-A3OVG_VERIFY_CONFIG();
+if !assert(hasInterface) exitWith {};
 
-if (!(["canOpenGarage", [player]] call EFUNC(core,runCallback))) exitWith {
+if (["canOpenGarage", [player]] call EFUNC(core,runCallback)) then {
+    createDialog QEGVAR(ui,dialog);
+} else {
     ["showHint", [localize LSTRING(OpenGarageDenied)]] call EFUNC(core,runCallback);
-    false;
 };
-
-createDialog QEGVAR(ui,dialog);
 
 true;

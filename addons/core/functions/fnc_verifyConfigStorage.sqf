@@ -16,7 +16,7 @@ Example:
     (end example)
 
 Returns:
-    <BOOLEAN>
+    Nothing
 
 Author:
     UnseenKill/gor3Splatter
@@ -44,4 +44,7 @@ if (getNumber(_defaultAdapter >> "scope") == 0) then {
     throw format ["Storage adapter class %1 is not public (scope == 0).", str configName _defaultAdapter];
 };
 
-true;
+LOG_1("using storage adapter: %1",str configName _defaultAdapter);
+localNamespace setVariable[QGVAR(configVerifiedStorage), _defaultAdapter];
+
+nil;

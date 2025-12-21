@@ -15,16 +15,15 @@ Example:
     (end example)
 
 Returns:
-    <BOOLEAN>
+    Nothing
 
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 TRACE_1(QFUNC(verifyConfig),_this);
 
-if (localNamespace getVariable[QGVAR(configVerified), false]) exitWith {
+if !(isNull(localNamespace getVariable[QGVAR(configVerified), configNull])) exitWith {
     LOG("config already verified, skipping check.");
-    true;
 };
 
 private _accessor = QUOTE(A3OVG_CONFIG_CLASS);
@@ -41,11 +40,13 @@ try {
         throw format["Nothing overrides %1 config; have to assume nothing is set up.", _accessor];
     };
 
-    [_config] call FUNC(verifyConfigStorage);
+    if (isServer || { isDedicated }) then {
+        [_config] call FUNC(verifyConfigStorage);
+    };
 
-    localNamespace setVariable[QGVAR(configVerified), true];
-    true;
+    localNamespace setVariable[QGVAR(configVerified), _config];
 } catch {
     ERROR_1("Config verification failed: %1",_exception);
-    false;
 };
+
+nil;
