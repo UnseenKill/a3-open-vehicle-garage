@@ -10,3 +10,9 @@ include = [
     "README.md",
     "mod.cpp"
 ]
+
+[hemtt.launch.default]
+workshop = [
+    "450814997", # CBA_A3
+    "1779063631", # ZEN
+]
