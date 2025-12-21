@@ -3,6 +3,7 @@
 
 #include "script_production.hpp"
 #include "script_version.hpp"
+#include "cba_events.hpp"
 
 #define VERSION     MAJOR.MINOR
 #define VERSION_STR MAJOR.MINOR.PATCHLVL.BUILD
