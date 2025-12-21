@@ -17,6 +17,10 @@ workshop = [
     "1779063631", # ZEN
 ]
 
+[hemtt.launch.inidbi2]
+workshop = [
+    "1768992669", # INIDBI2
+]
 
 [hemtt.launch.stratis]
 extends = "default"
