@@ -52,17 +52,21 @@ private _code = if (_key in GVAR(callbacks)) then {
         };
         default {
             private _compiled = compileFinal _cfgCode;
-            if (!assert(!isNil("_compiled")) || {!assert(_compiled isEqualTo {})}) exitWith { ERROR_1("Callback %1 code could not be compiled",_key) };
+            if (!assert(!isNil("_compiled")) || {!assert(_compiled isEqualType {})}) exitWith { ERROR_1("Callback %1 code could not be compiled",_key) };
             _compiled
         };
     };
 
+    TRACE_2("compiled",_key,_result);
+
     if !(isNil "_result") then {
         GVAR(callbacks) set[_key, _result];
     };
+
+    _result;
 };
 
 if (isNil "_code") exitWith {};
 if !(_code isEqualType {}) exitWith { _code };
 
-[_params] call _code;
+_params call _code;

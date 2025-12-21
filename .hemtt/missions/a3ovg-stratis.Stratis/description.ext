@@ -16,6 +16,10 @@ class CfgSettings {
 class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
     scope = 1;
 
+    class Callbacks : Callbacks {
+        //canOpenGarage = "false";
+    };
+
     class Storage : Storage {
         defaultAdapter = "Adapter_Namespace";
     };
