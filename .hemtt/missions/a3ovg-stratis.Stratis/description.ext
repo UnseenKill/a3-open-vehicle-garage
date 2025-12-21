@@ -1,5 +1,6 @@
 #define __A3OVG_IS_3DEN__
 #include "script_component.hpp"
+#include "\z\a3ovg\addons\core\config.hpp"
 
 class CfgSettings {
     class CBA {
@@ -9,4 +10,8 @@ class CfgSettings {
             functions = 0;
         };
     };
+};
+
+class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
+    scope = 1;
 };

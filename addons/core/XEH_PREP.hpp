@@ -1,1 +1,2 @@
 PREP(verifyConfig);
+PREP(verifyConfigStorage);

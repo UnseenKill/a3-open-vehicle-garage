@@ -15,24 +15,35 @@ Example:
     (end example)
 
 Returns:
-    Boolean
+    <BOOLEAN>
 
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 TRACE_1(QFUNC(verifyConfig),_this);
 
-private _config = configFile >> QPREFIX;
+if (localNamespace getVariable[QGVAR(configVerified), false]) exitWith {
+    LOG("config already verified, skipping check.");
+    true;
+};
+
+private _accessor = QUOTE(A3OVG_CONFIG_CLASS);
+private _config = ([configFile, missionConfigFile] select(is3DEN || {is3DENPreview})) >> _accessor;
+
+LOG_2("%1: verifying configuration from %2",QFUNC(verifyConfig),_config);
 
 try {
     if !assert(isClass _config) then {
-        throw format["Something is seriously wrong. No %1 config found.", QPREFIX];
+        throw format["Something is seriously wrong. No %1 config found.", _accessor];
     };
 
     if (getNumber(_config >> "scope") == 0) then {
-        throw format["Nothing overrides %1 config; have to assume nothing is set up.",QPREFIX];
+        throw format["Nothing overrides %1 config; have to assume nothing is set up.", _accessor];
     };
 
+    [_config] call FUNC(verifyConfigStorage);
+
+    localNamespace setVariable[QGVAR(configVerified), true];
     true;
 } catch {
     ERROR_1("Config verification failed: %1",_exception);

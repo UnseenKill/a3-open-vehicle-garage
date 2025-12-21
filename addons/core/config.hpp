@@ -1,5 +1,5 @@
 // Open vehicle garage config class
-class PREFIX {
+class A3OVG_CONFIG_CLASS_BASE {
     scope = 0;
 
     // Feature configurations

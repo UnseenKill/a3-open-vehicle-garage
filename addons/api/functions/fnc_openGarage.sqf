@@ -24,6 +24,8 @@ TRACE_1(QFUNCMAIN(openGarage),_this);
 
 if ([] call EFUNC(core,verifyConfig)) then {
     createDialog QEGVAR(ui,dialog);
+} else {
+    [localize LSTRING(ConfigVerificationFailed)] call BIS_fnc_error;
 };
 
 nil;

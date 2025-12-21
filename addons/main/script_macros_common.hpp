@@ -1,6 +1,9 @@
 #define MAINPREFIX z
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
+#define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
+#define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
+
 // HEMTT complains about padded arguments; the original macro has a newline in it
 #undef PFORMAT_2
 #undef PFORMAT_3
@@ -22,8 +25,8 @@
 #undef PREP
 #undef PREPMAIN
 #ifdef DISABLE_COMPILE_CACHE
-    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))'
-    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preProcessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))'
+    #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preprocessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))'
+    #define PREPMAIN(var1) TRIPLES(PREFIX,fnc,var1) = compile preprocessFileLineNumbers 'PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))'
 #else
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,functions\DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
