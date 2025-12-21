@@ -40,4 +40,8 @@ if !(isClass _defaultAdapter) then {
     throw format ["Storage adapter class %1 not found in configuration.", str _storageClass];
 };
 
+if (getNumber(_defaultAdapter >> "scope") == 0) then {
+    throw format ["Storage adapter class %1 is not public (scope == 0).", str configName _defaultAdapter];
+};
+
 true;
