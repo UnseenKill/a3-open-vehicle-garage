@@ -14,4 +14,8 @@ class CfgSettings {
 
 class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
     scope = 1;
+
+    class Storage : Storage {
+        defaultAdapter = "Adapter_Namespace";
+    };
 };

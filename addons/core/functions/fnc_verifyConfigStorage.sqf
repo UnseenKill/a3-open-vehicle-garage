@@ -33,10 +33,10 @@ if !assert(isClass _storageConfig) then {
     throw "No Storage class found in configuration.";
 };
 
-private _storageClass = getText(_storageConfig >> QUOTE(adapterClass));
-private _adapterClass = _storageConfig >> _storageClass;
+private _storageClass = getText(_storageConfig >> QUOTE(defaultAdapter));
+private _defaultAdapter = _storageConfig >> _storageClass;
 
-if !(isClass _adapterClass) then {
+if !(isClass _defaultAdapter) then {
     throw format ["Storage adapter class %1 not found in configuration.", str _storageClass];
 };
 
