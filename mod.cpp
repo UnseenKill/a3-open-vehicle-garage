@@ -1,7 +1,7 @@
 name = "Open Vehicle Garage";
 picture = "a3ovg-logo.paa";
 actionName = "Website";
-action = "https://gitlab.perfect-co.de/arma3/a3ovg";
+action = "https://gitlab.perfect-co.de/arma3/a3a-open-vehicle-garage";
 description = "Open Vehicle Garage v0.0.0";
 logo = "a3ovg-logo.paa";
 logoOver = "a3ovg-logo.paa";
