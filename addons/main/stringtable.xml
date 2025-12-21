@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Main">
+        <Key ID="STR_A3OVG_Author">
+            <English>goreSplatter</English>
+            <German>goreSplatter</German>
+        </Key>
+        <Key ID="STR_A3OVG_Main_Component">
+            <English>A3OVG - Main Component</English>
+            <German>A3OVG - Hauptkomponente</German>
+        </Key>
+        <Key ID="STR_A3OVG_Main_Title">
+            <English>Open Vehicle Garage</English>
+            <German>Open Vehicle Garage</German>
+        </Key>
+        <Key ID="STR_A3OVG_URL">
+            <English>https://gitlab.perfect-co.de/arma3/a3a-open-vehicle-garage</English>
+            <German>https://gitlab.perfect-co.de/arma3/a3a-open-vehicle-garage</German>
+        </Key>
+    </Package>
+</Project>
