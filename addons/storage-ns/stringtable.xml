@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Storage_NS">
+        <Key ID="STR_A3OVG_Storage_NS_Component">
+            <English>A3OVG - Storage Adapter for Profile Namespace</English>
+            <German>A3OVG - Speicher Adapter für Profil-Namespace</German>
+        </Key>
+    </Package>
+</Project>
