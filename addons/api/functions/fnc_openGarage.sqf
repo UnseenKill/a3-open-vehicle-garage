@@ -15,17 +15,23 @@ Example:
     (end example)
 
 Returns:
-    Nothing
+    <BOOL>
+
+Scope:
+    Client
 
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 TRACE_1(QFUNCMAIN(openGarage),_this);
 
-if ([] call EFUNC(core,verifyConfig)) then {
-    createDialog QEGVAR(ui,dialog);
-} else {
-    [localize LSTRING(ConfigVerificationFailed)] call BIS_fnc_error;
+A3OVG_VERIFY_CONFIG();
+
+if (!(["canOpenGarage", [player]] call EFUNC(core,runCallback))) exitWith {
+    ["showHint", [localize LSTRING(OpenGarageDenied)]] call EFUNC(core,runCallback);
+    false;
 };
 
-nil;
+createDialog QEGVAR(ui,dialog);
+
+true;

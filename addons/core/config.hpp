@@ -2,6 +2,13 @@
 class A3OVG_CONFIG_CLASS_BASE {
     scope = 0;
 
+    class Callbacks {
+        // Whether players can open the garage
+        canOpenGarage = QUOTE(true);
+        // How are hint texts shown to the player
+        showHint = QUOTE(hint parseText format _this);
+    };
+
     // Feature configurations
     class Features {
         // Save vehicle inventory on garage store

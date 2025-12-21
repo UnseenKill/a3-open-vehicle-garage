@@ -3,6 +3,9 @@
 
 #define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
 #define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
+#define A3OVG_GET_CONFIG(var) \
+    private var = localNamespace getVariable[QGVAR(configVerified), configNull]; \
+    if !assert(!isNull(var)) exitWith {}
 
 // HEMTT complains about padded arguments; the original macro has a newline in it
 #undef PFORMAT_2

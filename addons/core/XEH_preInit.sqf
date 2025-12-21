@@ -3,3 +3,5 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 ADDON = true;
+
+GVAR(callbacks) = createHashMap;
