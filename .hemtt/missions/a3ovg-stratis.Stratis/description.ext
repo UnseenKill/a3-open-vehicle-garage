@@ -1,0 +1,12 @@
+#define __A3OVG_IS_3DEN__
+#include "script_component.hpp"
+
+class CfgSettings {
+    class CBA {
+        class Caching {
+            compile = 0;
+            xeh = 0;
+            functions = 0;
+        };
+    };
+};
