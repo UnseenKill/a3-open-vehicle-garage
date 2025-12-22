@@ -42,7 +42,7 @@ params[
 [_object] call FUNCMAIN(userActionOpenGarageRemove);
 
 private _actionId = _object addAction[
-    localize ELSTRING(UI,OpenGarage),
+    "",
     QUOTE(call FUNCMAIN(openGarage)),
     nil,
     _priority,
@@ -55,10 +55,11 @@ private _actionId = _object addAction[
 
 _object setUserActionText[
     _actionId,
-    localize ELSTRING(UI,OpenGarage),
-    "<img size='2' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + localize ELSTRING(UI,OpenGarage)
+    localize ELSTRING(UI,OpenGarageUA),
+    "<img size='2' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + localize ELSTRING(UI,OpenGarageUA)
 ];
 
 _object setVariable[QGVAR(userActionOpenGarageId), _actionId, true];
+EGVAR(core,garageObjects) pushBackUnique _object;
 
 nil;

@@ -31,6 +31,8 @@ if !assert(params[
 ]) exitWith {};
 if !assert(!isNull _object) exitWith {};
 
+EGVAR(core,garageObjects) = EGVAR(core,garageObjects) - [_object];
+
 private _actionId = _object getVariable QGVAR(userActionOpenGarageId);
 
 if isNil "_actionId" then {
