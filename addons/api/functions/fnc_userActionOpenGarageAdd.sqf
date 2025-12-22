@@ -49,7 +49,7 @@ private _actionId = _object addAction[
     true,
     true,
     "",
-    QUOTE(isNull objectParent _this && {[ARR_2('canOpenGarage',[ARR_2(_this,_target)])] call EFUNC(core,runCallback)}),
+    QUOTE(isNull objectParent _this && {[ARR_2('canGarageOpen',[ARR_2(_this,_target)])] call EFUNC(core,runCallback)}),
     _range
 ];
 

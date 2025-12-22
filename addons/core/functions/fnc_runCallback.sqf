@@ -14,7 +14,7 @@ Optional:
 Example:
     (begin example)
     ["showHint", ["Hello world (%1)!", 1337]] call A3OVG_api_fnc_runCallback;
-    private _canOpen = ["canOpenGarage"] call A3OVG_api_fnc_runCallback;
+    private _canOpen = ["canGarageOpen"] call A3OVG_api_fnc_runCallback;
     (end example)
 
 Returns:

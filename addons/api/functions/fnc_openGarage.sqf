@@ -27,7 +27,7 @@ A3OVG_FUNCTION_PREAMBLE(QFUNCMAIN(openGarage));
 
 if !assert(hasInterface) exitWith {};
 
-if !(["canOpenGarage", [player]] call EFUNC(core,runCallback)) then {
+if !(["canGarageOpen", [player]] call EFUNC(core,runCallback)) then {
     ["showHint", [localize ELSTRING(UI,OpenGarageDenied)]] call EFUNC(core,runCallback);
 } else {
     [CBA_EVENT_GARAGE_OPEN_BEFORE, [player]] call CBA_fnc_localEvent;
