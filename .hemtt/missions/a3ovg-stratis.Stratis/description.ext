@@ -18,7 +18,11 @@ class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
 
     class Callbacks : Callbacks {
         //canOpenGarage = "false";
-        //canVehicleGarage[] += { "1" };
+        //canVehicleGarage[] += {QUOTE(['You are not an engineer!'] call A3OVG_fnc_uiStackHint;false)};
+    };
+
+    class Features : Features {
+        uiHintsCollapse = 1;
     };
 
     class Storage : Storage {

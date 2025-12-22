@@ -3,6 +3,7 @@
 
 #define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
 #define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
+#define A3OVG_FEATURE_ENABLED(config,feature) (getNumber(_config >> "Features" >> QUOTE(feature)) != 0)
 #define A3OVG_FUNCTION_PREAMBLE(function) \
     TRACE_1(function,_this); \
     if isNull(localNamespace getVariable[QEGVAR(core,configVerified), configNull]) exitWith { \
@@ -15,6 +16,11 @@
 #define A3OVG_GET_CONFIG(var) \
     private var = localNamespace getVariable[QEGVAR(core,configVerified), configNull]; \
     if !assert(!isNull(var)) exitWith {}
+
+#define A3OVG_UI_PUSH_CONTEXT() \
+    (EGVAR(ui,context) pushBack [])
+#define A3OVG_UI_POP_CONTEXT() \
+    (EGVAR(ui,context) deleteAt(count EGVAR(ui,context) - 1))
 
 // HEMTT complains about padded arguments; the original macro has a newline in it
 #undef PFORMAT_2
