@@ -23,7 +23,12 @@ Returns:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(runCallback),_this);
+// Avoid RPT spam and don't log "can*" callbacks
+#ifdef DEBUG_MODE_FULL
+if (_this isNotEqualTo [] && {_this select 0 isEqualType "" && {toLowerANSI(_this select 0) find "can" != 0}}) then {
+    TRACE_1(QFUNC(runCallback),_this);
+};
+#endif
 
 if !assert(params[
     ["_name", nil, [""]]
