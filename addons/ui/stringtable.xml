@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="UI">
+        <Key ID="STR_A3OVG_UI_Component">
+            <English>A3OVG - UI Component</English>
+            <German>A3OVG - Benutzeroberfläche</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_OpenGarage">
+            <English>Open Garage</English>
+            <German>Garage öffnen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_OpenGarageDenied">
+            <English>You are not allowed to open the garage.</English>
+            <German>Du darfst die Garage nicht öffnen.</German>
+        </Key>
+    </Package>
+</Project>

@@ -9,9 +9,5 @@
             <English>Open vehicle garage configuration verification failed. Please refer to the A3OVG wiki how to correctly set it up.</English>
             <German>Die Überprüfung der Konfiguration der Fahrzeuggarage ist fehlgeschlagen. Bitte lesen Sie das A3OVG-Wiki, um zu erfahren, wie Sie es richtig einrichten.</German>
         </Key>
-        <Key ID="STR_A3OVG_API_OpenGarageDenied">
-            <English>You are not allowed to open the garage.</English>
-            <German>Du darfst die Garage nicht öffnen.</German>
-        </Key>
     </Package>
 </Project>
