@@ -17,8 +17,8 @@ Example:
 Returns:
     Nothing
 
-Scope:
-    Client
+Environment:
+    Client, Unscheduled
 
 Author:
     UnseenKill/gor3Splatter

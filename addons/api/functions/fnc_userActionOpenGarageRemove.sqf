@@ -18,8 +18,8 @@ Example:
 Returns:
     <BOOLEAN> True if action was removed, false if no action was found
 
-Scope:
-    Client
+Environment:
+    Client, Unscheduled
 
 Author:
     UnseenKill/gor3Splatter
