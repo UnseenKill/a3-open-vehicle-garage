@@ -34,44 +34,21 @@ if !assert(params[
     ["_name", nil, [""]]
 ]) exitWith {};
 
+if (isNil QGVAR(callbacks)) exitWith {
+    ERROR_1("callbacks not yet compiled; cannot run callback %1",_name);
+};
+
 A3OVG_GET_CONFIG(_config);
 
 private _params = param[1, [], [[]]];
 private _key = toLowerANSI _name;
-private _code = if (_key in GVAR(callbacks)) then {
-    GVAR(callbacks) get _key;
-} else {
-    private _cfgCode = _config >> "Callbacks" >> _key;
+private _callbacks = GVAR(callbacks) get _key;
 
-    if !assert(isText(_cfgCode)) exitWith { ERROR_2("Callback %1 not found or not text: %2",_key,_cfgCode) };
-    _cfgCode = getText(_cfgCode);
-
-    private _result = switch true do {
-        case(_cfgCode isEqualTo "0");
-        case(toLowerANSI _cfgCode isEqualTo "false"): {
-            false;
-        };
-        case(_cfgCode isEqualTo "1");
-        case(toLowerANSI _cfgCode isEqualTo "true"): {
-            true;
-        };
-        default {
-            private _compiled = compileFinal _cfgCode;
-            if (!assert(!isNil("_compiled")) || {!assert(_compiled isEqualType {})}) exitWith { ERROR_1("Callback %1 code could not be compiled",_key) };
-            _compiled
-        };
-    };
-
-    TRACE_2("compiled",_key,_result);
-
-    if !(isNil "_result") then {
-        GVAR(callbacks) set[_key, _result];
-    };
-
-    _result;
+if !assert(!isNil "_callbacks") exitWith {
+    ERROR_1("no such compiled callback: %1",_key);
 };
 
-if (isNil "_code") exitWith {};
-if !(_code isEqualType {}) exitWith { _code };
-
-_params call _code;
+_callbacks findIf {
+    private _result = _params call _x;
+    !(isNil "_result") && { _result isEqualTo false };
+} == -1;

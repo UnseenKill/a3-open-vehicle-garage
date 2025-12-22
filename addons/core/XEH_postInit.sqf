@@ -2,3 +2,4 @@
 
 INFO_1("Running A3OVG version %1",QUOTE(VERSION_STR));
 [] call FUNC(verifyConfig);
+GVAR(callbacks) = compileFinal([] call FUNC(compileRunbacks));
