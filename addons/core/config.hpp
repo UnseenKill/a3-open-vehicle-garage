@@ -5,6 +5,8 @@ class A3OVG_CONFIG_CLASS_BASE {
     class Callbacks {
         // (Bool [Object player[, Object garage]]) Whether players can open the garage
         canGarageOpen = QUOTE(true);
+        // (Bool [Object player[, Object vehicle]]) Whether players can store a vehicle in the garage
+        canVehicleGarage[] = {QUOTE(true)};
         // (Void [String hintText[, ...]]) Show UI hint texts to the player
         showHint = QUOTE(hint parseText format _this);
     };
