@@ -1,5 +1,6 @@
 *.pbo
 .hemtt/missions/~*
+.hemtt/missions/*/script.sqf
 .hemttout
 .local
 releases
