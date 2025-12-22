@@ -5,6 +5,8 @@ class CfgFunctions {
             PATHTO_FNC(garageVehicle);
             PATHTO_FNC(userActionOpenGarageAdd);
             PATHTO_FNC(userActionOpenGarageRemove);
+            PATHTO_FNC(userActionVehicleGarageAdd);
+            PATHTO_FNC(userActionVehicleGarageRemove);
         };
     };
 };

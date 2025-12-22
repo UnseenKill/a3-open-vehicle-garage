@@ -15,5 +15,11 @@ class A3OVG_CONFIG_CLASS_BASE {
     class Features {
         // Save vehicle inventory on garage store
         storeInventory = 1;
+        // Add "garage vehicle" user actions to any vehicle
+        vehicleUserActionGlobal = 1;
+        // Radius around a garage in which vehicles can be garaged
+        vehicleUserActionRadius = 250;
+        // Maximum distance a player can be from their vehicle to garage it
+        vehicleUserActionRange = 10;
     };
 };
