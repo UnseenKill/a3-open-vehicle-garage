@@ -14,16 +14,4 @@ class A3OVG_CONFIG_CLASS_BASE {
         // Save vehicle inventory on garage store
         storeInventory = 1;
     };
-
-    // Data persistence configurations
-    class Storage {
-        // Adapter to use for data persistence; needs to be overridden in extension configs
-        defaultAdapter = "";
-
-        // Base adapter class
-        class Adapter {
-            scope = 0;
-            name = "Storage interface adapter";
-        };
-    };
 };
