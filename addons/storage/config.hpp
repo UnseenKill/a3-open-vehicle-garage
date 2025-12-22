@@ -1,4 +1,3 @@
-// Open vehicle garage config class
 class A3OVG_CONFIG_CLASS_BASE {
     // Data persistence configurations
     class Storage {
