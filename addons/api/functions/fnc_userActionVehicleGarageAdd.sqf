@@ -56,8 +56,8 @@ private _actionId = _vehicle addAction[
 ];
 _vehicle setUserActionText[
     _actionId,
-    format[localize ELSTRING(UI,vehicleGarageUALong), getText(configOf _vehicle >> "displayName")],
-    "<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + localize ELSTRING(UI,vehicleGarageUA)
+    "<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + format[LELSTRING(UI,vehicleGarageUALong), getText(configOf _vehicle >> "displayName")],
+    "<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + LELSTRING(UI,vehicleGarageUA)
 ];
 _vehicle setVariable[QGVAR(userActionGarageVehicleId), _actionId, true];
 

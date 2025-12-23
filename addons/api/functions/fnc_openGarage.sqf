@@ -29,7 +29,7 @@ if !assert(hasInterface) exitWith {};
 
 A3OVG_UI_PUSH_CONTEXT();
 if !(["canGarageOpen", [player]] call EFUNC(core,runCallback)) then {
-    [localize ELSTRING(UI,OpenGarageDenied)] call EFUNC(ui,showHint);
+    [LELSTRING(UI,OpenGarageDenied)] call EFUNC(ui,showHint);
 } else {
     A3OVG_UI_POP_CONTEXT();
     [CBA_EVENT_GARAGE_OPEN_BEFORE, [player]] call CBA_fnc_localEvent;

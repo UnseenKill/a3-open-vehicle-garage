@@ -35,7 +35,7 @@ if !assert(hasInterface) exitWith { false };
 A3OVG_UI_PUSH_CONTEXT();
 if !(["canVehicleGarage", [_vehicle, player]] call EFUNC(core,runCallback)) exitWith {
     INFO_2("vehicle garaging of %1 denied by callback for %2",_vehicle,player);
-    [localize ELSTRING(UI,VehicleGarageDenied)] call EFUNC(ui,showHint);
+    [LELSTRING(UI,VehicleGarageDenied)] call EFUNC(ui,showHint);
     false;
 };
 A3OVG_UI_POP_CONTEXT();

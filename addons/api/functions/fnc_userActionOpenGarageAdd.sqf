@@ -55,8 +55,8 @@ private _actionId = _object addAction[
 
 _object setUserActionText[
     _actionId,
-    localize ELSTRING(UI,OpenGarageUA),
-    "<img size='2' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + localize ELSTRING(UI,OpenGarageUA)
+    LELSTRING(UI,OpenGarageUA),
+    "<img size='2' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa' /> " + LELSTRING(UI,OpenGarageUA)
 ];
 
 _object setVariable[QGVAR(userActionOpenGarageId), _actionId, true];
