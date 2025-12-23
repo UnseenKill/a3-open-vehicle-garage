@@ -17,6 +17,10 @@
             <English>You are not allowed to garage this vehicle.</English>
             <German>Du darfst dieses Fahrzeug nicht abstellen.</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedCrewed">
+            <English>You cannot garage a crewed vehicle.</English>
+            <German>Du kannst kein besetztes Fahrzeug abstellen.</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_VehicleGarageUA">
             <English>Garage vehicle</English>
             <German>Fahrzeug abstellen</German>

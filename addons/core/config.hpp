@@ -6,7 +6,10 @@ class A3OVG_CONFIG_CLASS_BASE {
         // (Bool [Object player[, Object garage]]) Whether players can open the garage
         canGarageOpen = QUOTE(true);
         // (Bool [Object player[, Object vehicle]]) Whether players can store a vehicle in the garage
-        canVehicleGarage[] = {QUOTE(true)};
+        canVehicleGarage[] = {
+            QUOTE(true),
+            QUOTE((crew(_this select 0) isEqualTo []) || {[LQELSTRING(UI,VehicleGarageDeniedCrewed)] call FUNCMAIN(uiStackHint)})
+        };
     };
 
     // Feature configurations

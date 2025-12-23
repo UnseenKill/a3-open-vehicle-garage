@@ -17,7 +17,7 @@ Example:
     (end example)
 
 Returns:
-    Nothing
+    <BOOL> Always `false`
 
 Environment:
     Client, Unscheduled
@@ -29,12 +29,13 @@ A3OVG_FUNCTION_PREAMBLE(QFUNCMAIN(uiStackHint));
 
 if !assert(params[
     ["_formatString", "", [""]]
-]) exitWith {};
+]) exitWith { false };
 
 if (EGVAR(ui,context) isEqualTo []) exitWith {
     ERROR_1("uiStackHint called with empty context stack for %1",_this);
+    false;
 };
 
 (EGVAR(ui,context) select -1) pushBack (format _this);
 
-nil;
+false;

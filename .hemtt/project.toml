@@ -1,6 +1,6 @@
 name = "Open Vehicle Garage"
 author = "UnseenKill/gor3Splatter"
-prefix = "A3OVG"
+prefix = "a3ovg"
 mainprefix = "z"
 
 [files]
@@ -9,6 +9,12 @@ include = [
     "LICENSE",
     "README.md",
     "mod.cpp"
+]
+
+[lints.stringtables.usage]
+options.ignore = [
+    # hemtt bug again
+    "str_a3ovg_ui_vehiclegaragedeniedcrewed",
 ]
 
 [hemtt.launch.default]

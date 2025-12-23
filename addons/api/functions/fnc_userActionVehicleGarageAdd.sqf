@@ -51,7 +51,7 @@ private _actionId = _vehicle addAction[
     false,
     true,
     "",
-    "true",
+    QUOTE(isNull objectParent _this),
     _range
 ];
 _vehicle setUserActionText[
