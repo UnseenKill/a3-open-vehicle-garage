@@ -7,7 +7,7 @@
 #define A3OVG_FUNCTION_PREAMBLE(function) \
     TRACE_1(function,_this); \
     if isNull(localNamespace getVariable[QEGVAR(core,configVerified), configNull]) exitWith { \
-        ERROR_3(QUOTE(ARR_2(Configuration not found. Abort call to '%1' from %2,line %3.)),function,__FILE__,__LINE__); \
+        ERROR_3(QUOTE(ARR_2(Configuration not found. Abort call to QQUOTE(%1) from %2,line %3.)),function,__FILE__,__LINE__); \
         if (hasInterface) then { \
             [localize LSTRING(ConfigVerificationFailed)] call BIS_fnc_error; \
         }; \
