@@ -25,7 +25,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(serializeInventory));
+TRACE_1(QFUNC(serializeInventory),_this#1);
 A3OVG_GET_CONFIG(_config);
 
 if !assert(params[

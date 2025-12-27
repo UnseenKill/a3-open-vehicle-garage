@@ -25,7 +25,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(serializeFuel));
+TRACE_1(QFUNC(serializeFuel),_this#1);
 
 if !assert(params[
     ["_data", nil, [createHashMap]],
