@@ -7,6 +7,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3OVG_main","ace_main"};
+        skipWhenMissingDependencies = 1;
         author = "$STR_A3OVG_Author";
         authors[] = {};
         url = "$STR_A3OVG_URL";
