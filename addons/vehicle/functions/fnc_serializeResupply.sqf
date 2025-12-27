@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_serializeCargo
+Function: A3OVG_vehicle_fnc_serializeResupply
 
 Description:
     Convert vehicle Arma3 cargo data (fuel, repair, ...) to serializable data.
@@ -13,7 +13,7 @@ Optional:
 
 Example:
     (begin example)
-    [_data, _vehicle] call A3OVG_vehicle_fnc_serializeCargo;
+    [_data, _vehicle] call A3OVG_vehicle_fnc_serializeResupply;
     (end example)
 
 Returns:
@@ -25,7 +25,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(serializeCargo));
+A3OVG_FUNCTION_PREAMBLE(QFUNC(serializeResupply));
 
 if !assert(params[
     ["_data", nil, [createHashMap]],

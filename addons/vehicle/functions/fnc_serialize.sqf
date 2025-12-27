@@ -37,9 +37,9 @@ _data set["class", typeOf _vehicle];
 _data set["custom", [_vehicle] call BIS_fnc_getVehicleCustomization];
 
 [_data, _vehicle] call FUNC(serializeFuel);
-[_data, _vehicle] call FUNC(serializeCargo);
 [_data, _vehicle] call FUNC(serializeDamage);
-[_data, _vehicle] call FUNC(serializeInventory);
+[_data, _vehicle] call FUNC(serializeResupply);
 [_data, _vehicle] call FUNC(serializeWeaponry);
+[_data, _vehicle] call FUNC(serializeInventory);
 
 _data;
