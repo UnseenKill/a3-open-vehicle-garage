@@ -1,4 +1,5 @@
-PREP(garage);
+PREP(garageClient);
+PREP(garageServer);
 PREP(getGUID);
 PREP(serialize);
 PREP(serializeCargo);

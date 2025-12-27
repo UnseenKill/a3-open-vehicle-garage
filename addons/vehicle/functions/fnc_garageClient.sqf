@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_garage
+Function: A3OVG_vehicle_fnc_garageClient
 
 Description:
     Put vehicle into garage.
@@ -12,7 +12,7 @@ Optional:
 
 Example:
     (begin example)
-    [vehicle1] call A3OVG_vehicle_fnc_garage;
+    [vehicle1] call A3OVG_vehicle_fnc_garageClient;
     (end example)
 
 Returns:
@@ -24,22 +24,15 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(garage));
-A3OVG_GET_CONFIG(_config);
+A3OVG_FUNCTION_PREAMBLE(QFUNC(garageClient));
+A3OVG_VALIDATE_CLIENT();
 
 if !assert(params[
-    ["_vehicle", nil, [objNull,""]]
+    ["_vehicle", nil, [objNull]]
 ]) exitWith {};
 
 if !assert(!isNull _vehicle) exitWith {};
-if !assert(!(_vehicle isEqualType "")) exitWith {};
 
-private _data = [_vehicle] call FUNC(serialize);
-private _storage = [] call EFUNC(core,getStorage);
-private _guid = [_vehicle] call FUNC(getGUID);
-
-_storage call["write", [_guid, _data]];
-
-[format[LELSTRING(UI,VehicleGarageSuccess), A3OVG_VEH_NAME(_vehicle)]] call EFUNC(ui,showHint);
+[_vehicle, player] remoteExecCall[QFUNC(garageServer), 2];
 
 nil;

@@ -23,4 +23,7 @@
 #define A3OVG_UI_POP_CONTEXT() \
     (EGVAR(ui,context) deleteAt(count EGVAR(ui,context) - 1))
 
+#define A3OVG_VALIDATE_CLIENT() if !assert(hasInterface) exitWith {}
+#define A3OVG_VALIDATE_SERVER() if !assert(isServer) exitWith {}
+
 #define A3OVG_VEH_NAME(vehicle) getText((if (vehicle isEqualType objNull) then[{configOf(vehicle)}, {configFile >> QUOTE(CfgVehicles) >> (vehicle)}]) >> QUOTE(displayName))

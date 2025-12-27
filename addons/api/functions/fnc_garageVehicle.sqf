@@ -40,6 +40,6 @@ if !(["canVehicleGarage", [_vehicle, player]] call EFUNC(core,runCallback)) exit
 };
 A3OVG_UI_POP_CONTEXT();
 
-[_vehicle, player] call EFUNC(vehicle,garage);
+[_vehicle] call EFUNC(vehicle,garageClient);
 
 true;
