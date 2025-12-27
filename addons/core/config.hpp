@@ -31,4 +31,17 @@ class A3OVG_CONFIG_CLASS_BASE {
         // Maximum distance a player can be from their vehicle to garage it
         vehicleUserActionRange = 10;
     };
+
+    // Dummy strings so HEMTT picks them up as "used"; it doesn't within quotes in .hpp files
+    class Strings {
+        class UI {
+            stringsUsed[] = {
+                ECSTRING(UI,VehicleGarageDeniedAttachedToSomething),
+                ECSTRING(UI,VehicleGarageDeniedCrewed),
+                ECSTRING(UI,VehicleGarageDeniedDead),
+                ECSTRING(UI,VehicleGarageDeniedLocked),
+                ECSTRING(UI,VehicleGarageDeniedTooFarFromGarage)
+            };
+        };
+    };
 };
