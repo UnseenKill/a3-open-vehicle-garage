@@ -2,15 +2,23 @@
 class A3OVG_CONFIG_CLASS_BASE {
     scope = 0;
 
+    #define QCOND(condition,string) QUOTE((condition) || {[LQELSTRING(UI,string)] call FUNCMAIN(uiStackHint)})
+    #define V (_this select 0)
     class Callbacks {
         // (Bool [Object player[, Object garage]]) Whether players can open the garage
         canGarageOpen = QUOTE(true);
-        // (Bool [Object player[, Object vehicle]]) Whether players can store a vehicle in the garage
+        // (Bool [Object vehicle, Object player]) Whether players can store a vehicle in the garage
         canVehicleGarage[] = {
             QUOTE(true),
-            QUOTE((crew(_this select 0) isEqualTo []) || {[LQELSTRING(UI,VehicleGarageDeniedCrewed)] call FUNCMAIN(uiStackHint)})
+            QCOND(alive V,VehicleGarageDeniedDead),
+            QCOND(locked V <= 1,VehicleGarageDeniedLocked),
+            QCOND(crew V isEqualTo [],VehicleGarageDeniedCrewed),
+            QCOND(attachedTo V isEqualTo [],VehicleGarageDeniedAttachedToSomething),
+            QCOND(V distance(_this select 1) <= 25,VehicleGarageDeniedTooFarFromGarage)
         };
     };
+    #undef V
+    #undef QCOND
 
     // Feature configurations
     class Features {

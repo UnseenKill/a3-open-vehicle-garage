@@ -34,6 +34,12 @@ if !assert(params[
 if !assert(!isNull _vehicle) exitWith {};
 if !assert(!(_vehicle isEqualType "")) exitWith {};
 
+private _data = [_vehicle] call FUNC(serialize);
+private _storage = [] call EFUNC(core,getStorage);
+private _guid = [_vehicle] call FUNC(getGUID);
+
+_storage call["write", [_guid, _data]];
+
 [format[LELSTRING(UI,VehicleGarageSuccess), A3OVG_VEH_NAME(_vehicle)]] call EFUNC(ui,showHint);
 
 nil;
