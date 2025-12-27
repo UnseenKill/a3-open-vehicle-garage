@@ -26,7 +26,7 @@ Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(garageServer));
-A3OVG_VALIDATE_SERVER();
+A3OVG_VERIFY_SERVER();
 
 if !assert(params[
     ["_vehicle", nil, [objNull,""]],
