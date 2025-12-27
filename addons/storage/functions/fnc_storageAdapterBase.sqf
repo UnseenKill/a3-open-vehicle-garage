@@ -27,7 +27,7 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
 
 createHashMapFromArray[
     ["#flags", ["unscheduled"]],
-    ["#type", QADDON],
+    ["#type", [QADDON]],
     ABSTRACT(read),
     ABSTRACT(write)
 ];

@@ -24,5 +24,5 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
 
 [
     ["#base", [] call A3OVG_storage_fnc_storageAdapterBase], 
-    ["#type", QADDON]
+    ["#type", [QADDON]]
 ];
