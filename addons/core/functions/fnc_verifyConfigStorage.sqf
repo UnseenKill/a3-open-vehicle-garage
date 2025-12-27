@@ -18,6 +18,9 @@ Example:
 Returns:
     Nothing
 
+Environment:
+    Server, Unscheduled
+
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
@@ -27,6 +30,7 @@ A3OVG_VERIFY_SERVER();
 if !assert(params[
     ["_config", nil, [configNull]]
 ]) exitWith { throw(QFUNC(verifyConfigStorage) + ": invalid parameters.") };
+if !assert(!isNull _config) exitWith { throw "null-configuration given." };
 
 private _storageConfig = _config >> "Storage";
 
@@ -59,7 +63,7 @@ if !assert(missionNamespace getVariable[_method, false] isEqualType {}) then {
     throw format["Storage adapter definition method %1() not found.", _method];
 };
 
-LOG_1("using storage adapter: %1",str configName _defaultAdapter);
+INFO_1("using storage adapter: %1",str configName _defaultAdapter);
 localNamespace setVariable[QGVAR(configVerifiedStorage), _defaultAdapter];
 
 nil;

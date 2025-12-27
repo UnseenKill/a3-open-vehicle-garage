@@ -42,6 +42,7 @@ try {
     };
 
     if (isServer || { isDedicated }) then {
+        [_config] call FUNC(verifyConfigServer);
         [_config] call FUNC(verifyConfigStorage);
     };
 

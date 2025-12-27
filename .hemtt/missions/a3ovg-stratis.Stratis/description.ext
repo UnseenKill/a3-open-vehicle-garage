@@ -1,6 +1,8 @@
 #define __A3OVG_IS_3DEN__
 #include "script_component.hpp"
 
+missionGroup = "A3OVG_MISSION_GROUP";
+
 import A3OVG_CONFIG_CLASS_BASE;
 
 class CfgSettings {
