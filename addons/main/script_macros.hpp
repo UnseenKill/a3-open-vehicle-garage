@@ -16,6 +16,8 @@
     private var = localNamespace getVariable[QEGVAR(core,configVerified), configNull]; \
     if !assert(!isNull(var)) exitWith {}
 
+#define A3OVG_HAVE_ACE() (!isNil QEGVAR(ace,aceAddonLoaded))
+
 #define A3OVG_UI_PUSH_CONTEXT() \
     (EGVAR(ui,context) pushBack [])
 #define A3OVG_UI_POP_CONTEXT() \
