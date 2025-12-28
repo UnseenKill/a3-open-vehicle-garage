@@ -23,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 METHOD_PREAMBLE(CTOR);
 
-private _dbName = _self get "storagePrefix";
+private _dbName = _self get "_storagePrefix";
 LOG_1("creating/using INIDBI2 database %1",str _dbName);
 
 private _dbi = ["new", _dbName] call OO_INIDBI;

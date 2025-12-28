@@ -27,7 +27,7 @@ createHashMapFromArray[
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
-    ["storagePrefix", ""],
+    ["_storagePrefix", ""],
 
     /**
      * deleteKey(String section, String key) -> Bool

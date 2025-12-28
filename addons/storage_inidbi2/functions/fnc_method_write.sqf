@@ -35,7 +35,7 @@ if !assert(params[
 ]) exitWith { false };
 
 try {
-    private _dbi = _self get "dbi";
+    private _dbi = _self get "_dbi";
     private _serialized = [_value] call FUNC(serialize);
     private _chunked = [_dbi, _serialized] call FUNC(chunk);
 

@@ -33,7 +33,7 @@ if !assert(params[
 ]) exitWith { false };
 
 try {
-    private _dbi = _self get "dbi";
+    private _dbi = _self get "_dbi";
     ["deleteKey", [_section, _key]] call _dbi;
 } catch {
     ERROR_4("%1() failed to delete key %2 in section %3: %4",QFUNC(method_deleteKey),_key,_section,str _exception);

@@ -28,7 +28,7 @@ createHashMapFromArray[
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
-    ["dbi", nil],
+    ["_dbi", nil],
 
     METHOD_DEFINE_NAME(#create,CTOR),
     METHOD_DEFINE(deleteKey),

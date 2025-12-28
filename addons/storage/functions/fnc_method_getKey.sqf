@@ -31,4 +31,4 @@ if !assert(params[
     ["_uuid", nil, [""]]
 ]) exitWith { "" };
 
-[_self get "storagePrefix", _uuid] joinString (_self call["getPrefixSeparator", []]);
+[_self get "_storagePrefix", _uuid] joinString (_self call["getPrefixSeparator", []]);

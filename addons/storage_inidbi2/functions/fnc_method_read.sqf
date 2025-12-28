@@ -33,7 +33,7 @@ if !assert(params[
 ]) exitWith {};
 
 try {
-    private _dbi = _self get "dbi";
+    private _dbi = _self get "_dbi";
 
     throw "Implement me.";
 } catch {

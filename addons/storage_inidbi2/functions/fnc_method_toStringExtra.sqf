@@ -25,4 +25,4 @@ Author:
 ---------------------------------------------------------------------------- */
 METHOD_PREAMBLE(toStringExtra);
 
-[["dbi", !isNil {_self get "dbi"}]];
+[["dbi", !isNil {_self get "_dbi"}]];
