@@ -35,9 +35,11 @@ try {
     _self call["deleteKey", [SECTION_VEHICLE, _key]];
 
     private _keys = keys _data;
+    private _separator = _self get "_prefixSeparator";
+
     _keys sort true;
     _keys apply {
-        _self call["write", [SECTION_VEHICLE, [_key, _x] joinString(_self call["getPrefixSeparator", []]), _data get _x]];
+        _self call["write", [SECTION_VEHICLE, [_key, _x] joinString _separator, _data get _x]];
     };
 
     true;

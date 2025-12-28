@@ -35,4 +35,4 @@ private _prefix = _self get "_storagePrefix";
 
 if (isNil "_prefix") exitWith { _uuid };
 
-[_prefix, _uuid] joinString (_self call["getPrefixSeparator", []]);
+[_prefix, _uuid] joinString (_self get "_prefixSeparator");

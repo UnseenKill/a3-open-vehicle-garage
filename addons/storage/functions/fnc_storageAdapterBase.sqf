@@ -27,7 +27,8 @@ createHashMapFromArray[
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
-    ["_storageDatabase", ""],
+    ["_prefixSeparator", nil],
+    ["_storageDatabase", nil],
     ["_storagePrefix", nil],
 
     /**
@@ -78,6 +79,13 @@ createHashMapFromArray[
      * Create storage key including prefix etc. for given UUID.
      */
     METHOD_DEFINE(getKey),
+
+    /**
+     * initialize() -> Nothing
+     *
+     * Initialize storage adapter instance. Called after construction.
+     */
+    METHOD_DEFINE_BODY(initialize,nil),
 
     /**
      * toStringExtra() -> Array
