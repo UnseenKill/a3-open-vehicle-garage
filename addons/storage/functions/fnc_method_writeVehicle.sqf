@@ -14,7 +14,7 @@ Optional:
 Example:
 
 Returns:
-    Nothing
+    <BOOL> Success status
 
 Environment:
     Both, Unscheduled
@@ -27,6 +27,18 @@ METHOD_PREAMBLE(writeVehicle);
 if !assert(params[
     ["_uuid", nil, [""]],
     ["_data", nil, [createHashMap]]
-]) exitWith {};
+]) exitWith { false };
 
-nil;
+try {
+    private _key = _self call["getKey", [_uuid]];
+
+    _self call["deleteKey", [_key]];
+    _data apply {
+        _self call["write", [_key, _x, _y]];
+    };
+
+    true;
+} catch {
+    ERROR_MSG_3("%1() failed to write vehicle data for UUID %2: %3",QFUNC(method_writeVehicle),_uuid,str _exception);
+    false;
+};

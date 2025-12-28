@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_inidbi2_fnc_method_CTOR
+Function: A3OVG_storage_fnc_method_CTOR
 
 Description:
-    Constructor method for INIDBI2 storage adapter.
+    Storage adapter constructor method.
 
 Parameters:
     0: _param1 - description <TYPE>
@@ -28,6 +28,11 @@ Author:
 ---------------------------------------------------------------------------- */
 METHOD_PREAMBLE(CTOR);
 
-call SUPER(CTOR);
+if !assert(params[
+    //["_param1", nil, [DEFAULT_VALUE]],
+    //["_param2", nil, [DEFAULT_VALUE]]
+]) exitWith {};
+
+
 
 nil;

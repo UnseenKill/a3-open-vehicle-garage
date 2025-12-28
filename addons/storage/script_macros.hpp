@@ -11,3 +11,6 @@
         ["_"+"this", nil, []] \
     ]) exitWith { return }
 #define METHOD_PREAMBLE(method) METHOD_PREAMBLE_RET(method,nil)
+
+#define SUPER(method) ([_self, #method] call EFUNC(storage,getParentMethod))
+#define THIS_CLASS (_self get "#type" select 0)
