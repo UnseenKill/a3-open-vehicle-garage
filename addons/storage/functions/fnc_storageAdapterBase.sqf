@@ -51,6 +51,13 @@ createHashMapFromArray[
     METHOD_ABSTRACT(deleteKey),
 
     /**
+     * getPrefixSeparator() -> String
+     *
+     * Get the separator string used between prefix and UUID in storage keys.
+     */
+    METHOD_ABSTRACT(getPrefixSeparator),
+
+    /**
      * #create()
      *
      * Constructor method for storage adapter instance.

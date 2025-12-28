@@ -1,5 +1,3 @@
-#define PREFIX_SEPARATOR ":"
-
 #define METHOD_ABSTRACT(method) \
     [#method, { throw format["abstract method %1::%2() called on base class", QADDON, #method] }]
 #define METHOD_DEFINE_NAME(method,function) [#method, { METHOD_INVOKE(function) }]
