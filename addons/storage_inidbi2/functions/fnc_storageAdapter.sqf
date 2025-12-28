@@ -22,7 +22,7 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
 
-createHashMapFromArray[
+[createHashMapFromArray[
     ["#type", [QADDON]],
     ["#base", [] call EFUNC(storage,storageAdapterBase)], 
     ["#flags", ["sealed", "unscheduled"]],
@@ -36,4 +36,4 @@ createHashMapFromArray[
     METHOD_DEFINE(readKey),
     METHOD_DEFINE(toStringExtra),
     METHOD_DEFINE(writeKey)
-];
+]] call EFUNC(storage,registerStorageAdapterClass);

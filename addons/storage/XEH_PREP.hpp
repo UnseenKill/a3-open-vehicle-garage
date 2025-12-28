@@ -9,4 +9,5 @@ PREP(method_write);
 PREP(method_writeVehicle);
 
 PREP(getParentMethod);
+PREP(registerStorageAdapterClass);
 PREP(storageAdapterBase);
