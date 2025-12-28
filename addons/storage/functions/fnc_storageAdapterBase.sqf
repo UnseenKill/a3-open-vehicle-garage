@@ -22,12 +22,11 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
 
-#define ABSTRACT(method) \
-    [#method, { throw format["abstract method %1::%2() called on base class", QADDON, #method] }]
-
 createHashMapFromArray[
     ["#flags", ["unscheduled"]],
     ["#type", [QADDON]],
-    ABSTRACT(read),
-    ABSTRACT(write)
+
+    METHOD_ABSTRACT(read),
+    METHOD_ABSTRACT(write),
+    METHOD_DEFINE(writeVehicle)
 ];

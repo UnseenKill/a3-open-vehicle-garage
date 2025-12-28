@@ -39,11 +39,11 @@ if (isNil QGVAR(storageSingleton)) then {
 
     private _definition = [] call _method;
 
-    if !assert(_definition isEqualType []) exitWith {
-        ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return an array.",QFUNC(getStorage),_method,configName _storageAdapter);
+    if !assert(_definition isEqualType createHashMap) exitWith {
+        ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return a hashmap.",QFUNC(getStorage),_method,configName _storageAdapter);
     };
 
-    private _object = createHashMapObject[_definition];
+    private _object = createHashMapObject[_definition, []];
 
     GVAR(storageSingleton) = compileFinal createHashMapFromArray[
         ["_", _object]

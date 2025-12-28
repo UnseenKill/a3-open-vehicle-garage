@@ -22,7 +22,9 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
 
-[
+createHashMapFromArray[
     ["#base", [] call EFUNC(storage,storageAdapterBase)], 
-    ["#type", [QADDON]]
+    ["#type", [QADDON]],
+
+    METHOD_DEFINE_NAME(#create,CTOR)
 ];
