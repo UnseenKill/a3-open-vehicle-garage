@@ -6,8 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"A3OVG_storage","inidbi2"};
-        skipWhenMissingDependencies = 1;
+        requiredAddons[] = {QUOTE(A3OVG_ADDON_STORAGE)};
         author = "$STR_A3OVG_Author";
         authors[] = {};
         url = "$STR_A3OVG_URL";

@@ -7,6 +7,7 @@ class A3OVG_CONFIG_CLASS_BASE {
         // Base adapter class
         class Adapter {
             scope = 0;
+            method = QFUNC(storageAdapterBase);
             name = "Storage interface adapter";
         };
     };

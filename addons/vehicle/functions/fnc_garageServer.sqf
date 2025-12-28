@@ -26,7 +26,7 @@ Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(garageServer));
-A3OVG_VALIDATE_SERVER();
+A3OVG_VERIFY_SERVER();
 
 if !assert(params[
     ["_vehicle", nil, [objNull,""]],
@@ -39,10 +39,18 @@ if !assert(!(_vehicle isEqualType "")) exitWith {};
 
 private _data = [_vehicle] call FUNC(serialize);
 private _storage = [] call EFUNC(core,getStorage);
-private _guid = [_vehicle] call FUNC(getGUID);
+private _uuid = [_vehicle] call FUNC(getUUID);
 
-_storage call["write", [_guid, _data]];
+private _success = 
+    (_storage call["updateTOC", [_uuid, _data, true]]) &&
+    { _storage call["writeVehicle", [_uuid, _data]] };
 
-[format[LELSTRING(UI,VehicleGarageSuccess), A3OVG_VEH_NAME(_vehicle)]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
+private _message = if (_success) then {
+    LELSTRING(UI,VehicleGarageSuccess);
+} else {
+    LELSTRING(UI,VehicleGarageFailure);
+};
+
+[format[_message, A3OVG_VEH_NAME(_vehicle)]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
 
 nil;

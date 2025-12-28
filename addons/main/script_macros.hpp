@@ -1,5 +1,13 @@
 #include "script_macros_common.hpp"
 
+#define A3OVG_ADDON(name) DOUBLES(PREFIX,name)
+#define A3OVG_ADDON_ACE A3OVG_ADDON(ace)
+#define A3OVG_ADDON_API A3OVG_ADDON(api)
+#define A3OVG_ADDON_CORE A3OVG_ADDON(core)
+#define A3OVG_ADDON_STORAGE A3OVG_ADDON(storage)
+#define A3OVG_ADDON_UI A3OVG_ADDON(ui)
+#define A3OVG_ADDON_VEHICLE A3OVG_ADDON(vehicle)
+
 #define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
 #define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
 #define A3OVG_FEATURE_ENABLED(config,feature) (getNumber(_config >> "Features" >> QUOTE(feature)) != 0)
@@ -23,7 +31,7 @@
 #define A3OVG_UI_POP_CONTEXT() \
     (EGVAR(ui,context) deleteAt(count EGVAR(ui,context) - 1))
 
-#define A3OVG_VALIDATE_CLIENT() if !assert(hasInterface) exitWith {}
-#define A3OVG_VALIDATE_SERVER() if !assert(isServer) exitWith {}
+#define A3OVG_VERIFY_CLIENT() if !assert(hasInterface) exitWith {}
+#define A3OVG_VERIFY_SERVER() if !assert(isServer) exitWith {}
 
 #define A3OVG_VEH_NAME(vehicle) getText((if (vehicle isEqualType objNull) then[{configOf(vehicle)}, {configFile >> QUOTE(CfgVehicles) >> (vehicle)}]) >> QUOTE(displayName))

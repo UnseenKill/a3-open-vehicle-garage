@@ -25,7 +25,7 @@ Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(garageClient));
-A3OVG_VALIDATE_CLIENT();
+A3OVG_VERIFY_CLIENT();
 
 if !assert(params[
     ["_vehicle", nil, [objNull]]
