@@ -42,10 +42,12 @@ try {
     if (count _chunked <= 1) then {
         ["write", [_section, _key, _chunked select 0]] call _dbi;
     } else {
-        {
-            if !(["write", [_section, format["%1:%2", _key, _forEachIndex], _x]] call _dbi) exitWith { false };
-            true;
-        } forEach _chunked;
+        if (["write", [_section, _key, ""]] call _dbi) then {
+            {
+                if !(["write", [_section, format["%1:%2", _key, _forEachIndex], _x]] call _dbi) exitWith { false };
+                true;
+            } forEach _chunked;
+        };
     };
 } catch {
     ERROR_4("%1() failed to write key %2 in section %3: %4",QFUNC(method_writeKey),_key,_section,str _exception);
