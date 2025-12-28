@@ -4,6 +4,6 @@ PREP(storageAdapter);
 
 PREP(method_CTOR);
 PREP(method_deleteKey);
-PREP(method_read);
+PREP(method_readKey);
 PREP(method_toStringExtra);
-PREP(method_write);
+PREP(method_writeKey);

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_inidbi2_fnc_method_read
+Function: A3OVG_storage_inidbi2_fnc_method_readKey
 
 Description:
     Read value from INIDBI2 storage backend.
@@ -25,7 +25,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(read);
+METHOD_PREAMBLE(readKey);
 
 if !assert(params[
     ["_section", nil, [""]],
@@ -37,6 +37,6 @@ try {
 
     throw "Implement me.";
 } catch {
-    ERROR_4("%1() failed to read key %2 in section %3: %4",QFUNC(method_read),_key,_section,str _exception);
+    ERROR_4("%1() failed to read key %2 in section %3: %4",QFUNC(method_readKey),_key,_section,str _exception);
     nil;
 };

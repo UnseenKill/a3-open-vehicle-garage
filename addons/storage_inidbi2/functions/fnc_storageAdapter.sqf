@@ -33,7 +33,7 @@ createHashMapFromArray[
     METHOD_DEFINE_NAME(#create,CTOR),
     METHOD_DEFINE(deleteKey),
     METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
-    METHOD_DEFINE(read),
+    METHOD_DEFINE(readKey),
     METHOD_DEFINE(toStringExtra),
-    METHOD_DEFINE(write)
+    METHOD_DEFINE(writeKey)
 ];

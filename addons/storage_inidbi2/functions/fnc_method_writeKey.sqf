@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_inidbi2_fnc_method_write
+Function: A3OVG_storage_inidbi2_fnc_method_writeKey
 
 Description:
     Write value to INIDBI2 storage backend.
@@ -14,7 +14,7 @@ Optional:
 
 Example:
     (begin example)
-    _storage call["write", ["vehicles", "vehicle_1234", _vehicleData]];
+    _storage call["writeKey", ["vehicles", "vehicle_1234", _vehicleData]];
     (end example)
 
 Returns:
@@ -26,7 +26,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(write);
+METHOD_PREAMBLE(writeKey);
 
 if !assert(params[
     ["_section", nil, [""]],
@@ -48,6 +48,6 @@ try {
         } forEach _chunked;
     };
 } catch {
-    ERROR_4("%1() failed to write key %2 in section %3: %4",QFUNC(method_write),_key,_section,str _exception);
+    ERROR_4("%1() failed to write key %2 in section %3: %4",QFUNC(method_writeKey),_key,_section,str _exception);
     false;
 };

@@ -39,18 +39,18 @@ createHashMapFromArray[
     METHOD_ABSTRACT(deleteKey),
 
     /**
-     * read(String section, String key) -> Any
+     * readKey(String section, String key) -> Any
      *
      * Read value from storage backend. Should return `nil` if key does not exist.
      */
-    METHOD_ABSTRACT(read),
+    METHOD_ABSTRACT(readKey),
 
     /**
-     * write(String section, String key, Any value) -> Bool
+     * writeKey(String section, String key, Any value) -> Bool
      *
      * Write value to storage backend.
      */
-    METHOD_ABSTRACT(write),
+    METHOD_ABSTRACT(writeKey),
 
     /**
      * getPrefixSeparator() -> String
@@ -88,6 +88,13 @@ createHashMapFromArray[
     METHOD_DEFINE(initialize),
 
     /**
+     * read(String section, String key[, Array expectedDataTypes]) -> Any
+     *
+     * Read serialized data from storage backend.
+     */
+    METHOD_DEFINE(read),
+
+    /**
      * removeVehicle(String uuid) -> Bool
      *
      * Remove vehicle storage data from storage backend.
@@ -107,6 +114,13 @@ createHashMapFromArray[
      * Update the Table of Contents (TOC) for vehicle storage.
      */
     METHOD_DEFINE(updateTOC),
+
+    /**
+     * write(String section, String key, Any value) -> Bool
+     *
+     * Write value to storage backend.
+     */
+    METHOD_DEFINE(write),
 
     /**
      * writeVehicle(String uuid, HashMap data) -> Bool
