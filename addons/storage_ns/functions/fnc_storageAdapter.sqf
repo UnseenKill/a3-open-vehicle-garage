@@ -29,8 +29,10 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
 
     // Properties
     ["_nsKey", QUOTE(ADDON)],
+    ["_nsKeyTemp", nil],
 
     // Methods
+    METHOD_DEFINE_NAME(#delete,DTOR),
     METHOD_DEFINE(commitChanges),
     METHOD_DEFINE(deleteKey),
     METHOD_DEFINE(getStorage),
