@@ -6,7 +6,11 @@ Description:
     Constructor method for INIDBI2 storage adapter.
 
 Parameters:
-    0: _prefix - Storage prefix <STRING>
+    0: _adapterConfig - Storage adapter config <CONFIG>
+    1: _databaseName - Storage database name <STRING>
+
+Optional:
+    2: _prefix - Storage key prefix <STRING>
 
 Optional:
 

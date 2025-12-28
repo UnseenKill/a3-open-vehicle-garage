@@ -27,6 +27,7 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
+    ["_adapterConfig", nil],
     ["_prefixSeparator", nil],
     ["_storageDatabase", nil],
     ["_storagePrefix", nil],
