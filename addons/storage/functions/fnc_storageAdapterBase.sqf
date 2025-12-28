@@ -23,8 +23,8 @@ Author:
 A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
 
 createHashMapFromArray[
-    ["#flags", ["unscheduled"]],
     ["#type", [QADDON]],
+    ["#flags", ["sealed", "unscheduled"]],
 
     /**
      * read(String section, String key) -> Any
