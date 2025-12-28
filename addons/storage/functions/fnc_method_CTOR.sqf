@@ -32,7 +32,7 @@ if !assert(params[
 
 if !assert(!isNull _adapterConfig) exitWith {};
 
-private _prefix = param[1, nil, [""]];
+private _prefix = param[2, nil, [""]];
 
 _self set["_adapterConfig", _adapterConfig];
 _self set["_storageDatabase", _databaseName];
