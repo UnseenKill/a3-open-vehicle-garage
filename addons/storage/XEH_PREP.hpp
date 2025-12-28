@@ -1,4 +1,5 @@
 PREP(method_CTOR);
+PREP(method_commit);
 PREP(method_getKey);
 PREP(method_initialize);
 PREP(method_read);

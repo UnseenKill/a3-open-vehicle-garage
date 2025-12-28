@@ -28,9 +28,17 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
 
     // Properties
     ["_adapterConfig", nil],
+    ["_autoCommit", nil],
     ["_prefixSeparator", nil],
     ["_storageDatabase", nil],
     ["_storagePrefix", nil],
+
+    /**
+     * commitChanges() -> Nothing
+     *
+     * Commit any pending changes to storage backend.
+     */
+    METHOD_ABSTRACT(commitChanges),
 
     /**
      * deleteKey(String section, String key) -> Bool
@@ -73,6 +81,15 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
      * String representation of storage adapter instance.
      */
     METHOD_DEFINE_NAME(#str,toString),
+
+    /**
+     * commit([Boolean force=false]) -> Nothing
+     *
+     * Commit any pending changes to storage backend.
+     *
+     * If `force` is false, don't commit if auto-commit is disabled.
+     */
+    METHOD_DEFINE(commit),
 
     /**
      * getKey(String uuid) -> String

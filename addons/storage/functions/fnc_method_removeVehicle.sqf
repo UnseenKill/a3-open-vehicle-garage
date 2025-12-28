@@ -44,6 +44,7 @@ try {
     };
 
     _self call["deleteKey", [SECTION_VEHICLE, _key]];
+    _self call["commit", []];
 
     true;
 } catch {
