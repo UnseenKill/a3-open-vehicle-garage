@@ -33,6 +33,7 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
     // Methods
     METHOD_DEFINE(commitChanges),
     METHOD_DEFINE(deleteKey),
+    METHOD_DEFINE(getStorage),
     METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
     METHOD_DEFINE(initialize),
     METHOD_DEFINE(readKey),

@@ -37,7 +37,7 @@ if !assert(params[
 private _s = _self call["getStorage", []];
 
 if !(_section in _s) then {
-    _s setVariable[_section, createHashMap];
+    _s set[_section, createHashMap];
 };
 
 _s get _section set[_key, _value];
