@@ -1,3 +1,4 @@
+PREP(method_DTOR);
 PREP(method_commitChanges);
 PREP(method_deleteKey);
 PREP(method_getStorage);
