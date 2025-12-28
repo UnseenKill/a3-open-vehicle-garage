@@ -88,6 +88,13 @@ createHashMapFromArray[
     METHOD_DEFINE(initialize),
 
     /**
+     * removeVehicle(String uuid) -> Bool
+     *
+     * Remove vehicle storage data from storage backend.
+     */
+    METHOD_DEFINE(removeVehicle),
+
+    /**
      * toStringExtra() -> Array
      *
      * Extra information for string representation.

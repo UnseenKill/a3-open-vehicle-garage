@@ -30,10 +30,11 @@ if !assert(params[
 ]) exitWith { false };
 
 try {
+    if !(_self call["removeVehicle", [_uuid]]) then {
+        throw format["failed to delete vehicle UUID %1: %2", _uuid, str _exception];
+    };
+
     private _key = _self call["getKey", [_uuid]];
-
-    _self call["deleteKey", [SECTION_VEHICLE, _key]];
-
     private _keys = keys _data;
     private _separator = _self get "_prefixSeparator";
 
