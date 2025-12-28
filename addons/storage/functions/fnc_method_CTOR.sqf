@@ -27,6 +27,6 @@ if !assert(params[
     ["_prefix", nil, [""]]
 ]) exitWith {};
 
-_self set["storagePrefix", _prefix];
+_self set["_storagePrefix", _prefix];
 
 nil;
