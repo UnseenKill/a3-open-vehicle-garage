@@ -85,7 +85,7 @@ createHashMapFromArray[
      *
      * Initialize storage adapter instance. Called after construction.
      */
-    METHOD_DEFINE_BODY(initialize,nil),
+    METHOD_DEFINE(initialize),
 
     /**
      * toStringExtra() -> Array
