@@ -30,6 +30,13 @@ createHashMapFromArray[
     ["storagePrefix", ""],
 
     /**
+     * deleteKey(String section, String key) -> Bool
+     *
+     * Delete all entries associated with given key from storage backend.
+     */
+    METHOD_ABSTRACT(deleteKey),
+
+    /**
      * read(String section, String key) -> Any
      *
      * Read value from storage backend.
@@ -42,13 +49,6 @@ createHashMapFromArray[
      * Write value to storage backend.
      */
     METHOD_ABSTRACT(write),
-
-    /**
-     * deleteKey(String key) -> Bool
-     *
-     * Delete all entries associated with given key from storage backend.
-     */
-    METHOD_ABSTRACT(deleteKey),
 
     /**
      * getPrefixSeparator() -> String

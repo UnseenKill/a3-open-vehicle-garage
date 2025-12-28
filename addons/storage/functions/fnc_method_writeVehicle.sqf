@@ -32,9 +32,12 @@ if !assert(params[
 try {
     private _key = _self call["getKey", [_uuid]];
 
-    _self call["deleteKey", [_key]];
-    _data apply {
-        _self call["write", [_key, _x, _y]];
+    _self call["deleteKey", [SECTION_VEHICLE, _key]];
+
+    private _keys = keys _data;
+    _keys sort true;
+    _keys apply {
+        _self call["write", [SECTION_VEHICLE, [_key, _x] joinString(_self call["getPrefixSeparator", []]), _data get _x]];
     };
 
     true;
