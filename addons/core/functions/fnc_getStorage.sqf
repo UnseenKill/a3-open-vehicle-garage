@@ -10,6 +10,10 @@ Parameters:
 Optional:
 
 Example:
+    (begin example)
+    private _storage = [] call A3OVG_core_fnc_getStorage;
+    _storage call["write", [_key, _data]];
+    (end example)
 
 Returns:
     <HASHMAP-OBJECT>
@@ -27,15 +31,19 @@ A3OVG_GET_CONFIG(_config);
 if (isNil QGVAR(storageSingleton)) then {
     private _storageAdapter = localNamespace getVariable QGVAR(configVerifiedStorage);
 
-    LOG_1("Initializing storage singleton using adapter %1.",configName _storageAdapter);
-
     if !assert(!isNil "_storageAdapter") exitWith {
         ERROR_MSG_1("%1() called before config verification.",QFUNC(getStorage));
     };
 
+    if (!assert((_storageAdapter isEqualType configNull) && { !isNull _storageAdapter })) exitWith {
+        ERROR_MSG_2("%1() could not retrieve valid storage adapter from localNamespace variable %2.",QFUNC(getStorage),QGVAR(configVerifiedStorage));
+    };
+
+    LOG_1("Initializing storage singleton using adapter %1.",str configName _storageAdapter);
+
     private _method = missionNamespace getVariable getText(_storageAdapter >> "method");
 
-    if (!assert(!isNil "_method") || {!assert(_method isEqualType {})}) exitWith {
+    if (!assert((!isNil "_method") && { _method isEqualType {} })) exitWith {
         ERROR_MSG_3("%1() could not retrieve valid storage definition method %2 from adapter %3.",QFUNC(getStorage),RETDEF(_method,"any"),configName _storageAdapter);
     };
 
@@ -45,7 +53,9 @@ if (isNil QGVAR(storageSingleton)) then {
         ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return a hashmap.",QFUNC(getStorage),_method,configName _storageAdapter);
     };
 
+    // Set by fnc_verifyConfigServer
     private _database = localNamespace getVariable QGVAR(storageDatabase);
+    // Set by A3OVG_fnc_setStoragePrefix
     private _prefix = localNamespace getVariable QGVAR(storagePrefix);
 
     LOG_1("Storage database: %1",_database);

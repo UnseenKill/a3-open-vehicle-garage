@@ -31,6 +31,6 @@ if !assert(params[
 private _prefix = param[1, nil, [""]];
 
 _self set["_storageDatabase", _databaseName];
-_self set["_storagePrefix", _prefix];
+_self set["_storagePrefix", RETNIL(_prefix)];
 
 nil;

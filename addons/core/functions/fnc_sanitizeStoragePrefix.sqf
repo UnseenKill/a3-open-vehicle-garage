@@ -5,6 +5,9 @@ Function: A3OVG_core_fnc_sanitizeStoragePrefix
 Description:
     Sanitize storage prefix by removing invalid characters.
 
+    Does nothing but lower-casing the prefix for now. More complex sanitization
+    may be added in the future if needed.
+
 Parameters:
     0: _prefix - Storage prefix <STRING>
 
