@@ -1,17 +1,18 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_method_initialize
+Function: A3OVG_storage_fnc_method_commit
 
 Description:
-    Initialize storage adapter object after construction.
+    Commit any pending changes to storage backend.
 
 Parameters:
 
 Optional:
+    0: _force - force or auto-commit (default: false) <BOOL>
 
 Example:
     (begin example)
-    _storage call["initialize", []];
+    _storage call["commit", [true]];
     (end example)
 
 Returns:
@@ -23,9 +24,12 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(initialize);
+METHOD_PREAMBLE(commit);
 
-_self set["_autoCommit", getNumber((_self get "_adapterConfig") >> "autoCommit") != 0];
-_self set["_prefixSeparator", _self call["getPrefixSeparator", []]];
+private _force = param[0, false, [true]];
+
+if (_force || { _self get "_autoCommit" }) then {
+    _self call["commitChanges", []];
+};
 
 nil;

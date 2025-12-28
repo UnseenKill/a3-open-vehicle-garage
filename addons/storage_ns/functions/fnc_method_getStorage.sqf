@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_method_initialize
+Function: A3OVG_storage_ns_fnc_method_getStorage
 
 Description:
-    Initialize storage adapter object after construction.
+    Get namespace storage backend hashmap.
 
 Parameters:
 
@@ -11,11 +11,11 @@ Optional:
 
 Example:
     (begin example)
-    _storage call["initialize", []];
+    _storage call["getStorage", []];
     (end example)
 
 Returns:
-    Nothing
+    <HASHMAP> Namespace storage backend
 
 Environment:
     Client/Server, Unscheduled
@@ -23,9 +23,6 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(initialize);
+METHOD_PREAMBLE(getStorage);
 
-_self set["_autoCommit", getNumber((_self get "_adapterConfig") >> "autoCommit") != 0];
-_self set["_prefixSeparator", _self call["getPrefixSeparator", []]];
-
-nil;
+profileNamespace getVariable(_self get "_nsKey");

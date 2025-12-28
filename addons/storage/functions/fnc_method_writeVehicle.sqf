@@ -46,6 +46,8 @@ try {
         _self call["write", [SECTION_VEHICLE, [_key, _x] joinString _separator, _data get _x]];
     };
 
+    _self call["commit", []];
+
     true;
 } catch {
     ERROR_MSG_3("%1() failed to write vehicle data for UUID %2: %3",QFUNC(method_writeVehicle),_uuid,str _exception);
