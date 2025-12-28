@@ -27,5 +27,12 @@ createHashMapFromArray[
     ["#base", [] call EFUNC(storage,storageAdapterBase)], 
     ["#flags", ["sealed", "unscheduled"]],
 
-    METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_))
+    // Properties
+    ["_nsKey", QUOTE(ADDON)],
+
+    METHOD_DEFINE(deleteKey),
+    METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
+    METHOD_DEFINE(initialize),
+    METHOD_DEFINE(readKey),
+    METHOD_DEFINE(writeKey)
 ];
