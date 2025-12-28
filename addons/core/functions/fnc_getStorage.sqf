@@ -45,17 +45,13 @@ if (isNil QGVAR(storageSingleton)) then {
         ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return a hashmap.",QFUNC(getStorage),_method,configName _storageAdapter);
     };
 
+    private _database = localNamespace getVariable QGVAR(storageDatabase);
     private _prefix = localNamespace getVariable QGVAR(storagePrefix);
-    private _suffix = localNamespace getVariable QGVAR(storageSuffix);
 
-    if (!isNil "_suffix") then {
-        _prefix = _prefix + ":" + _suffix;
-    };
+    LOG_1("Storage database: %1",_database);
+    LOG_1("Storage prefix: %1",RETDEF(_prefix,"<none>"));
 
-    _prefix = [_prefix] call EFUNC(core,sanitizeStoragePrefix);
-    LOG_1("Storage prefix: %1",str _prefix);
-
-    private _object = createHashMapObject[_definition, [_prefix]];
+    private _object = createHashMapObject[_definition, [_database, RETNIL(_prefix)]];
 
     GVAR(storageSingleton) = compileFinal createHashMapFromArray[
         ["_", _object]

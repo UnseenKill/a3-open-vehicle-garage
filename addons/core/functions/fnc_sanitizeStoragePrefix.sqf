@@ -30,4 +30,4 @@ if !assert(params[
     ["_prefix", nil, [""]]
 ]) exitWith {};
 
-_prefix;
+toLowerANSI _prefix;

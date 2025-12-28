@@ -27,7 +27,8 @@ createHashMapFromArray[
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
-    ["_storagePrefix", ""],
+    ["_storageDatabase", ""],
+    ["_storagePrefix", nil],
 
     /**
      * deleteKey(String section, String key) -> Bool
@@ -58,7 +59,7 @@ createHashMapFromArray[
     METHOD_ABSTRACT(getPrefixSeparator),
 
     /**
-     * #create()
+     * #create(String databaseName[, String prefix])
      *
      * Constructor method for storage adapter instance.
      */

@@ -32,7 +32,7 @@ if !assert(params[
 ]) exitWith { throw(QFUNC(verifyConfigServer) + ": invalid parameters.") };
 if !assert(!isNull _config) exitWith { throw "null-configuration given." };
 
-private _storagePrefix = if !isText(missionConfigFile >> "missionGroup") then {
+private _storageDatabase = if !isText(missionConfigFile >> "missionGroup") then {
     WARNING("This mission does not define a missionGroup; storage backends may not function properly across missions.");
     worldName;
 } else {
@@ -40,7 +40,7 @@ private _storagePrefix = if !isText(missionConfigFile >> "missionGroup") then {
     getText(missionConfigFile >> "missionGroup");
 };
 
-localNamespace setVariable[QGVAR(storagePrefix), [_storagePrefix] call EFUNC(core,sanitizeStoragePrefix)];
-INFO_1("storage prefix set to '%1'.",localNamespace getVariable QGVAR(storagePrefix));
+localNamespace setVariable[QGVAR(storageDatabase), [_storageDatabase] call EFUNC(core,sanitizeStoragePrefix)];
+LOG_1("storage database set to '%1'.",localNamespace getVariable QGVAR(storageDatabase));
 
 nil;

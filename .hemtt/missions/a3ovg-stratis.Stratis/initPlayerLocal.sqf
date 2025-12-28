@@ -5,3 +5,5 @@ if (!isDedicated && player != player) then { waitUntil { player == player && ali
 player addAction ["Run local 'script.sqf'", {
     [] call compile preprocessFileLineNumbers 'script.sqf';
 }, nil, -200, false, true, '', 'true'];
+
+[hashValue player] call A3OVG_fnc_setStoragePrefix;
