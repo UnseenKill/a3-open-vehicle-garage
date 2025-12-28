@@ -34,8 +34,32 @@ if !assert(params[
 
 try {
     private _dbi = _self get "_dbi";
+    private _value = ["read", [_section, _key]] call _dbi;
 
-    throw "Implement me.";
+    if (_value isEqualTo false) exitWith { MTRACE_2(QUOTE(readKey),_key,nil) };
+
+    // Non-empty strings indicate non-chunked data
+    private _decoded = if (_value isNotEqualTo "") then {
+        ["decodeBase64", _value] call _dbi;
+    } else {
+        private _chunks = [];
+        private _index = -1;
+
+        while { true } do {
+            INC(_index);
+
+            private _chunkKey = format["%1:%2", _key, _index];
+            private _chunk = ["read", [_section, _chunkKey]] call _dbi;
+            if (_chunk isEqualTo false) then { break };
+            _chunks pushBack(["decodeBase64", _chunk] call _dbi);
+        };
+
+        _chunks joinString "";
+    };
+
+    MTRACE_3(QUOTE(readKey),_key,_value,_decoded);
+
+    [_decoded] call FUNC(unserialize);
 } catch {
     ERROR_4("%1() failed to read key %2 in section %3: %4",QFUNC(method_readKey),_key,_section,str _exception);
     nil;
