@@ -25,6 +25,16 @@ Author:
 ---------------------------------------------------------------------------- */
 METHOD_PREAMBLE(commitChanges);
 
+if !(_self get "_autoCommit") then {
+    private _nsKey = _self get "_nsKey";
+    private _nsKeyTemp = _self get "_nsKeyTemp";
+
+    private _tempStorage = profileNamespace getVariable _nsKeyTemp;
+    profileNamespace setVariable[_nsKey, +_tempStorage];
+
+    LOG_2("committed changes from temporary storage %1 to main storage %2",str _nsKeyTemp,str _nsKey);
+};
+
 saveProfileNamespace;
 
 nil;

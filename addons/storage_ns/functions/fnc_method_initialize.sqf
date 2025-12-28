@@ -34,9 +34,17 @@ if (!(isNil "_storage") && { !(_storage isEqualType createHashMap) }) then {
 
 if (isNil "_storage") then {
     INFO_1("profile namespace is uninitialized for storage_ns, creating new hashmap at %1",str _nsKey);
-    profileNamespace setVariable[_nsKey, createHashMap];
+    _storage = createHashMap;
+    profileNamespace setVariable[_nsKey, _storage];
 };
 
 LOG_1("using namespace key %1",str _nsKey);
+
+if !(_self get "_autoCommit") then {
+    private _tempStorageKey = _nsKey + "_temp";
+    profileNamespace setVariable[_tempStorageKey, +_storage];
+    _self set["_nsKeyTemp", _tempStorageKey];
+    LOG_1("autoCommit disabled, using temporary storage key %1",str _tempStorageKey);
+};
 
 nil;

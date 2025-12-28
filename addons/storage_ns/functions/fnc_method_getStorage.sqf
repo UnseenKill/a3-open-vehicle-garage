@@ -25,4 +25,6 @@ Author:
 ---------------------------------------------------------------------------- */
 METHOD_PREAMBLE(getStorage);
 
-profileNamespace getVariable(_self get "_nsKey");
+private _key = ["_nsKeyTemp","_nsKey"] select(_self get "_autoCommit");
+
+profileNamespace getVariable(_self get _key);
