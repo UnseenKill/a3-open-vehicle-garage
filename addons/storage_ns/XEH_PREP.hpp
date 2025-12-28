@@ -1,3 +1,4 @@
+PREP(method_commitChanges);
 PREP(method_deleteKey);
 PREP(method_getStorage);
 PREP(method_initialize);

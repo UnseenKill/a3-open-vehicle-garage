@@ -30,6 +30,8 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
     // Properties
     ["_nsKey", QUOTE(ADDON)],
 
+    // Methods
+    METHOD_DEFINE(commitChanges),
     METHOD_DEFINE(deleteKey),
     METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
     METHOD_DEFINE(initialize),
