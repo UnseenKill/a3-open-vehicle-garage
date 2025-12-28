@@ -26,4 +26,5 @@ Author:
 METHOD_PREAMBLE(commitChanges);
 
 saveProfileNamespace;
+
 nil;

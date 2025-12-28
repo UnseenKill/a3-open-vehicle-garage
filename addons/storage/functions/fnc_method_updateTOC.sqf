@@ -44,7 +44,8 @@ private _result = if !(_create) then {
     ]]];
 };
 
-if !(_result) exitWith { false };
+if (_result) then {
+    _self call["commit", []];
+};
 
-_self call["commit", []];
-true;
+_result;
