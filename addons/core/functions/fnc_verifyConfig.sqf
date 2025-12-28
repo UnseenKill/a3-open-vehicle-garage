@@ -15,7 +15,7 @@ Example:
     (end example)
 
 Returns:
-    Nothing
+    <BOOL> success indicator
 
 Author:
     UnseenKill/gor3Splatter
@@ -24,6 +24,7 @@ TRACE_1(QFUNC(verifyConfig),_this);
 
 if !(isNull(localNamespace getVariable[QGVAR(configVerified), configNull])) exitWith {
     LOG("config already verified, skipping check.");
+    true;
 };
 
 private _accessor = QUOTE(A3OVG_CONFIG_CLASS);
@@ -41,12 +42,14 @@ try {
     };
 
     if (isServer || { isDedicated }) then {
+        [_config] call FUNC(verifyConfigServer);
         [_config] call FUNC(verifyConfigStorage);
     };
 
     localNamespace setVariable[QGVAR(configVerified), _config];
+
+    true;
 } catch {
     ERROR_1("Config verification failed: %1",_exception);
+    false;
 };
-
-nil;

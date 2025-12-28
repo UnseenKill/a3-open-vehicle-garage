@@ -35,6 +35,7 @@ private _data = createHashMap;
 
 _data set["class", typeOf _vehicle];
 _data set["custom", [_vehicle] call BIS_fnc_getVehicleCustomization];
+_data set["displayName", getText(configOf _vehicle >> "displayName")];
 
 [_data, _vehicle] call FUNC(serializeFuel);
 [_data, _vehicle] call FUNC(serializeDamage);

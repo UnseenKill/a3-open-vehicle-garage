@@ -1,18 +1,18 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_getGUID
+Function: A3OVG_vehicle_fnc_getUUID
 
 Description:
     Create unique vehicle identifier.
 
 Parameters:
-    0: _vehicle - Vehicle to get GUID for <OBJECT>
+    0: _vehicle - Vehicle to get UUID for <OBJECT>
 
 Optional:
 
 Example:
     (begin example)
-    [_vehicle] call A3OVG_vehicle_fnc_getGUID;
+    [_vehicle] call A3OVG_vehicle_fnc_getUUID;
     (end example)
 
 Returns:
@@ -24,7 +24,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(getGUID));
+A3OVG_FUNCTION_PREAMBLE(QFUNC(getUUID));
 
 if !assert(params[
     ["_vehicle", nil, [objNull]]
