@@ -28,6 +28,6 @@ class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
     };
 
     class Storage : Storage {
-        defaultAdapter = "Adapter_INIDBI2";
+        defaultAdapter = "Adapter_NS";
     };
 };

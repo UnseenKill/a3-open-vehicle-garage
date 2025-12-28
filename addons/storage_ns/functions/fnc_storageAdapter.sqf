@@ -1,0 +1,31 @@
+#include "..\script_component.hpp"
+/* ----------------------------------------------------------------------------
+Function: A3OVG_storage_ns_fnc_storageAdapter
+
+Description:
+    Storage adapter implementation for namespace storage backend.
+
+Parameters:
+
+Optional:
+
+Example:
+
+Returns:
+    <HASHMAP>
+
+Environment:
+    Both, Unscheduled
+
+Author:
+    UnseenKill/gor3Splatter
+---------------------------------------------------------------------------- */
+A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
+
+createHashMapFromArray[
+    ["#type", [QADDON]],
+    ["#base", [] call EFUNC(storage,storageAdapterBase)], 
+    ["#flags", ["sealed", "unscheduled"]],
+
+    METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_))
+];
