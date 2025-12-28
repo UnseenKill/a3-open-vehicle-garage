@@ -95,6 +95,13 @@ createHashMapFromArray[
     METHOD_DEFINE_BODY(toStringExtra,[]),
 
     /**
+     * updateTOC(String uuid, HashMap data, Bool create) -> Bool
+     *
+     * Update the Table of Contents (TOC) for vehicle storage.
+     */
+    METHOD_DEFINE(updateTOC),
+
+    /**
      * writeVehicle(String uuid, HashMap data) -> Bool
      *
      * Save serialized vehicle storage data to storage backend.
