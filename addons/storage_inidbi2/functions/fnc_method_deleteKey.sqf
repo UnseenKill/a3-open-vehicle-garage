@@ -34,7 +34,26 @@ if !assert(params[
 
 try {
     private _dbi = _self get "_dbi";
-    ["deleteKey", [_section, _key]] call _dbi;
+    private _keys = ["getKeys", _section] call _dbi;
+    private _findKey = _self call["getKey", [_key]];
+
+    MTRACE_2(QUOTE(deleteKey),_findKey,_keys);
+
+    if (_findKey in _keys) then {
+        MTRACE_1(QUOTE(deleteKeySingle),_findKey);
+        ["deleteKey", [_section, _findKey]] call _dbi;
+    } else {
+        private _n = -1;
+
+        while { true } do {
+            INC(_n);
+
+            private _subKey = format["%1:%2", _findKey, _n];
+            if !(_subKey in _keys) then { break };
+            ["deleteKey", [_section, _subKey]] call _dbi;
+            MTRACE_1(QUOTE(deleteKeyMulti),_subKey);
+        };
+    };
 } catch {
     ERROR_4("%1() failed to delete key %2 in section %3: %4",QFUNC(method_deleteKey),_key,_section,str _exception);
     false;

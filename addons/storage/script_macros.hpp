@@ -18,3 +18,26 @@
 
 #define SUPER(methodName) ([_self, #methodName] call EFUNC(storage,getParentMethod))
 #define THIS_CLASS (_self get "#type" select 0)
+
+#ifdef DEBUG_MODE_FULL
+#define MTRACE_MSG(MESSAGE) format[ARR_3(QUOTE(%1::%2),THIS_CLASS,MESSAGE)]
+#define MTRACE_1(MESSAGE,A) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_1(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A))
+#define MTRACE_2(MESSAGE,A,B) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_2(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B))
+#define MTRACE_3(MESSAGE,A,B,C) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_3(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C))
+#define MTRACE_4(MESSAGE,A,B,C,D) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_4(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D))
+#define MTRACE_5(MESSAGE,A,B,C,D,E) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_5(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E))
+#define MTRACE_6(MESSAGE,A,B,C,D,E,F) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_6(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F))
+#define MTRACE_7(MESSAGE,A,B,C,D,E,F,G) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_7(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G))
+#define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_8(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H))
+#define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_9(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H,I))
+#else
+#define MTRACE_1(MESSAGE,A) /* disabled */
+#define MTRACE_2(MESSAGE,A,B) /* disabled */
+#define MTRACE_3(MESSAGE,A,B,C) /* disabled */
+#define MTRACE_4(MESSAGE,A,B,C,D) /* disabled */
+#define MTRACE_5(MESSAGE,A,B,C,D,E) /* disabled */
+#define MTRACE_6(MESSAGE,A,B,C,D,E,F) /* disabled */
+#define MTRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
+#define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
+#define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
+#endif
