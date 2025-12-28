@@ -31,6 +31,7 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
     ["_dbi", nil],
 
     METHOD_DEFINE_NAME(#create,CTOR),
+    METHOD_DEFINE_BODY(commitChanges,nil),
     METHOD_DEFINE(deleteKey),
     METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
     METHOD_DEFINE(readKey),
