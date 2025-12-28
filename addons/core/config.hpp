@@ -13,7 +13,7 @@ class A3OVG_CONFIG_CLASS_BASE {
             QCOND(alive V,VehicleGarageDeniedDead),
             QCOND(locked V <= 1,VehicleGarageDeniedLocked),
             QCOND(crew V isEqualTo [],VehicleGarageDeniedCrewed),
-            QCOND(attachedTo V isEqualTo [],VehicleGarageDeniedAttachedToSomething),
+            QCOND(isNull attachedTo V,VehicleGarageDeniedAttachedToSomething),
             QCOND(V distance(_this select 1) <= 25,VehicleGarageDeniedTooFarFromGarage)
         };
     };
