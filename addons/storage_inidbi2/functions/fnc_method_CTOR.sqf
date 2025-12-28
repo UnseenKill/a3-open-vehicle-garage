@@ -27,7 +27,7 @@ private _dbName = _self get "_storageDatabase";
 LOG_1("creating/using INIDBI2 database %1",str _dbName);
 
 private _dbi = ["new", _dbName] call OO_INIDBI;
-LOG_1("using INIDBI2 storage adddon v%1","getVersion" call _dbi);
+LOG_1("using INIDBI2 storage addon v%1","getVersion" call _dbi);
 
 _self set["_dbi", _dbi];
 
