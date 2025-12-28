@@ -37,6 +37,10 @@
             <English>You are too far from the vehicle to garage it.</English>
             <German>Du bist zu weit vom Fahrzeug entfernt, um es abzustellen.</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageFailure">
+            <English>Failed to garage %1.</English>
+            <German>Abstellen von %1 fehlgeschlagen.</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_VehicleGarageSuccess">
             <English>%1 has been garaged successfully.</English>
             <German>%1 wurde erfolgreich abgestellt.</German>

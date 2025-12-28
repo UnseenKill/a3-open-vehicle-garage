@@ -41,8 +41,12 @@ private _data = [_vehicle] call FUNC(serialize);
 private _storage = [] call EFUNC(core,getStorage);
 private _guid = [_vehicle] call FUNC(getGUID);
 
-_storage call["write", [_guid, _data]];
+private _message = if (_storage call["writeVehicle", [_guid, _data]]) then {
+    LELSTRING(UI,VehicleGarageSuccess);
+} else {
+    LELSTRING(UI,VehicleGarageFailure);
+};
 
-[format[LELSTRING(UI,VehicleGarageSuccess), A3OVG_VEH_NAME(_vehicle)]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
+[format[_message, A3OVG_VEH_NAME(_vehicle)]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
 
 nil;
