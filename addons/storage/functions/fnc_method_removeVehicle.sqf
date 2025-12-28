@@ -32,6 +32,16 @@ if !assert(params[
 
 try {
     private _key = _self call["getKey", [_uuid]];
+    private _properties = _self call["read", [SECTION_VEHICLE, _key, [[]]]];
+    private _separator = _self get "_prefixSeparator";
+
+    MTRACE_3(QUOTE(removeVehicle),_uuid,_key,RETDEF(_properties,"N/A"));
+
+    if !(isNil "_properties") then {
+        _properties apply {
+            _self call["deleteKey", [SECTION_VEHICLE, [_key, _x] joinString _separator]];
+        };
+    };
 
     _self call["deleteKey", [SECTION_VEHICLE, _key]];
 
