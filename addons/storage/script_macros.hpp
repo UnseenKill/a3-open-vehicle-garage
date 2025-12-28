@@ -2,7 +2,8 @@
 
 #define METHOD_ABSTRACT(methodName) \
     [#methodName, { throw format["abstract method %1::%2() called on base class", QADDON, #methodName] }]
-#define METHOD_DEFINE_NAME(methodName,functionName) [#methodName, { METHOD_INVOKE(functionName) }]
+#define METHOD_DEFINE_BODY(methodName,functionBody) [#methodName, { functionBody }]
+#define METHOD_DEFINE_NAME(methodName,functionName) METHOD_DEFINE_BODY(methodName,METHOD_INVOKE(functionName))
 #define METHOD_DEFINE(methodName) METHOD_DEFINE_NAME(methodName,methodName)
 #define METHOD_INVOKE(name) [_self, _this] call FUNC(DOUBLES(method,name))
 

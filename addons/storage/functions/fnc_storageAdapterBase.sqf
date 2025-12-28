@@ -65,11 +65,25 @@ createHashMapFromArray[
     METHOD_DEFINE_NAME(#create,CTOR),
 
     /**
+     * #str() -> String
+     *
+     * String representation of storage adapter instance.
+     */
+    METHOD_DEFINE_NAME(#str,toString),
+
+    /**
      * getKey(String uuid) -> String
      *
      * Create storage key including prefix etc. for given UUID.
      */
     METHOD_DEFINE(getKey),
+
+    /**
+     * toStringExtra() -> Array
+     *
+     * Extra information for string representation.
+     */
+    METHOD_DEFINE_BODY(toStringExtra,[]),
 
     /**
      * writeVehicle(String uuid, HashMap data) -> Bool
