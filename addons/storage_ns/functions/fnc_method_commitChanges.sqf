@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_method_initialize
+Function: A3OVG_storage_ns_fnc_method_commitChanges
 
 Description:
-    Initialize storage adapter object after construction.
+    Write changes to profile namespace.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Optional:
 
 Example:
     (begin example)
-    _storage call["initialize", []];
+    _storage call["commitChanges", []];
     (end example)
 
 Returns:
@@ -23,9 +23,8 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(initialize);
+METHOD_PREAMBLE(commitChanges);
 
-_self set["_autoCommit", getNumber((_self get "_adapterConfig") >> "autoCommit") != 0];
-_self set["_prefixSeparator", _self call["getPrefixSeparator", []]];
+saveProfileNamespace;
 
 nil;

@@ -61,7 +61,7 @@ if (isNil QGVAR(storageSingleton)) then {
     LOG_1("Storage database: %1",_database);
     LOG_1("Storage prefix: %1",RETDEF(_prefix,"<none>"));
 
-    private _object = createHashMapObject[_definition, [_database, RETNIL(_prefix)]];
+    private _object = createHashMapObject[_definition, [_storageAdapter, _database, RETNIL(_prefix)]];
     _object call["initialize", []];
 
     GVAR(storageSingleton) = compileFinal createHashMapFromArray[

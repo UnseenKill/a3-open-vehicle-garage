@@ -35,8 +35,7 @@ if !assert(params[
 ]) exitWith { false };
 
 private _key = _self call["getKey", [_uuid]];
-
-if !(_create) then {
+private _result = if !(_create) then {
     _self call["deleteKey", [SECTION_TOC, _key]];
 } else {
     _self call["write", [SECTION_TOC, _key, createHashMapFromArray[
@@ -44,3 +43,9 @@ if !(_create) then {
         ["displayName", _data get "displayName"]
     ]]];
 };
+
+if (_result) then {
+    _self call["commit", []];
+};
+
+_result;
