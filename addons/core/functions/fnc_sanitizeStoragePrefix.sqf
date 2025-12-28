@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_inidbi2_fnc_method_CTOR
+Function: A3OVG_core_fnc_sanitizeStoragePrefix
 
 Description:
-    Constructor method for INIDBI2 storage adapter.
+    Sanitize storage prefix by removing invalid characters.
 
 Parameters:
     0: _prefix - Storage prefix <STRING>
@@ -11,9 +11,12 @@ Parameters:
 Optional:
 
 Example:
+    (begin example)
+    ["invalid<>string+\\!foobar"] call A3OVG_core_fnc_sanitizeStoragePrefix;
+    (end example)
 
 Returns:
-    Nothing
+    <STRING> Sanitized storage prefix
 
 Environment:
     Client/Server, Unscheduled
@@ -21,8 +24,10 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(CTOR);
+TRACE_1(QFUNC(sanitizeStoragePrefix),_this);
 
-call SUPER(CTOR);
+if !assert(params[
+    ["_prefix", nil, [""]]
+]) exitWith {};
 
-nil;
+_prefix;

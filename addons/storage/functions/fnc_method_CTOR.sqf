@@ -6,22 +6,17 @@ Description:
     Storage adapter constructor method.
 
 Parameters:
-    0: _param1 - description <TYPE>
-    1: _param2 - description <TYPE>
+    0: _prefix - Storage prefix <STRING>
 
 Optional:
-    2: _param3 - description <TYPE>
 
 Example:
-    (begin example)
-    ["param1", "param2"] call PREFIX_fnc_name;
-    (end example)
 
 Returns:
-    Return description <TYPE>
+    Nothing
 
 Environment:
-    Client/Server/Both, Unscheduled/Scheduled, ...
+    Client/Server, Unscheduled
 
 Author:
     UnseenKill/gor3Splatter
@@ -29,10 +24,9 @@ Author:
 METHOD_PREAMBLE(CTOR);
 
 if !assert(params[
-    //["_param1", nil, [DEFAULT_VALUE]],
-    //["_param2", nil, [DEFAULT_VALUE]]
+    ["_prefix", nil, [""]]
 ]) exitWith {};
 
-
+_self set["storagePrefix", _prefix];
 
 nil;

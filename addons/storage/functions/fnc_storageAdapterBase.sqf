@@ -26,6 +26,9 @@ createHashMapFromArray[
     ["#type", [QADDON]],
     ["#flags", ["sealed", "unscheduled"]],
 
+    // Properties
+    ["storagePrefix", ""],
+
     /**
      * read(String section, String key) -> Any
      *

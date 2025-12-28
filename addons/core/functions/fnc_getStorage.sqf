@@ -27,6 +27,8 @@ A3OVG_GET_CONFIG(_config);
 if (isNil QGVAR(storageSingleton)) then {
     private _storageAdapter = localNamespace getVariable QGVAR(configVerifiedStorage);
 
+    LOG_1("Initializing storage singleton using adapter %1.",configName _storageAdapter);
+
     if !assert(!isNil "_storageAdapter") exitWith {
         ERROR_MSG_1("%1() called before config verification.",QFUNC(getStorage));
     };
@@ -43,7 +45,17 @@ if (isNil QGVAR(storageSingleton)) then {
         ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return a hashmap.",QFUNC(getStorage),_method,configName _storageAdapter);
     };
 
-    private _object = createHashMapObject[_definition, []];
+    private _prefix = localNamespace getVariable QGVAR(storagePrefix);
+    private _suffix = localNamespace getVariable QGVAR(storageSuffix);
+
+    if (!isNil "_suffix") then {
+        _prefix = _prefix + ":" + _suffix;
+    };
+
+    _prefix = [_prefix] call EFUNC(core,sanitizeStoragePrefix);
+    LOG_1("Storage prefix: %1",str _prefix);
+
+    private _object = createHashMapObject[_definition, [_prefix]];
 
     GVAR(storageSingleton) = compileFinal createHashMapFromArray[
         ["_", _object]
