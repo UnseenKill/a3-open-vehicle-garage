@@ -1,6 +1,6 @@
 PREP(garageClient);
 PREP(garageServer);
-PREP(getGUID);
+PREP(getUUID);
 PREP(serialize);
 PREP(serializeDamage);
 PREP(serializeFuel);

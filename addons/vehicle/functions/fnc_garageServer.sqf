@@ -39,9 +39,11 @@ if !assert(!(_vehicle isEqualType "")) exitWith {};
 
 private _data = [_vehicle] call FUNC(serialize);
 private _storage = [] call EFUNC(core,getStorage);
-private _guid = [_vehicle] call FUNC(getGUID);
+private _uuid = [_vehicle] call FUNC(getUUID);
 
-private _message = if (_storage call["writeVehicle", [_guid, _data]]) then {
+private _success = _storage call["writeVehicle", [_uuid, _data]];
+
+private _message = if (_success) then {
     LELSTRING(UI,VehicleGarageSuccess);
 } else {
     LELSTRING(UI,VehicleGarageFailure);
