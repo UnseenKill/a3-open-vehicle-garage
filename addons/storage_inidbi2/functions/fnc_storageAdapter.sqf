@@ -27,5 +27,8 @@ createHashMapFromArray[
     ["#base", [] call EFUNC(storage,storageAdapterBase)], 
     ["#flags", ["sealed", "unscheduled"]],
 
+    // Properties
+    ["dbi", nil],
+
     METHOD_DEFINE_NAME(#create,CTOR)
 ];

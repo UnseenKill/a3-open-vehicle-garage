@@ -25,4 +25,9 @@ METHOD_PREAMBLE(CTOR);
 
 call SUPER(CTOR);
 
+private _dbi = ["new", _self get "storagePrefix"] call OO_INIDBI;
+LOG_1("using INIDBI2 storage adddon v%1","getVersion" call _dbi);
+
+_self set["dbi", _dbi];
+
 nil;
