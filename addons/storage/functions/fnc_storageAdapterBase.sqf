@@ -39,7 +39,7 @@ createHashMapFromArray[
     /**
      * read(String section, String key) -> Any
      *
-     * Read value from storage backend.
+     * Read value from storage backend. Should return `nil` if key does not exist.
      */
     METHOD_ABSTRACT(read),
 
