@@ -35,20 +35,19 @@ if !assert(params[
 try {
     private _dbi = _self get "_dbi";
     private _keys = ["getKeys", _section] call _dbi;
-    private _findKey = _self call["getKey", [_key]];
 
-    MTRACE_2(QUOTE(deleteKey),_findKey,_keys);
+    MTRACE_2(QUOTE(deleteKey),_key,_keys);
 
-    if (_findKey in _keys) then {
-        MTRACE_1(QUOTE(deleteKeySingle),_findKey);
-        ["deleteKey", [_section, _findKey]] call _dbi;
+    if (_key in _keys) then {
+        MTRACE_1(QUOTE(deleteKeySingle),_key);
+        ["deleteKey", [_section, _key]] call _dbi;
     } else {
         private _n = -1;
 
         while { true } do {
             INC(_n);
 
-            private _subKey = format["%1:%2", _findKey, _n];
+            private _subKey = format["%1:%2", _key, _n];
             if !(_subKey in _keys) then { break };
             ["deleteKey", [_section, _subKey]] call _dbi;
             MTRACE_1(QUOTE(deleteKeyMulti),_subKey);
