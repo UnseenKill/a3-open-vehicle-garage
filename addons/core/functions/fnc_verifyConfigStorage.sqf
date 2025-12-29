@@ -53,16 +53,6 @@ if (getNumber(_defaultAdapter >> "scope") == 0) then {
     throw format["Storage adapter class %1 is not public (scope == 0).", str configName _defaultAdapter];
 };
 
-if !(isText(_defaultAdapter >> "method")) then {
-    throw format["Storage adapter class %1 does not define a definition method.", str configName _defaultAdapter];
-};
-
-private _method = getText(_defaultAdapter >> "method");
-
-if !assert(missionNamespace getVariable[_method, false] isEqualType {}) then {
-    throw format["Storage adapter definition method %1() not found.", _method];
-};
-
 INFO_1("using storage adapter: %1",str configName _defaultAdapter);
 localNamespace setVariable[QGVAR(configVerifiedStorage), _defaultAdapter];
 

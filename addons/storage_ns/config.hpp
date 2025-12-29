@@ -3,7 +3,7 @@ class A3OVG_CONFIG_CLASS_BASE {
         class Adapter;
         class Adapter_NS : Adapter {
             scope = 1;
-            method = QFUNC(storageAdapter);
+            className = QADDON;
             name = "Profile namespace storage adapter";
         };
     };

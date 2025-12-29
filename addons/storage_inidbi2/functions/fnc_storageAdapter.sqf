@@ -20,11 +20,11 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
+TRACE_1(QFUNC(storageAdapter),_this);
 
-[createHashMapFromArray[
+createHashMapFromArray[
     ["#type", [QADDON]],
-    ["#base", [] call EFUNC(storage,storageAdapterBase)], 
+    ["#base", QUOTE(DOUBLES(PREFIX,storage))],
     ["#flags", ["sealed", "unscheduled"]],
 
     // Properties
@@ -37,4 +37,4 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapter));
     METHOD_DEFINE(readKey),
     METHOD_DEFINE(toStringExtra),
     METHOD_DEFINE(writeKey)
-]] call EFUNC(storage,registerStorageAdapterClass);
+];

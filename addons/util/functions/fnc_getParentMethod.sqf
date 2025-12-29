@@ -1,19 +1,19 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_getParentMethod
+Function: A3OVG_util_fnc_getParentMethod
 
 Description:
-    Retrieve parent method from storage adapter instance.
+    Retrieve parent method for hashmap object instance from class registry.
 
 Parameters:
-    0: _self - Storage adapter instance <HASHMAP-OBJECT>
+    0: _self - Instance <HASHMAP-OBJECT>
     1: _methodName - Method name <STRING>
 
 Optional:
 
 Example:
     (begin example)
-    [_self, "thisMethod"] call A3OVG_storage_fnc_getParentMethod;
+    [_self, "thisMethod"] call A3OVG_util_fnc_getParentMethod;
     (end example)
 
 Returns:

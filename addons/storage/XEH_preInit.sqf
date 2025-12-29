@@ -4,4 +4,4 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 ADDON = true;
 
-GVAR(classRegistry) = createHashMap;
+REGISTER_CLASSDEF(FUNC(storageAdapterBase));

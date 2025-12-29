@@ -37,6 +37,8 @@ if !assert(!isNull _player) exitWith {};
 if !assert(!isNull _vehicle) exitWith {};
 if !assert(!(_vehicle isEqualType "")) exitWith {};
 
+INFO_2("Parking vehicle %1 for player %2",_vehicle,_player);
+
 private _data = [_vehicle] call FUNC(serialize);
 private _storage = [] call EFUNC(core,getStorage);
 private _uuid = [_vehicle] call FUNC(getUUID);
