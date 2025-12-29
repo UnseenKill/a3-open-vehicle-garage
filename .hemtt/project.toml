@@ -17,6 +17,11 @@ workshop = [
     "1779063631", # ZEN
 ]
 
+[hemtt.launch.ace3]
+workshop = [
+    "463939057", # ACE3
+]
+
 [hemtt.launch.inidbi2]
 workshop = [
     "1768992669", # INIDBI2
