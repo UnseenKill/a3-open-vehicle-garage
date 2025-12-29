@@ -5,6 +5,26 @@
             <English>A3OVG - UI Component</English>
             <German>A3OVG - Benutzeroberfläche</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnClose">
+            <English>Close</English>
+            <German>Schließen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnSpawn">
+            <English>Select Vehicle</English>
+            <German>Fahrzeug auswählen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle">
+            <English>Available Vehicles</English>
+            <German>Verfügbare Fahrzeuge</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain">
+            <English>Vehicle Garage</English>
+            <German>Fahrzeuggarage</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitlePoweredBy">
+            <English>Powered by A3OVG</English>
+            <German>Bereitgestellt von A3OVG</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_OpenGarageDenied">
             <English>You are not allowed to open the garage.</English>
             <German>Du darfst die Garage nicht öffnen.</German>
