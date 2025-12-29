@@ -9,7 +9,7 @@
     PREAMBLE_TRACE(methodName); \
     if !assert(params[ \
         ["_self", nil, [createHashMap]], \
-        ["_"+"this", nil, []] \
+        ["_"+"this", nil, [[]]] \
     ]) exitWith { return }
 #define METHOD_PREAMBLE(methodName) METHOD_PREAMBLE_RET(methodName,nil)
 
