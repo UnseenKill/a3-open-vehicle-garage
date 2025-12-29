@@ -6,17 +6,12 @@
 #define METHOD_INVOKE(name) [_self, _this] call FUNC(DOUBLES(method,name))
 
 #define METHOD_PREAMBLE_RET(methodName,return) \
-    TRACE_1(format[ARR_3("%1::%2",((_this#0) get "#type" select 0),QUOTE(methodName))],_this#1); \
+    PREAMBLE_TRACE(methodName); \
     if !assert(params[ \
-        ["_self", nil], \
-        ["_"+"this", nil, []] \
+        ["_self", nil, [createHashMap]], \
+        ["_"+"this", nil, [[]]] \
     ]) exitWith { return }
 #define METHOD_PREAMBLE(methodName) METHOD_PREAMBLE_RET(methodName,nil)
-
-#define REGISTER_CLASSDEF(generator) ([[] call(generator)] call EFUNC(util,registerClassDefinition))
-
-#define SUPER(methodName) ([_self, #methodName] call EFUNC(util,getParentMethod))
-#define THIS_CLASS (_self get "#type" select 0)
 
 #ifdef DEBUG_MODE_FULL
 #define MTRACE_MSG(MESSAGE) format[ARR_3(QUOTE(%1::%2),THIS_CLASS,MESSAGE)]
@@ -29,6 +24,11 @@
 #define MTRACE_7(MESSAGE,A,B,C,D,E,F,G) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_7(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G))
 #define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_8(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H))
 #define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_9(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H,I))
+#ifndef PREAMBLE_TRACE_NO_ARGS
+    #define PREAMBLE_TRACE(methodName) LOG_SYS_FILELINENUMBERS('TRACE',format[ARR_4("%1::%2(%3)",((_this#0) get "#type" select 0),QUOTE(methodName),_this#1)])
+#else
+    #define PREAMBLE_TRACE(methodName) LOG_SYS_FILELINENUMBERS('TRACE',format[ARR_4("%1::%2(%3)",((_this#0) get "#type" select 0),QUOTE(methodName),"...")])
+#endif // PREAMBLE_TRACE_NO_ARGS
 #else
 #define MTRACE_1(MESSAGE,A) /* disabled */
 #define MTRACE_2(MESSAGE,A,B) /* disabled */
@@ -39,4 +39,12 @@
 #define MTRACE_7(MESSAGE,A,B,C,D,E,F,G) /* disabled */
 #define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
 #define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
+#define PREAMBLE_TRACE(methodName) /* disabled */
 #endif
+
+#define REGISTER_CLASSDEF(generator) ([[] call(generator)] call EFUNC(util,registerClassDefinition))
+
+#define VALIDATE_OBJECT(variable,class) (!isNil QUOTE(variable) && {(variable) isEqualType createHashMap} && {!isNil{(variable) get "#type"}} && {class in((variable) get "#type")})
+
+#define SUPER(methodName) ([_self, #methodName] call EFUNC(util,getParentMethod))
+#define THIS_CLASS (_self get "#type" select 0)

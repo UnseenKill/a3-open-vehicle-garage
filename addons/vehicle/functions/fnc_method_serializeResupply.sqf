@@ -1,19 +1,19 @@
+#define PREAMBLE_TRACE_NO_ARGS
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_serializeResupply
+Function: A3OVG_vehicle_fnc_method_serializeResupply
 
 Description:
     Convert vehicle Arma3 cargo data (fuel, repair, ...) to serializable data.
 
 Parameters:
     0: _data - Serialized data hashmap <HASHMAP>
-    1: _vehicle - Vehicle object <OBJECT>
 
 Optional:
 
 Example:
     (begin example)
-    [_data, _vehicle] call A3OVG_vehicle_fnc_serializeResupply;
+    _vehicle call["serializeResupply", [_data]];
     (end example)
 
 Returns:
@@ -25,13 +25,13 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(serializeResupply),_this#1);
+METHOD_PREAMBLE(serializeResupply);
 
 if !assert(params[
-    ["_data", nil, [createHashMap]],
-    ["_vehicle", nil, [objNull]]
+    ["_data", nil, [createHashMap]]
 ]) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
+
+private _vehicle = _self get "_vehicle";
 
 _data set["cargo", createHashMapFromArray[
     ["rearm", createHashMapFromArray[
