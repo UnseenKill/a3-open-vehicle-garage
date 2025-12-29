@@ -1,19 +1,19 @@
+#define PREAMBLE_TRACE_NO_ARGS
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_serializeWeaponry
+Function: A3OVG_vehicle_fnc_method_serializeWeaponry
 
 Description:
     Convert vehicle weaponry data to serializable data.
 
 Parameters:
     0: _data - Serialized data hashmap <HASHMAP>
-    1: _vehicle - Vehicle object <OBJECT>
 
 Optional:
 
 Example:
     (begin example)
-    [_data, _vehicle] call A3OVG_vehicle_fnc_serializeWeaponry;
+    _vehicle call["serializeWeaponry", [_data]];
     (end example)
 
 Returns:
@@ -25,13 +25,13 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(serializeWeaponry),_this#1);
+METHOD_PREAMBLE(serializeWeaponry);
 
 if !assert(params[
-    ["_data", nil, [createHashMap]],
-    ["_vehicle", nil, [objNull]]
+    ["_data", nil, [createHashMap]]
 ]) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
+
+private _vehicle = _self get "_vehicle";
 
 _data set["weaponry", createHashMapFromArray[
     ["magazines", magazinesAllTurrets _vehicle],

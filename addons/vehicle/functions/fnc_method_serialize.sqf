@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_serialize
+Function: A3OVG_vehicle_fnc_method_serialize
 
 Description:
     Convert vehicle to serializable data.
@@ -12,7 +12,7 @@ Optional:
 
 Example:
     (begin example)
-    private _data = [vehicle1] call A3OVG_vehicle_fnc_serialize;
+    private _data = _vehicle call["serialize", []];
     (end example)
 
 Returns:
@@ -24,12 +24,11 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(serialize));
+METHOD_PREAMBLE(serialize);
 
-if !assert(params[
-    ["_vehicle", nil, [objNull]]
-]) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
+private _vehicle = _self get "_vehicle";
+
+if isNull(_vehicle) then { throw "Can't serialize. Vehicle object is null." };
 
 private _data = createHashMap;
 
@@ -37,10 +36,10 @@ _data set["class", typeOf _vehicle];
 _data set["custom", [_vehicle] call BIS_fnc_getVehicleCustomization];
 _data set["displayName", getText(configOf _vehicle >> "displayName")];
 
-[_data, _vehicle] call FUNC(serializeFuel);
-[_data, _vehicle] call FUNC(serializeDamage);
-[_data, _vehicle] call FUNC(serializeResupply);
-[_data, _vehicle] call FUNC(serializeWeaponry);
-[_data, _vehicle] call FUNC(serializeInventory);
+_self call["serializeFuel", [_data]];
+_self call["serializeDamage", [_data]];
+_self call["serializeResupply", [_data]];
+_self call["serializeWeaponry", [_data]];
+_self call["serializeInventory", [_data]];
 
 _data;

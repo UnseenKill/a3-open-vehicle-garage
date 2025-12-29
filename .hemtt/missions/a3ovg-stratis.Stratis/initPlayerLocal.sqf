@@ -1,4 +1,4 @@
-#define OVERRIDE_UUID_GENERATION
+//#define OVERRIDE_UUID_GENERATION
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
