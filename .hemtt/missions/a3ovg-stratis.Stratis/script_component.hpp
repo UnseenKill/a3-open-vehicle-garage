@@ -1,4 +1,4 @@
-#define COMPONENT core
+#define COMPONENT ui
 #include "\z\a3ovg\addons\main\script_mod.hpp"
 
 #ifndef DEBUG_MODE_FULL
