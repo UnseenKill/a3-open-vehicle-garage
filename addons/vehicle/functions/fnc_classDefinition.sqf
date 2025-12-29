@@ -26,6 +26,7 @@ createHashMapFromArray[
 
     // Properties
     ["_displayName", nil],
+    ["_owner", nil],
     ["_uuid", nil],
     ["_vehicle", nil],
 
@@ -38,6 +39,7 @@ createHashMapFromArray[
     METHOD_DEFINE(serializeInventory),
     METHOD_DEFINE(serializeResupply),
     METHOD_DEFINE(serializeWeaponry),
+    METHOD_DEFINE(setOwner),
     METHOD_DEFINE(setVehicle),
     METHOD_DEFINE(write)
 ];

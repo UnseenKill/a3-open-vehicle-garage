@@ -11,5 +11,6 @@ PREP(method_serializeFuel);
 PREP(method_serializeInventory);
 PREP(method_serializeResupply);
 PREP(method_serializeWeaponry);
+PREP(method_setOwner);
 PREP(method_setVehicle);
 PREP(method_write);

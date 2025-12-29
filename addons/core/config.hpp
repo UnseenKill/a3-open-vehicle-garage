@@ -7,9 +7,11 @@ class A3OVG_CONFIG_CLASS_BASE {
     class Callbacks {
         // (Bool [Object player[, Object garage]]) Whether players can open the garage
         canGarageOpen = QUOTE(true);
+        // (Bool [Object attached]) Whether things attached to a vehicle can be ignored when garaging
+        canIgnoreAttached = QUOTE([ARR_3(QQUOTE(Chemlight_base),QQUOTE(IRStrobeBase),QQUOTE(ACE_IR_Strobe_Effect))] findIf {(_this select 0) isKindOf _x} != -1);
         // (Bool [Object vehicle, Object player]) Whether players can store a vehicle in the garage
         canVehicleGarage[] = {
-            QUOTE(true),
+            QCOND([ARR_3(QQUOTE(LandVehicle),QQUOTE(Ship),QQUOTE(Air))] findIf {V isKindOf _x} != -1,VehicleGarageDeniedNotAVehicle),
             QCOND(alive V,VehicleGarageDeniedDead),
             QCOND(locked V <= 1,VehicleGarageDeniedLocked),
             QCOND(crew V isEqualTo [],VehicleGarageDeniedCrewed),
@@ -40,6 +42,7 @@ class A3OVG_CONFIG_CLASS_BASE {
                 ECSTRING(UI,VehicleGarageDeniedCrewed),
                 ECSTRING(UI,VehicleGarageDeniedDead),
                 ECSTRING(UI,VehicleGarageDeniedLocked),
+                ECSTRING(UI,VehicleGarageDeniedNotAVehicle),
                 ECSTRING(UI,VehicleGarageDeniedTooFarFromGarage)
             };
         };

@@ -6,14 +6,14 @@ Description:
     Server-side handling of putting vehicle into garage.
 
 Parameters:
-    0: _vehicleObject - Vehicle to put into garage <OBJECT>
+    0: _vehicles - Vehicles to put into garage <ARRAY>
     1: _player - Player parking the vehicle <OBJECT>
 
 Optional:
 
 Example:
     (begin example)
-    [_vehicle, _player] call A3OVG_vehicle_fnc_garageServer;
+    [[_vehicle1, _vehicle2], _player] call A3OVG_vehicle_fnc_garageServer;
     (end example)
 
 Returns:
@@ -29,23 +29,33 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(garageServer));
 A3OVG_VERIFY_SERVER();
 
 if !assert(params[
-    ["_vehicleObject", nil, [objNull,""]],
+    ["_vehicles", nil, [[]]],
     ["_player", nil, [objNull]]
 ]) exitWith {};
 
 if !assert(!isNull _player) exitWith {};
-if !assert(!isNull _vehicleObject) exitWith {};
-if !assert(!(_vehicleObject isEqualType "")) exitWith {};
 
-INFO_2("Parking vehicle %1 for player %2",_vehicleObject,_player);
+_vehicles apply {
+    private _vehicleObject = _x;
 
-private _vehicle = [_vehicleObject] call FUNC(new);
-private _message = if (_vehicle call["write", []]) then {
-    LELSTRING(UI,VehicleGarageSuccess);
-} else {
-    LELSTRING(UI,VehicleGarageFailure);
+    if !assert(!isNull _vehicleObject) exitWith {};
+    if !(isNull attachedTo _vehicleObject) then {
+        detach _vehicleObject;
+    };
+
+    INFO_2("Parking vehicle %1 for player %2",_vehicleObject,_player);
+
+    private _vehicle = [_vehicleObject] call FUNC(new);
+    _vehicle call["setOwner", [_player]];
+
+    private _message = if !(_vehicle call["write", []]) then {
+        LELSTRING(UI,VehicleGarageFailure);
+    } else {
+        LELSTRING(UI,VehicleGarageSuccess);
+        deleteVehicle _vehicleObject;
+    };
+
+    [format[_message, _vehicle get "_displayName"]] remoteExecCall[QEFUNC(ui,showHintSingle), owner _player];
 };
-
-[format[_message, _vehicle get "_displayName"]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
 
 nil;
