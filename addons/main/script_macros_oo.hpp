@@ -13,11 +13,6 @@
     ]) exitWith { return }
 #define METHOD_PREAMBLE(methodName) METHOD_PREAMBLE_RET(methodName,nil)
 
-#define REGISTER_CLASSDEF(generator) ([[] call(generator)] call EFUNC(util,registerClassDefinition))
-
-#define SUPER(methodName) ([_self, #methodName] call EFUNC(util,getParentMethod))
-#define THIS_CLASS (_self get "#type" select 0)
-
 #ifdef DEBUG_MODE_FULL
 #define MTRACE_MSG(MESSAGE) format[ARR_3(QUOTE(%1::%2),THIS_CLASS,MESSAGE)]
 #define MTRACE_1(MESSAGE,A) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_1(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A))
@@ -40,3 +35,10 @@
 #define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) /* disabled */
 #define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) /* disabled */
 #endif
+
+#define REGISTER_CLASSDEF(generator) ([[] call(generator)] call EFUNC(util,registerClassDefinition))
+
+#define VALIDATE_OBJECT(variable,class) (!isNil QUOTE(variable) && {(variable) isEqualType createHashMap} && {!isNil{(variable) get "#type"}} && {class in((variable) get "#type")})
+
+#define SUPER(methodName) ([_self, #methodName] call EFUNC(util,getParentMethod))
+#define THIS_CLASS (_self get "#type" select 0)
