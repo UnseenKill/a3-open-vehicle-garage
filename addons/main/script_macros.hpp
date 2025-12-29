@@ -1,4 +1,5 @@
 #include "script_macros_common.hpp"
+#include "script_macros_oo.hpp"
 
 #define A3OVG_ADDON(name) DOUBLES(PREFIX,name)
 #define A3OVG_ADDON_ACE A3OVG_ADDON(ace)
