@@ -24,7 +24,11 @@
 #define MTRACE_7(MESSAGE,A,B,C,D,E,F,G) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_7(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G))
 #define MTRACE_8(MESSAGE,A,B,C,D,E,F,G,H) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_8(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H))
 #define MTRACE_9(MESSAGE,A,B,C,D,E,F,G,H,I) LOG_SYS_FILELINENUMBERS('TRACE',PFORMAT_9(str diag_frameNo + ' ' + MTRACE_MSG(MESSAGE),A,B,C,D,E,F,G,H,I))
-#define PREAMBLE_TRACE(methodName) LOG_SYS_FILELINENUMBERS('TRACE',format[ARR_4("%1::%2(%3)",((_this#0) get "#type" select 0),QUOTE(methodName),_this#1)])
+#ifndef PREAMBLE_TRACE_NO_ARGS
+    #define PREAMBLE_TRACE(methodName) LOG_SYS_FILELINENUMBERS('TRACE',format[ARR_4("%1::%2(%3)",((_this#0) get "#type" select 0),QUOTE(methodName),_this#1)])
+#else
+    #define PREAMBLE_TRACE(methodName) LOG_SYS_FILELINENUMBERS('TRACE',format[ARR_4("%1::%2(%3)",((_this#0) get "#type" select 0),QUOTE(methodName),"...")])
+#endif // PREAMBLE_TRACE_NO_ARGS
 #else
 #define MTRACE_1(MESSAGE,A) /* disabled */
 #define MTRACE_2(MESSAGE,A,B) /* disabled */
