@@ -24,7 +24,6 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Structures_F_Enoch_Industrial_Garages",
-	"A3_Soft_F_Gamma_Truck_01",
 	"A3_Soft_F_MRAP_01",
 	"A3_Soft_F_Quadbike_01",
 	"A3_Air_F_Heli_Light_01",
@@ -58,40 +57,33 @@ class AddonsMetaData
 		};
 		class Item2
 		{
-			className="A3_Soft_F_Gamma";
-			name="Arma 3 - Unarmored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item3
-		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item3
 		{
 			className="A3_Air_F";
 			name="Arma 3 Alpha - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item5
+		class Item4
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item6
+		class Item5
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item6
 		{
 			className="A3_Air_F_EPC";
 			name="Arma 3 Win Episode - Aircraft";
@@ -130,7 +122,8 @@ class AddonsMetaData
 };
 dlcs[]=
 {
-	"Enoch"
+	"Enoch",
+	"Heli"
 };
 randomSeed=12173546;
 class ScenarioData
@@ -212,22 +205,6 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1724.3383,7.4147005,5200.3857};
-				angles[]={0,4.9534984,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=13;
-			type="B_Truck_01_mover_F";
-		};
-		class Item3
-		{
-			dataType="Object";
-			class PositionInfo
-			{
 				position[]={1722.543,8.2582445,5192.498};
 				angles[]={0,4.9585676,0};
 			};
@@ -238,13 +215,30 @@ class Mission
 			};
 			id=14;
 			type="B_MRAP_01_hmg_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
-		class Item4
+		class Item3
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1714.6589,7.1262865,5207.1602};
+				position[]={1714.6591,7.1262865,5207.1602};
 				angles[]={0,3.3787656,0};
 			};
 			side="Empty";
@@ -259,6 +253,19 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -308,10 +315,10 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				nAttributes=2;
 			};
 		};
-		class Item5
+		class Item4
 		{
 			dataType="Object";
 			class PositionInfo
@@ -327,8 +334,25 @@ class Mission
 			};
 			id=16;
 			type="B_Heli_Light_01_dynamicLoadout_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
-		class Item6
+		class Item5
 		{
 			dataType="Group";
 			side="Civilian";
@@ -341,7 +365,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={1698.4172,5.5014391,5202.9888};
-						angles[]={0,1.8246334,0};
+						angles[]={0,1.8246369,0};
 					};
 					side="Civilian";
 					flags=6;
@@ -378,13 +402,13 @@ class Mission
 			};
 			id=17;
 		};
-		class Item7
+		class Item6
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1696.5913,7.1115026,5203.6226};
-				angles[]={0,1.8246334,0};
+				position[]={1696.5909,7.1115026,5203.6226};
+				angles[]={0,1.8246369,0};
 			};
 			side="Civilian";
 			flags=6;
@@ -397,6 +421,19 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -626,16 +663,16 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				nAttributes=2;
 			};
 		};
-		class Item8
+		class Item7
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1699.7692,7.1115026,5209.4653};
-				angles[]={0,2.4297512,0};
+				position[]={1699.769,7.1115026,5209.4658};
+				angles[]={0,2.4297428,0};
 			};
 			side="Empty";
 			flags=4;
@@ -648,6 +685,19 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -877,10 +927,10 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				nAttributes=2;
 			};
 		};
-		class Item9
+		class Item8
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -947,7 +997,7 @@ class Mission
 				nAttributes=4;
 			};
 		};
-		class Item10
+		class Item9
 		{
 			dataType="Object";
 			class PositionInfo
