@@ -1,0 +1,2 @@
+PREP(getParentMethod);
+PREP(registerClassDefinition);

@@ -22,7 +22,8 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
 
-[createHashMapFromArray[
+CLASSDEF_BEGIN()
+createHashMapFromArray[
     ["#type", [QADDON]],
     ["#flags", ["sealed", "unscheduled"]],
 
@@ -146,4 +147,5 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
      * Save serialized vehicle storage data to storage backend.
      */
     METHOD_DEFINE(writeVehicle)
-]] call FUNC(registerStorageAdapterClass);
+]
+CLASSDEF_END()

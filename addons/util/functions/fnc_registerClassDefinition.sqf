@@ -1,12 +1,12 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_registerStorageAdapterClass
+Function: A3OVG_util_fnc_registerClassDefinition
 
 Description:
-    Register a storage adapter class in the storage adapter class registry.
+    Register a class definition in the class definition registry.
 
-    Registry is used to look up storage adapter classes by name when calling 
-    super methods.
+    Registry is used to look up class definitions by name when calling super
+    methods.
 
 Parameters:
     0: _definition - Class definition <HASHMAP>
@@ -16,9 +16,9 @@ Optional:
 Example:
     (begin example)
     [createHashMapFromArray[
-        ["#type", ["A3OVG_storage_foobar"]],
+        ["#type", ["A3OVG_class_foobar"]],
         // Additional class definition entries...
-    ]] call A3OVG_storage_fnc_registerStorageAdapterClass;
+    ]] call A3OVG_util_fnc_registerClassDefinition;
     (end example)
 
 Returns:
