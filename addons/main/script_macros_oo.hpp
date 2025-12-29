@@ -1,6 +1,3 @@
-#define CLASSDEF_BEGIN() [
-#define CLASSDEF_END() ] call EFUNC(util,registerClassDefinition);
-
 #define METHOD_ABSTRACT(methodName) \
     [#methodName, { throw format["abstract method %1::%2() called on base class", QADDON, #methodName] }]
 #define METHOD_DEFINE_BODY(methodName,functionBody) [#methodName, { functionBody }]
@@ -15,6 +12,8 @@
         ["_"+"this", nil, []] \
     ]) exitWith { return }
 #define METHOD_PREAMBLE(methodName) METHOD_PREAMBLE_RET(methodName,nil)
+
+#define REGISTER_CLASSDEF(generator) ([[] call(generator)] call EFUNC(util,registerClassDefinition))
 
 #define SUPER(methodName) ([_self, #methodName] call EFUNC(util,getParentMethod))
 #define THIS_CLASS (_self get "#type" select 0)

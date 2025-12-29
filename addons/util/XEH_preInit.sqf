@@ -5,3 +5,5 @@ ADDON = false;
 ADDON = true;
 
 GVAR(classRegistry) = createHashMap;
+
+INFO("class registry is open");

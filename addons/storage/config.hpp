@@ -10,8 +10,8 @@ class A3OVG_CONFIG_CLASS_BASE {
             scope = 0;
             // Automatically save changes
             autoCommit = 1; 
-            // Function returning the adapter object definition
-            method = QFUNC(storageAdapterBase);
+            // Class definition name as registered with util_fnc_registerClassDefinition
+            className = QADDON;
             // Human-readable name; unused
             name = "Storage interface adapter";
         };
