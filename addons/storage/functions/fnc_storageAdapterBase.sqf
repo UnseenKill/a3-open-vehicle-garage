@@ -20,9 +20,9 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
+TRACE_1(QFUNC(storageAdapterBase),_this);
 
-[createHashMapFromArray[
+createHashMapFromArray[
     ["#type", [QADDON]],
     ["#flags", ["sealed", "unscheduled"]],
 
@@ -146,4 +146,4 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(storageAdapterBase));
      * Save serialized vehicle storage data to storage backend.
      */
     METHOD_DEFINE(writeVehicle)
-]] call FUNC(registerStorageAdapterClass);
+];

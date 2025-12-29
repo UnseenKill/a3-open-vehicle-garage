@@ -6,8 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {QUOTE(A3OVG_ADDON_STORAGE), QUOTE(inidbi2)};
-        skipWhenMissingDependencies = 1;
+        requiredAddons[] = {QUOTE(MAIN_ADDON)};
         author = "$STR_A3OVG_Author";
         authors[] = {};
         url = "$STR_A3OVG_URL";
@@ -15,5 +14,4 @@ class CfgPatches {
     };
 };
 
-#include "config.hpp"
 #include "CfgEventHandlers.hpp"

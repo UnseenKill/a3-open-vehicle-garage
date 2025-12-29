@@ -41,17 +41,7 @@ if (isNil QGVAR(storageSingleton)) then {
 
     LOG_1("Initializing storage singleton using adapter %1.",str configName _storageAdapter);
 
-    private _method = missionNamespace getVariable getText(_storageAdapter >> "method");
-
-    if (!assert((!isNil "_method") && { _method isEqualType {} })) exitWith {
-        ERROR_MSG_3("%1() could not retrieve valid storage definition method %2 from adapter %3.",QFUNC(getStorage),RETDEF(_method,"any"),configName _storageAdapter);
-    };
-
-    private _definition = [] call _method;
-
-    if !assert(_definition isEqualType createHashMap) exitWith {
-        ERROR_MSG_3("%1() storage definition method %2 from adapter %3 did not return a hashmap.",QFUNC(getStorage),_method,configName _storageAdapter);
-    };
+    private _className = [_storageAdapter >> "className", "STRING", configName _storageAdapter] call CBA_fnc_getConfigEntry;
 
     // Set by fnc_verifyConfigServer
     private _database = localNamespace getVariable QGVAR(storageDatabase);
@@ -61,7 +51,12 @@ if (isNil QGVAR(storageSingleton)) then {
     LOG_1("Storage database: %1",_database);
     LOG_1("Storage prefix: %1",RETDEF(_prefix,"<none>"));
 
-    private _object = createHashMapObject[_definition, [_storageAdapter, _database, RETNIL(_prefix)]];
+    private _object = [_className, [_storageAdapter, _database, RETNIL(_prefix)]] call EFUNC(util,new);
+
+    if !assert(!isNil "_object") exitWith {
+        throw format["%1() could not create storage object of class %2.", QFUNC(getStorage), str _className];
+    };
+
     _object call["initialize", []];
 
     GVAR(storageSingleton) = compileFinal createHashMapFromArray[
