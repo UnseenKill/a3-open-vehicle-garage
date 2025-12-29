@@ -41,6 +41,10 @@
             <English>You are not allowed to garage this vehicle.</English>
             <German>Du darfst dieses Fahrzeug nicht abstellen.</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedAttached">
+            <English>Other vehicle "%1" attached to this vehicle cannot be garaged.</English>
+            <German>Ein anderes Fahrzeug "%1", das an dieses Fahrzeug befestigt ist, kann nicht abgestellt werden.</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_VehicleGarageDeniedAttachedToSomething">
             <English>You cannot garage a vehicle that is attached to something.</English>
             <German>Du kannst kein Fahrzeug abstellen, das an etwas befestigt ist.</German>
@@ -56,6 +60,10 @@
         <Key ID="STR_A3OVG_UI_VehicleGarageDeniedLocked">
             <English>You cannot garage a locked vehicle.</English>
             <German>Du kannst kein abgeschlossenes Fahrzeug abstellen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedNotAVehicle">
+            <English>The object is not a vehicle.</English>
+            <German>Das Objekt ist kein Fahrzeug.</German>
         </Key>
         <Key ID="STR_A3OVG_UI_VehicleGarageDeniedTooFarFromGarage">
             <English>You are too far from the vehicle to garage it.</English>
