@@ -9,6 +9,7 @@ Parameters:
     0: _vehicle - Vehicle object <OBJECT>
 
 Optional:
+    1: _uuid - Vehicle UUID <STRING>
 
 Example:
 
@@ -26,8 +27,17 @@ METHOD_PREAMBLE(CTOR);
 if !assert(params[
     ["_vehicle", nil, [objNull]]
 ]) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
 
-_self set["_vehicle", _vehicle];
+if (!isNull _vehicle) then {
+    _self call["setVehicle", [_vehicle]];
+};
+
+private _uuid = param[1, nil, [""]];
+
+if !(isNil "_uuid") then {
+    _self set["_uuid", _uuid];
+} else {
+    _self set["_uuid", _self call["createUUID", []]];
+};
 
 nil;

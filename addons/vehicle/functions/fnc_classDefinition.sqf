@@ -25,8 +25,19 @@ createHashMapFromArray[
     ["#flags", ["sealead", "unscheduled"]],
 
     // Properties
+    ["_displayName", nil],
+    ["_uuid", nil],
     ["_vehicle", nil],
 
     // Methods
-    METHOD_DEFINE_NAME(#create,CTOR)
+    METHOD_DEFINE_NAME(#create,CTOR),
+    METHOD_DEFINE(createUUID),
+    METHOD_DEFINE(serialize),
+    METHOD_DEFINE(serializeDamage),
+    METHOD_DEFINE(serializeFuel),
+    METHOD_DEFINE(serializeInventory),
+    METHOD_DEFINE(serializeResupply),
+    METHOD_DEFINE(serializeWeaponry),
+    METHOD_DEFINE(setVehicle),
+    METHOD_DEFINE(write)
 ];

@@ -1,13 +1,15 @@
 PREP(classDefinition);
 PREP(garageClient);
 PREP(garageServer);
-PREP(getUUID);
 PREP(new);
-PREP(serialize);
-PREP(serializeDamage);
-PREP(serializeFuel);
-PREP(serializeInventory);
-PREP(serializeResupply);
-PREP(serializeWeaponry);
 
 PREP(method_CTOR);
+PREP(method_createUUID);
+PREP(method_serialize);
+PREP(method_serializeDamage);
+PREP(method_serializeFuel);
+PREP(method_serializeInventory);
+PREP(method_serializeResupply);
+PREP(method_serializeWeaponry);
+PREP(method_setVehicle);
+PREP(method_write);

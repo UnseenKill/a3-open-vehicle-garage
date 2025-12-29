@@ -1,19 +1,18 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_vehicle_fnc_serializeInventory
+Function: A3OVG_vehicle_fnc_method_serializeInventory
 
 Description:
     Convert vehicle inventory data to serializable data.
 
 Parameters:
     0: _data - Serialized data hashmap <HASHMAP>
-    1: _vehicle - Vehicle object <OBJECT>
 
 Optional:
 
 Example:
     (begin example)
-    [_data, _vehicle] call A3OVG_vehicle_fnc_serializeInventory;
+    _vehicle call["serializeInventory", [_data]];
     (end example)
 
 Returns:
@@ -25,14 +24,14 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(serializeInventory),_this#1);
+METHOD_PREAMBLE(serializeInventory);
 A3OVG_GET_CONFIG(_config);
 
 if !assert(params[
-    ["_data", nil, [createHashMap]],
-    ["_vehicle", nil, [objNull]]
+    ["_data", nil, [createHashMap]]
 ]) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
+
+private _vehicle = _self get "_vehicle";
 
 if A3OVG_FEATURE_ENABLED(_config,storeInventory) then {
     _data set["inventory", createHashMapFromArray[

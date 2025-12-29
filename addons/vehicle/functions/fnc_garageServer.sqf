@@ -6,7 +6,7 @@ Description:
     Server-side handling of putting vehicle into garage.
 
 Parameters:
-    0: _vehicle - Vehicle to put into garage <OBJECT>
+    0: _vehicleObject - Vehicle to put into garage <OBJECT>
     1: _player - Player parking the vehicle <OBJECT>
 
 Optional:
@@ -29,30 +29,23 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(garageServer));
 A3OVG_VERIFY_SERVER();
 
 if !assert(params[
-    ["_vehicle", nil, [objNull,""]],
+    ["_vehicleObject", nil, [objNull,""]],
     ["_player", nil, [objNull]]
 ]) exitWith {};
 
 if !assert(!isNull _player) exitWith {};
-if !assert(!isNull _vehicle) exitWith {};
-if !assert(!(_vehicle isEqualType "")) exitWith {};
+if !assert(!isNull _vehicleObject) exitWith {};
+if !assert(!(_vehicleObject isEqualType "")) exitWith {};
 
-INFO_2("Parking vehicle %1 for player %2",_vehicle,_player);
+INFO_2("Parking vehicle %1 for player %2",_vehicleObject,_player);
 
-private _data = [_vehicle] call FUNC(serialize);
-private _storage = [] call EFUNC(core,getStorage);
-private _uuid = [_vehicle] call FUNC(getUUID);
-
-private _success = 
-    (_storage call["updateTOC", [_uuid, _data, true]]) &&
-    { _storage call["writeVehicle", [_uuid, _data]] };
-
-private _message = if (_success) then {
+private _vehicle = [_vehicleObject] call FUNC(new);
+private _message = if (_vehicle call["write", []]) then {
     LELSTRING(UI,VehicleGarageSuccess);
 } else {
     LELSTRING(UI,VehicleGarageFailure);
 };
 
-[format[_message, A3OVG_VEH_NAME(_vehicle)]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
+[format[_message, _vehicle get "_displayName"]] remoteExecCall[QEFUNC(ui,showHint), owner _player];
 
 nil;
