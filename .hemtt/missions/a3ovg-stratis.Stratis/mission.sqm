@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=29;
+		nextID=36;
 	};
 	class Camera
 	{
-		pos[]={1675.6041,22.671534,5202.4429};
-		dir[]={0.90747935,-0.40457419,0.11316439};
-		up[]={0.40146738,0.91450411,0.050063737};
-		aside[]={0.12374371,3.1490345e-08,-0.99231648};
+		pos[]={1669.2505,21.949825,5195.4473};
+		dir[]={0.82744735,-0.51282328,0.228855};
+		up[]={0.49427843,0.85848981,0.13670698};
+		aside[]={0.26657563,9.3597919e-08,-0.96383077};
 	};
 };
 binarizationWanted=0;
@@ -34,13 +34,15 @@ addons[]=
 	"A3_Armor_F_EPC_MBT_01",
 	"A3_Armor_F_Beta_APC_Tracked_01",
 	"A3_Static_F_Sams_Radar_System_01",
-	"A3_Static_F_Mortar_01"
+	"A3_Static_F_Mortar_01",
+	"A3_Soft_F_Enoch_Truck_01",
+	"A3_Soft_F_Gamma_Truck_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -90,31 +92,45 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item7
 		{
 			className="A3_Armor_F_EPC";
 			name="Arma 3 Win Episode - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item9
+		class Item8
 		{
 			className="A3_Armor_F_Beta";
 			name="Arma 3 Beta - Armored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item10
+		class Item9
 		{
 			className="A3_Static_F_Sams";
 			name="Arma 3 Sams - Turrets";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item10
 		{
 			className="A3_Static_F";
 			name="Arma 3 Alpha - Turrets";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item11
+		{
+			className="A3_Soft_F_Enoch";
+			name="Arma 3 Contact Platform - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item12
+		{
+			className="A3_Soft_F_Gamma";
+			name="Arma 3 - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -122,8 +138,7 @@ class AddonsMetaData
 };
 dlcs[]=
 {
-	"Enoch",
-	"Heli"
+	"Enoch"
 };
 randomSeed=12173546;
 class ScenarioData
@@ -152,7 +167,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=15;
+		items=17;
 		class Item0
 		{
 			dataType="Group";
@@ -205,8 +220,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1722.543,8.2582445,5192.498};
-				angles[]={0,4.9585676,0};
+				position[]={1722.6649,8.2582445,5188.5181};
+				angles[]={-0,4.9585676,0};
 			};
 			side="Empty";
 			flags=4;
@@ -215,30 +230,13 @@ class Mission
 			};
 			id=14;
 			type="B_MRAP_01_hmg_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
 		};
 		class Item3
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1714.6591,7.1262865,5207.1602};
+				position[]={1714.6589,7.1262865,5207.1602};
 				angles[]={0,3.3787656,0};
 			};
 			side="Empty";
@@ -253,19 +251,6 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -315,7 +300,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				nAttributes=1;
 			};
 		};
 		class Item4
@@ -334,23 +319,6 @@ class Mission
 			};
 			id=16;
 			type="B_Heli_Light_01_dynamicLoadout_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
 		};
 		class Item5
 		{
@@ -365,7 +333,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={1698.4172,5.5014391,5202.9888};
-						angles[]={0,1.8246369,0};
+						angles[]={0,1.8246334,0};
 					};
 					side="Civilian";
 					flags=6;
@@ -407,8 +375,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1696.5909,7.1115026,5203.6226};
-				angles[]={0,1.8246369,0};
+				position[]={1696.5913,7.1115026,5203.6226};
+				angles[]={0,1.8246334,0};
 			};
 			side="Civilian";
 			flags=6;
@@ -421,19 +389,6 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -663,7 +618,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				nAttributes=1;
 			};
 		};
 		class Item7
@@ -671,8 +626,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1699.769,7.1115026,5209.4658};
-				angles[]={0,2.4297428,0};
+				position[]={1699.7692,7.1115026,5209.4653};
+				angles[]={0,2.4297512,0};
 			};
 			side="Empty";
 			flags=4;
@@ -685,19 +640,6 @@ class Mission
 			class CustomAttributes
 			{
 				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				class Attribute1
 				{
 					property="VehicleCustomization";
 					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
@@ -927,7 +869,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=2;
+				nAttributes=1;
 			};
 		};
 		class Item8
@@ -1013,7 +955,7 @@ class Mission
 			id=25;
 			type="B_Plane_CAS_01_dynamicLoadout_F";
 		};
-		class Item11
+		class Item10
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1046,13 +988,13 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item12
+		class Item11
 		{
 			dataType="Object";
 			class PositionInfo
 			{
 				position[]={1691.2568,8.1292419,5211.3662};
-				angles[]={-0,2.2234824,0};
+				angles[]={0,2.2234824,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1185,13 +1127,13 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item13
+		class Item12
 		{
 			dataType="Object";
 			class PositionInfo
 			{
 				position[]={1684.6652,8.4289188,5204.1836};
-				angles[]={-0,1.6474901,0};
+				angles[]={0,1.6474901,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1205,6 +1147,7 @@ class Mission
 			};
 			id=29;
 			type="B_Radar_System_01_F";
+			atlOffset=4.7683716e-07;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1260,13 +1203,13 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item14
+		class Item13
 		{
 			dataType="Object";
 			class PositionInfo
 			{
 				position[]={1705.7688,6.2216258,5197.248};
-				angles[]={-0,0.26222366,0};
+				angles[]={0,0.26222366,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1275,6 +1218,54 @@ class Mission
 			};
 			id=30;
 			type="B_Mortar_01_F";
+		};
+		class Item14
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1728.6151,8.2020283,5200.6489};
+				angles[]={-0,4.953506,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=31;
+			type="B_Truck_01_flatbed_F";
+		};
+		class Item15
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1727.451,7.8134775,5195.8252};
+				angles[]={0,4.953506,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=33;
+			type="B_Truck_01_Repair_F";
+		};
+		class Item16
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1726.343,7.4160042,5191.9609};
+				angles[]={0,4.953506,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=35;
+			type="B_Truck_01_fuel_F";
 		};
 	};
 };
