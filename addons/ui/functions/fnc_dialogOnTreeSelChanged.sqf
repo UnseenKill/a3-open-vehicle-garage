@@ -38,9 +38,7 @@ _controls get "previewVehicleCredit" ctrlShow _show;
 _controls get "previewVehicleEditorPreview" ctrlShow _show;
 _controls get "previewVehicleTextHost" ctrlShow _show;
 
-if !(_show) exitWith {
-    TRACE_1("check",_uuid);
-};
+if !(_show) exitWith {};
 
 private _data = uiNamespace getVariable QGVAR(toc) get _uuid;
 

@@ -2,6 +2,7 @@ PREP(compileCallbacks);
 PREP(compileStatements);
 PREP(getStorage);
 PREP(loadVehicleTOC);
+PREP(loadVehicleUUIDs);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
 PREP(verifyConfig);

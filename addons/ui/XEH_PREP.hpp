@@ -1,8 +1,11 @@
+PREP(dialogFetchCategory);
 PREP(dialogOnLoad);
 PREP(dialogOnUnload);
 PREP(dialogOnUpdateTOC);
 PREP(dialogSetLoading);
+PREP(dialogOnTreeExpanded);
 PREP(dialogOnTreeSelChanged);
 PREP(showHint);
 PREP(showHintSingle);
 PREP(triggerServerLoadTOC);
+PREP(triggerServerLoadUUIDs);

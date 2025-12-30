@@ -72,7 +72,7 @@ if !(_loadSuccess) exitWith {};
 
 private _toc = missionNamespace getVariable _waitUUID;
 missionNamespace setVariable[_waitUUID, nil];
-uiNamespace setVariable [QGVAR(toc), _toc];
+uiNamespace setVariable[QGVAR(toc), _toc];
 
 TRACE_1(QFUNC(triggerServerLoadTOC),_toc);
 

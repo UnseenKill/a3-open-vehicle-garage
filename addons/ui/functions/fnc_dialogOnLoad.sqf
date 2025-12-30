@@ -52,7 +52,10 @@ with uiNamespace do {
             _x ctrlCommit 0;
         };
 
-    GVAR(dialogControls) get "treeView" ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
+    private _treeView = GVAR(dialogControls) get "treeView";
+    _treeView setVariable[QGVAR(loading), createHashMap];
+    _treeView ctrlAddEventHandler["TreeExpanded", { call FUNC(dialogOnTreeExpanded) }];
+    _treeView ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
 };
 
 [true] call FUNC(dialogSetLoading);
