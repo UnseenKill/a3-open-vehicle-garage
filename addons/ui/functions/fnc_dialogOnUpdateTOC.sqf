@@ -37,6 +37,7 @@ private _categoryToNodeMap = createHashMap;
 _uniqueCategories apply {
     private _node = _treeView tvAdd[[], _x get "displayName"];
     _treeView tvSetPicture[[_node], _x get "icon"];
+    _treeView tvSetData[[_node], _x get "name"];
     _categoryToNodeMap set[_x get "name", _node];
 };
 
@@ -49,7 +50,11 @@ _entries apply {
     private _parentNode = _categoryToNodeMap get(_data get "category");
     private _index = _treeView tvAdd[[_parentNode], _data get "displayName"];
 
-    _treeView tvSetData[[_parentNode, _index], _uuid];
+    if isClass(configFile >> "CfgVehicles" >> (_data get "class")) then {
+        _treeView tvSetData[[_parentNode, _index], _uuid];
+    } else {
+        _treeView tvSetColor[[_parentNode, _index], [0.5, 0.5, 0.5, 1]];
+    };
 
     TRACE_3("TOC",_uuid,_index,_data get "displayName");
 };

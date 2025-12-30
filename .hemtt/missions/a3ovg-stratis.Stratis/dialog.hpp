@@ -13,6 +13,7 @@ FORWARD(RscControlsGroup);
 FORWARD(RscLine);
 FORWARD(RscPicture);
 FORWARD(RscPictureKeepAspect);
+FORWARD(RscStructuredText);
 FORWARD(RscText);
 FORWARD(RscTree);
 #undef FORWARD
@@ -74,7 +75,7 @@ class GVAR(Dialog) {
     idd = IDD_GARAGE_DIALOG;
     movingEnable = 0;
     onLoad = QUOTE(call FUNC(dialogOnLoad));
-    onUnload = QUOTE(uiNamespace setVariable[ARR_2(QQGVAR(dialog),nil)]);
+    onUnload = QUOTE(call FUNC(dialogOnUnload));
 
     class Controls {
         class Title: GVAR(RscTitleBar) {
@@ -287,7 +288,7 @@ class GVAR(Dialog) {
                                             sizeEx = QUOTE(safeZoneH * 0.04);
                                         };
 
-                                        class VehicleAuthor: RscText {
+                                        class VehicleAuthor: RscStructuredText {
                                             idc = IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLEAUTHOR;
                                             text = "By: Red Hammer Studios";
                                             x = 0;
