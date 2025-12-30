@@ -33,6 +33,7 @@ if !assert(params[
 if !assert(!isNull _vehicle) exitWith {};
 
 _self set["_vehicle", _vehicle];
+_self set["_category", [_vehicle] call FUNC(determineCategory)];
 _self set["_displayName", getText(configOf _vehicle >> "displayName")];
 
 nil;

@@ -32,6 +32,7 @@ if isNull(_vehicle) then { throw "Can't serialize. Vehicle object is null." };
 
 private _data = createHashMap;
 
+_data set["category", _self get "_category"];
 _data set["class", typeOf _vehicle];
 _data set["custom", [_vehicle] call BIS_fnc_getVehicleCustomization];
 _data set["displayName", getText(configOf _vehicle >> "displayName")];
