@@ -27,6 +27,11 @@ workshop = [
     "1768992669", # INIDBI2
 ]
 
+[hemtt.launch.bwmod]
+workshop = [
+    "1200127537", # BwMOD
+]
+
 [hemtt.launch.stratis]
 extends = "default"
 mission = "a3ovg-stratis.Stratis"
