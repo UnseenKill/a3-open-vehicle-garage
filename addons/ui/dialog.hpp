@@ -1,4 +1,17 @@
-#include "ui_define.hpp"
+#include "\z\a3ovg\addons\ui\ui_define.hpp"
+
+// Forward declarations
+#ifndef __A3OVG_IS_3DEN__
+    #define FORWARD(x) class x
+#else
+    #define FORWARD(x) import x
+#endif // __A3OVG_IS_3DEN__
+
+FORWARD(RscButton);
+FORWARD(RscControlsGroup);
+FORWARD(RscText);
+FORWARD(RscTree);
+#undef FORWARD
 
 class GVAR(RscTitleBar) : RscText {
     y = QUOTE(safeZoneY + 0.1 * safeZoneH);
@@ -20,21 +33,22 @@ class GVAR(RscTextTitle) : GVAR(RscText) {
 class GVAR(Dialog) {
     idd = IDD_GARAGE_DIALOG;
     movingEnable = 0;
+    onLoad = QUOTE(call FUNC(dialogOnLoad));
 
     class Controls {
         class Title: GVAR(RscTitleBar) {
             text = CSTRING(GarageDialog_TitleMain);
-            x = QUOTE(safeZoneX + 0.1 * safeZoneW);
+            x = QUOTE(safeZoneX + safeZoneW * 0.1);
         };
         class Branding: GVAR(RscTitleBar) {
             text = CSTRING(GarageDialog_TitlePoweredBy);
-            x = QUOTE(safeZoneX + 0.5 * safeZoneW);
+            x = QUOTE(safeZoneX + safeZoneW * 0.5);
             style = QUOTE(ST_RIGHT);
         };
 
-        class Background: RscControlsGroup {
-            x = QUOTE(safeZoneX + 0.1 * safeZoneW);
-            y = QUOTE(safeZoneY + 0.13 * safeZoneH + pixelH * 8);
+        class Main: RscControlsGroup {
+            x = QUOTE(safeZoneX + safeZoneW * 0.1);
+            y = QUOTE(safeZoneY + safeZoneH * 0.13 + pixelH * 8);
             w = QUOTE(safeZoneW * 0.8);
             h = QUOTE(safeZoneH * 0.75);
 
@@ -51,7 +65,7 @@ class GVAR(Dialog) {
                     x = QUOTE(pixelW * 8);
                     y = QUOTE(pixelH * 8);
                     w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
-                    h = QUOTE(safeZoneH * 0.75 - pixelH * 16 - lineHeight);
+                    h = QUOTE(safeZoneH * 0.75 - pixelH * 16);
 
                     class Controls {
                         class PanelTitle: GVAR(RscTextTitle) {
@@ -66,13 +80,13 @@ class GVAR(Dialog) {
                             x = 0;
                             y = QUOTE(pixelH * 8 + lineHeight);
                             w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
-                            h = QUOTE(safeZoneH * 0.75 - pixelH * 32 - lineHeight * 3);
+                            h = QUOTE(safeZoneH * 0.75 - pixelH * 32 - lineHeight * 2);
                             colorBackground[] = {0,0,0,0.4};
                         };
 
                         class Buttons: RscControlsGroup {
                             x = 0;
-                            y = QUOTE(safeZoneH * 0.75 - pixelH * 24 - lineHeight * 2);
+                            y = QUOTE(safeZoneH * 0.75 - pixelH * 24 - lineHeight);
                             w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
                             h = QUOTE(pixelH * 8 + lineHeight);
 
@@ -99,16 +113,16 @@ class GVAR(Dialog) {
                         };
                     };
                 };
-
-                class StatusBar: GVAR(RscTextTitle) {
-                    idc = IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR;
-                    text = "";
-                    x = 0;
-                    y = QUOTE(safeZoneH * 0.75 - lineHeight);
-                    w = QUOTE(safeZoneW * 0.8);
-                    h = QUOTE(lineHeight);
-                };
             };
+        };
+
+        class StatusBar: GVAR(RscTextTitle) {
+            idc = IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR;
+            text = "";
+            x = QUOTE(safeZoneX + 0.1 * safeZoneW);
+            y = QUOTE(safeZoneY + safeZoneH * 0.88 + pixelH * 16);
+            w = QUOTE(safeZoneW * 0.8);
+            h = QUOTE(lineHeight);
         };
     };
 };
