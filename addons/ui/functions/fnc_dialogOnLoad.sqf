@@ -30,9 +30,7 @@ if !assert(!isNull _display) exitWith {};
 
 INFO("Garage Dialog loading.");
 
-allControls(_display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN) select {
-    ctrlType _x in[CT_BUTTON, CT_XBUTTON, CT_CHECKBOXES, CT_LISTBOX, CT_COMBO, CT_EDIT, CT_SLIDER, CT_TREE];
-} apply {
+allControls(_display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN) apply {
     _x ctrlEnable false;
 };
 
