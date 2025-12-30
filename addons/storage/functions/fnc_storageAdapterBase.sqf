@@ -113,6 +113,13 @@ createHashMapFromArray[
     METHOD_DEFINE(getSectionKeys),
 
     /**
+     * getVehicleTOC() -> Hashmap
+     *
+     * Retrieve the Table of Contents (TOC) for vehicles.
+     */
+    METHOD_DEFINE(getVehicleTOC),
+
+    /**
      * initialize() -> Nothing
      *
      * Initialize storage adapter instance. Called after construction.
