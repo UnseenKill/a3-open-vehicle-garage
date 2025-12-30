@@ -13,6 +13,30 @@
             <English>Open Garage</English>
             <German>Garage öffnen</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryCar">
+            <English>Cars</English>
+            <German>Autos</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryDefault">
+            <English>Default</English>
+            <German>Standard</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryHelicopter">
+            <English>Helicopters</English>
+            <German>Hubschrauber</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryPlane">
+            <English>Planes</English>
+            <German>Flugzeuge</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryShip">
+            <English>Ships</English>
+            <German>Schiffe</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryTank">
+            <English>Armored vehicles</English>
+            <German>Gepanzerte Fahrzeuge</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_VehicleGarageDenied">
             <English>You are not allowed to garage this vehicle.</English>
             <German>Du darfst dieses Fahrzeug nicht abstellen.</German>

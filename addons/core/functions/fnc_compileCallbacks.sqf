@@ -39,23 +39,8 @@ configProperties[_config >> "Callbacks", "true", true] apply {
     };
 
     if !assert(!isNil "_statements") exitWith { ERROR_2("Callback %1 not found or not array/text: %2",_key,_x) };
-    private _compiled = [];
 
-    _statements apply {
-        private _code = switch true do {
-            case(_x isEqualTo "1");
-            case(toLowerANSI _x isEqualTo "true"): { {true} };
-            case(_x isEqualTo "0");
-            case(toLowerANSI _x isEqualTo "false"): { {false} };
-            default { compileFinal _x };
-        };
-
-        if (!assert(!isNil "_code") || {!assert(_code isEqualType {})}) exitWith {
-            ERROR_2("Callback %1 statement could not be compiled: %2",_key,_x);
-        };
-
-        _compiled pushBack _code;
-    };
+    private _compiled = [_statements] call FUNC(compileStatements);
 
     TRACE_2("compiled",_key,_compiled);
 

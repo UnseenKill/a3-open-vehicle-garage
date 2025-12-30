@@ -1,4 +1,6 @@
 PREP(classDefinition);
+PREP(compileCategoryFilters);
+PREP(determineCategory);
 PREP(garageClient);
 PREP(garageServer);
 PREP(new);

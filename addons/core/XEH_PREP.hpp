@@ -1,4 +1,5 @@
 PREP(compileCallbacks);
+PREP(compileStatements);
 PREP(getStorage);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
