@@ -6,5 +6,5 @@ if !([] call FUNC(verifyConfig)) then {
     ERROR("Configuration verification failed. Check RPT above this message for details.");
 } else {
     INFO("Configuration verified successfully.");
-    GVAR(callbacks) = compileFinal([] call FUNC(compileRunbacks));
+    GVAR(callbacks) = compileFinal([] call FUNC(compileCallbacks));
 };

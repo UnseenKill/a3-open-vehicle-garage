@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_core_fnc_compileRunbacks
+Function: A3OVG_core_fnc_compileCallbacks
 
 Description:
-    Compile all runback callbacks from config into memory
+    Compile all callbacks from config into memory
 
 Parameters:
 
@@ -11,7 +11,7 @@ Optional:
 
 Example:
     (begin example)
-    [] call A3OVG_core_fnc_compileRunbacks;
+    [] call A3OVG_core_fnc_compileCallbacks;
     (end example)
 
 Returns:
@@ -23,7 +23,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_FUNCTION_PREAMBLE(QFUNC(compileRunbacks));
+A3OVG_FUNCTION_PREAMBLE(QFUNC(compileCallbacks));
 A3OVG_GET_CONFIG(_config);
 
 private _callbacks = createHashMap;
