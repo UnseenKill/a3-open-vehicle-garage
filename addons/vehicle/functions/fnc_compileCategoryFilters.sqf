@@ -37,6 +37,7 @@ private _filters = createHashMapFromArray[
         ["displayName", getText(_x >> "displayName")],
         ["icon", getText(_x >> "icon")],
         ["priority", getNumber(_x >> "priority")],
+        ["name", _categoryName],
         ["sortOrder", getNumber(_x >> "sortOrder")]
     ]];
 };

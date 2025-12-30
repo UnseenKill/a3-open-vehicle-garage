@@ -4,6 +4,7 @@ PREP(determineCategory);
 PREP(garageClient);
 PREP(garageServer);
 PREP(new);
+PREP(sortTOC);
 
 PREP(method_CTOR);
 PREP(method_createUUID);

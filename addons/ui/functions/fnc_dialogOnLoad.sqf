@@ -33,17 +33,27 @@ INFO("Garage Dialog loading.");
 uiNamespace setVariable[QGVAR(dialog), _display];
 uiNamespace setVariable[QGVAR(dialogControls), createHashMapFromArray[
     ["mainGroup", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN],
+    ["previewVehiclePicture", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLE],
+    ["previewVehicleName", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLENAME],
+    ["previewVehicleCredit", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLEAUTHOR],
+    ["previewVehicleEditorPreview", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLEEDITORPREVIEW],
+    ["previewVehicleTextHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_OVERVIEW_VEHICLEDYNAMICTEXTHOST],
     ["statusBar", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR],
     ["tabHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST],
+    ["treeView", _display displayCtrl IDC_RSCGARAGEDIALOG_LIST_VEHICLES],
     ["waitTab", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT]
 ]];
 
-allControls (_display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST) 
-    select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
-    apply {
-        _x ctrlSetFade 1;
-        _x ctrlCommit 0;
-    };
+with uiNamespace do {
+    allControls (GVAR(dialogControls) get "tabHost") 
+        select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
+        apply {
+            _x ctrlSetFade 1;
+            _x ctrlCommit 0;
+        };
+
+    GVAR(dialogControls) get "treeView" ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
+};
 
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
