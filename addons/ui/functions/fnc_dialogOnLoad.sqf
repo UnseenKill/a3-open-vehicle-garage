@@ -30,8 +30,22 @@ if !assert(!isNull _display) exitWith {};
 
 INFO("Garage Dialog loading.");
 
-allControls(_display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN) apply {
-    _x ctrlEnable false;
-};
+uiNamespace setVariable[QGVAR(dialog), _display];
+uiNamespace setVariable[QGVAR(dialogControls), createHashMapFromArray[
+    ["mainGroup", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN],
+    ["statusBar", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR],
+    ["tabHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST],
+    ["waitTab", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT]
+]];
+
+allControls (_display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST) 
+    select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
+    apply {
+        _x ctrlSetFade 1;
+        _x ctrlCommit 0;
+    };
+
+[true] call FUNC(dialogSetLoading);
+[] spawn FUNC(triggerServerLoadTOC);
 
 nil;

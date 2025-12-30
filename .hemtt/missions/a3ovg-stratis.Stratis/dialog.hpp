@@ -74,6 +74,7 @@ class GVAR(Dialog) {
     idd = IDD_GARAGE_DIALOG;
     movingEnable = 0;
     onLoad = QUOTE(call FUNC(dialogOnLoad));
+    onUnload = QUOTE(uiNamespace setVariable[ARR_2(QQGVAR(dialog),nil)]);
 
     class Controls {
         class Title: GVAR(RscTitleBar) {
@@ -237,12 +238,11 @@ class GVAR(Dialog) {
                                 class Background: GVAR(RscTextBackground) {
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 8);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 24 - lineHeight);
-                                    fade = 0;
                                 };
 
                                 class TabWait: RscControlsGroup {
                                     idc = IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT;
-                                    fade = 0;
+                                    fade = 1;
                                     x = QUOTE(pixelW * 8);
                                     y = QUOTE(pixelH * 8);
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);

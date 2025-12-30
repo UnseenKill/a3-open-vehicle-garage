@@ -1,6 +1,7 @@
 PREP(compileCallbacks);
 PREP(compileStatements);
 PREP(getStorage);
+PREP(loadVehicleTOC);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
 PREP(verifyConfig);
