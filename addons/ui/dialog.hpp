@@ -74,7 +74,7 @@ class GVAR(Dialog) {
     idd = IDD_GARAGE_DIALOG;
     movingEnable = 0;
     onLoad = QUOTE(call FUNC(dialogOnLoad));
-    onUnload = QUOTE(uiNamespace setVariable[ARR_2(QQGVAR(dialog),nil)]);
+    onUnload = QUOTE(call FUNC(dialogOnUnload));
 
     class Controls {
         class Title: GVAR(RscTitleBar) {

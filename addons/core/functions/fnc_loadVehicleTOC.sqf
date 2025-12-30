@@ -40,6 +40,8 @@ private _storage = [] call EFUNC(core,getStorage);
 private _toc = _storage call["getVehicleTOC", []];
 
 INFO_2("sending vehicle TOC response for %1 to player ID %2",_uuid,_ownerId);
+TRACE_3(QFUNC(loadVehicleTOC),_uuid,_ownerId,_toc);
+
 missionNamespace setVariable[_uuid, _toc, _ownerId];
 
 nil;

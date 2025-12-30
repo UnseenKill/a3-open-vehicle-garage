@@ -48,7 +48,7 @@ while { !(_loadSuccess) } do {
         break;
     };
 
-    if (missionNamespace getVariable[_waitUUID, false] isEqualType true) then {
+    if (missionNamespace getVariable[_waitUUID, false] isEqualType createHashMap) then {
         INFO_1("Received vehicle TOC from server after %1 seconds.",diag_tickTime - _stamp);
         _loadSuccess = true;
         continue;
@@ -72,7 +72,11 @@ if !(_loadSuccess) exitWith {};
 
 private _toc = missionNamespace getVariable _waitUUID;
 missionNamespace setVariable[_waitUUID, nil];
+uiNamespace setVariable [QGVAR(toc), _toc];
 
+TRACE_1(QFUNC(triggerServerLoadTOC),_toc);
+
+[] call FUNC(dialogOnUpdateTOC);
 [false] call FUNC(dialogSetLoading);
 
 nil;
