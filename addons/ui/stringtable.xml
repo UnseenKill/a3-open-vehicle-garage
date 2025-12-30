@@ -5,23 +5,31 @@
             <English>A3OVG - UI Component</English>
             <German>A3OVG - Benutzeroberfläche</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_BtnClose">
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnClose_Label">
             <English>Close</English>
             <German>Schließen</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_BtnSpawn">
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Label">
+            <English>Lock Vehicle</English>
+            <German>Fahrzeug verriegeln</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Tooltip">
+            <English>Prevent others from removing this vehicle from the garage.</English>
+            <German>Verhindert, dass andere dieses Fahrzeug aus der Garage entfernen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnSpawn_Label">
             <English>Select Vehicle</English>
             <German>Fahrzeug auswählen</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle">
+        <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle_Label">
             <English>Available Vehicles</English>
             <German>Verfügbare Fahrzeuge</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain">
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain_Label">
             <English>Vehicle Garage</English>
             <German>Fahrzeuggarage</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_TitlePoweredBy">
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitlePoweredBy_Label">
             <English>Powered by A3OVG</English>
             <German>Bereitgestellt von A3OVG</German>
         </Key>
