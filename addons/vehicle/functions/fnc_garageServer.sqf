@@ -51,8 +51,8 @@ _vehicles apply {
     private _message = if !(_vehicle call["write", []]) then {
         LELSTRING(UI,VehicleGarageFailure);
     } else {
-        LELSTRING(UI,VehicleGarageSuccess);
         deleteVehicle _vehicleObject;
+        LELSTRING(UI,VehicleGarageSuccess);
     };
 
     [format[_message, _vehicle get "_displayName"]] remoteExecCall[QEFUNC(ui,showHintSingle), owner _player];
