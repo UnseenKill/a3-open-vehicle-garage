@@ -20,18 +20,6 @@
 // Commonly used dimensions
 #define lineHeight (safeZoneH * 0.03)
 
-// Forward declarations
-#ifndef __A3OVG_IS_3DEN__
-    #define FORWARD(x) class x
-#else
-    #define FORWARD(x) import x
-#endif // __A3OVG_IS_3DEN__
-
-FORWARD(RscButton);
-FORWARD(RscControlsGroup);
-FORWARD(RscText);
-FORWARD(RscTree);
-
 // Control types
 #define CT_STATIC           0
 #define CT_BUTTON           1
