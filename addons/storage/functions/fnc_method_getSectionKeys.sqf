@@ -40,4 +40,8 @@ private _keys = _self call["readSectionKeys", [_section]];
 if (isNil "_prefix") exitWith { _keys };
 
 _prefix = _prefix + (_self get "_prefixSeparator");
-_keys select { 0 == (_x find _prefix) };
+private _length = count _prefix;
+
+_keys select { 0 == (_x find _prefix) } apply {
+    [_x, _length] call CBA_fnc_substr;
+};
