@@ -25,6 +25,7 @@ createHashMapFromArray[
     ["#flags", ["sealead", "unscheduled"]],
 
     // Properties
+    ["_category", nil],
     ["_displayName", nil],
     ["_uuid", nil],
     ["_vehicle", nil],
