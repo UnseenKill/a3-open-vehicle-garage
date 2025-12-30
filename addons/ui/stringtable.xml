@@ -17,9 +17,33 @@
             <English>Prevent others from removing this vehicle from the garage.</English>
             <German>Verhindert, dass andere dieses Fahrzeug aus der Garage entfernen.</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRearm_Label">
+            <English>Rearm Vehicle</English>
+            <German>Fahrzeug nachladen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRefuel_Label">
+            <English>Refuel Vehicle</English>
+            <German>Fahrzeug betanken</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRename_Label">
+            <English>Rename Vehicle</English>
+            <German>Fahrzeug umbenennen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRepair_Label">
+            <English>Repair Vehicle</English>
+            <German>Fahrzeug reparieren</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_BtnSpawn_Label">
             <English>Select Vehicle</English>
             <German>Fahrzeug auswählen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnTabCustomize_Label">
+            <English>Customize</English>
+            <German>Anpassen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnTabOverview_Label">
+            <English>Overview</English>
+            <German>Übersicht</German>
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle_Label">
             <English>Available Vehicles</English>
