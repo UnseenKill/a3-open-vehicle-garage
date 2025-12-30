@@ -23,7 +23,7 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(loadVehicleUUIDs));
 A3OVG_VERIFY_SERVER();
-A3OVG_MAKE_UNSCHEDULED(EFUNC(core,loadVehicleUUIDs));
+A3OVG_MAKE_SCHEDULED(EFUNC(core,loadVehicleUUIDs));
 
 if !assert(params[
     ["_uuid", nil, [""]],

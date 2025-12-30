@@ -25,7 +25,7 @@ Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(triggerServerLoadUUIDs),_display);
-A3OVG_MAKE_UNSCHEDULED(FUNC(triggerServerLoadUUIDs));
+A3OVG_MAKE_SCHEDULED(FUNC(triggerServerLoadUUIDs));
 
 if !assert(params[
     ["_vehicleUUIDs", nil, [[]]],

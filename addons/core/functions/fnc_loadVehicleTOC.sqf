@@ -27,7 +27,7 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_FUNCTION_PREAMBLE(QFUNC(loadVehicleTOC));
 A3OVG_VERIFY_SERVER();
-A3OVG_MAKE_UNSCHEDULED(FUNC(loadVehicleTOC));
+A3OVG_MAKE_SCHEDULED(FUNC(loadVehicleTOC));
 
 if !assert(params[
     ["_uuid", nil, [""]],

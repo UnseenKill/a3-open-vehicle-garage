@@ -28,7 +28,7 @@
 
 #define A3OVG_HAVE_ACE() (!isNil QEGVAR(ace,aceAddonLoaded))
 
-#define A3OVG_MAKE_UNSCHEDULED(function) \
+#define A3OVG_MAKE_SCHEDULED(function) \
     if (!canSuspend) exitWith { _this spawn function }
 
 #define A3OVG_UI_PUSH_CONTEXT() \
