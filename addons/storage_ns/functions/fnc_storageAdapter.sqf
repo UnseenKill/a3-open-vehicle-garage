@@ -39,5 +39,6 @@ createHashMapFromArray[
     METHOD_DEFINE_BODY(getPrefixSeparator,QUOTE(_)),
     METHOD_DEFINE(initialize),
     METHOD_DEFINE(readKey),
+    METHOD_DEFINE(readSectionKeys),
     METHOD_DEFINE(writeKey)
 ];

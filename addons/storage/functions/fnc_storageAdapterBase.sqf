@@ -55,6 +55,13 @@ createHashMapFromArray[
     METHOD_ABSTRACT(readKey),
 
     /**
+     * readSectionKeys(String section) -> Array
+     *
+     * Get all keys in given section from storage backend.
+     */
+    METHOD_ABSTRACT(readSectionKeys),
+
+    /**
      * writeKey(String section, String key, Any value) -> Bool
      *
      * Write value to storage backend.
@@ -97,6 +104,13 @@ createHashMapFromArray[
      * Create storage key including prefix etc. for given UUID.
      */
     METHOD_DEFINE(getKey),
+
+    /**
+     * getSectionKeys(String section[, String prefix]) -> Array
+     *
+     * Get all keys in given section from storage backend with optional prefix.
+     */
+    METHOD_DEFINE(getSectionKeys),
 
     /**
      * initialize() -> Nothing
