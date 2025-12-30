@@ -1,5 +1,6 @@
 PREP(compileRunbacks);
 PREP(getStorage);
+PREP(loadVehicleTOC);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
 PREP(verifyConfig);

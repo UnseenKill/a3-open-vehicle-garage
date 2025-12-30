@@ -49,6 +49,22 @@
             <English>Available Vehicles</English>
             <German>Verfügbare Fahrzeuge</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_Loading">
+            <English>Loading stuff...</English>
+            <German>Lade Sachen...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_Ready">
+            <English>Ready.</English>
+            <German>Bereit.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_ServerTOCTimeout">
+            <English>Server did not respond in time. Please try again later.</English>
+            <German>Der Server hat nicht rechtzeitig geantwortet. Bitte versuche es später erneut.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_WaitingForServerTOC">
+            <English>Waiting for server to send vehicle list...</English>
+            <German>Warte darauf, dass der Server die Fahrzeugliste sendet...</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain_Label">
             <English>Vehicle Garage</English>
             <German>Fahrzeuggarage</German>

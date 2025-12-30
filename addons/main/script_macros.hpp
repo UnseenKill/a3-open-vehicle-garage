@@ -20,13 +20,16 @@
         if (hasInterface) then { \
             [LELSTRING(API,ConfigVerificationFailed)] call BIS_fnc_error; \
         }; \
-    };
+    }
 
 #define A3OVG_GET_CONFIG(var) \
     private var = localNamespace getVariable[QEGVAR(core,configVerified), configNull]; \
     if !assert(!isNull(var)) exitWith {}
 
 #define A3OVG_HAVE_ACE() (!isNil QEGVAR(ace,aceAddonLoaded))
+
+#define A3OVG_MAKE_UNSCHEDULED(function) \
+    if (!canSuspend) exitWith { _this spawn function }
 
 #define A3OVG_UI_PUSH_CONTEXT() \
     (EGVAR(ui,context) pushBack [])
