@@ -28,7 +28,8 @@ INFO_1("Sent vehicle TOC request to server as request %1",_waitUUID);
 
 private _stamp = diag_tickTime;
 private _loadSuccess = false;
-private _ctrl = uiNamespace getVariable QGVAR(dialogControls) get "waitTab";
+private _display = uiNamespace getVariable QGVAR(dialog);
+private _ctrl = _display getVariable QGVAR(controls) get "waitTab";
 private _n = 1;
 
 _ctrl ctrlSetFade 0.5;
@@ -56,7 +57,7 @@ while { !(_loadSuccess) } do {
 
     if ((diag_tickTime - _stamp) > 5) then {
         WARNING_1("Waiting a long time for vehicle TOC from server: %1 seconds.",diag_tickTime - _stamp);
-        uiNamespace getVariable QGVAR(dialogControls)
+        _display getVariable QGVAR(controls)
             get "statusBar"
             ctrlSetText LLSTRING(GarageDialog_Status_WaitingForServerTOC);
     };
@@ -72,7 +73,7 @@ if !(_loadSuccess) exitWith {};
 
 private _toc = missionNamespace getVariable _waitUUID;
 missionNamespace setVariable[_waitUUID, nil];
-uiNamespace setVariable[QGVAR(toc), _toc];
+_display setVariable[QGVAR(toc), _toc];
 
 TRACE_1(QFUNC(triggerServerLoadTOC),_toc);
 

@@ -37,7 +37,7 @@ if !assert(params[
 
 private _idcTabActivate = param[1, -1, [0]];
 
-private _controls = uiNamespace getVariable QGVAR(dialogControls);
+private _controls = _display getVariable QGVAR(controls);
 private _mainGroup = _controls get "mainGroup";
 private _tabHost = _controls get "tabHost";
 private _statusBar = _controls get "statusBar";

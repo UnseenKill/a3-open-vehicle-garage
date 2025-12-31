@@ -28,7 +28,7 @@ if !assert(params[
     ["_selectionPath", nil, [[]]]
 ]) exitWith {};
 
-private _controls = uiNamespace getVariable QGVAR(dialogControls);
+private _controls = _display getVariable QGVAR(controls);
 private _uuid = _treeView tvData _selectionPath;
 private _show = (count _selectionPath > 1) && { _uuid isNotEqualTo "" };
 
@@ -40,7 +40,7 @@ _controls get "previewVehicleTextHost" ctrlShow _show;
 
 if !(_show) exitWith {};
 
-private _data = uiNamespace getVariable QGVAR(toc) get _uuid;
+private _data = _display getVariable QGVAR(toc) get _uuid;
 
 if !assert(!isNil "_data") exitWith {};
 

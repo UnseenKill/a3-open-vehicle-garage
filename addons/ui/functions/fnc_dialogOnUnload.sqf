@@ -25,7 +25,5 @@ TRACE_1(QFUNC(dialogOnUnload),_this);
 INFO("Garage Dialog unloading. Cleaning UI namespace.");
 
 uiNamespace setVariable [QGVAR(dialog), nil];
-uiNamespace setVariable [QGVAR(dialogControls), nil];
-uiNamespace setVariable [QGVAR(toc), nil];
 
 nil;

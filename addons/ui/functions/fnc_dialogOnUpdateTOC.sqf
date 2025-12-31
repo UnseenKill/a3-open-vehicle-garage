@@ -20,8 +20,8 @@ Author:
 ---------------------------------------------------------------------------- */
 A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogOnUpdateTOC),_display);
 
-private _controls = uiNamespace getVariable QGVAR(dialogControls);
-private _toc = uiNamespace getVariable QGVAR(toc);
+private _controls = _display getVariable QGVAR(controls);
+private _toc = _display getVariable QGVAR(toc);
 private _treeView = _controls get "treeView";
 
 // Populate tree view with TOC data

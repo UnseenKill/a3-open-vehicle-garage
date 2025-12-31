@@ -30,8 +30,7 @@ if !assert(!isNull _display) exitWith {};
 
 INFO("Garage Dialog loading.");
 
-uiNamespace setVariable[QGVAR(dialog), _display];
-uiNamespace setVariable[QGVAR(dialogControls), createHashMapFromArray[
+private _dialogControls = createHashMapFromArray[
     ["mainGroup", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN],
     ["previewVehiclePicture", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLE],
     ["previewVehicleName", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLENAME],
@@ -42,21 +41,22 @@ uiNamespace setVariable[QGVAR(dialogControls), createHashMapFromArray[
     ["tabHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST],
     ["treeView", _display displayCtrl IDC_RSCGARAGEDIALOG_LIST_VEHICLES],
     ["waitTab", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT]
-]];
+];
 
-with uiNamespace do {
-    allControls (GVAR(dialogControls) get "tabHost") 
-        select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
-        apply {
-            _x ctrlSetFade 1;
-            _x ctrlCommit 0;
-        };
+uiNamespace setVariable[QGVAR(dialog), _display];
+_display setVariable[QGVAR(controls), _dialogControls];
 
-    private _treeView = GVAR(dialogControls) get "treeView";
-    _treeView setVariable[QGVAR(loading), createHashMap];
-    _treeView ctrlAddEventHandler["TreeExpanded", { call FUNC(dialogOnTreeExpanded) }];
-    _treeView ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
-};
+allControls (_dialogControls get "tabHost") 
+    select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
+    apply {
+        _x ctrlSetFade 1;
+        _x ctrlCommit 0;
+    };
+
+private _treeView = _dialogControls get "treeView";
+_treeView setVariable[QGVAR(loading), createHashMap];
+_treeView ctrlAddEventHandler["TreeExpanded", { call FUNC(dialogOnTreeExpanded) }];
+_treeView ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
 
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
