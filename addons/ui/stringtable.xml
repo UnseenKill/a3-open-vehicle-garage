@@ -49,6 +49,14 @@
             <English>Available Vehicles</English>
             <German>Verfügbare Fahrzeuge</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewCredit_Label">
+            <English>By:</English>
+            <German>Von:</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_CategoryLoading">
+            <English>%1 (Loading from server...)</English>
+            <German>%1 (Lade vom Server...)</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_Loading">
             <English>Loading stuff...</English>
             <German>Lade Sachen...</German>
@@ -56,6 +64,10 @@
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_Ready">
             <English>Ready.</English>
             <German>Bereit.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_ServerCategoryTimeout">
+            <English>Failed to load vehicle data from server: request timed out.</English>
+            <German>Fehler beim Laden der Fahrzeugdaten vom Server: Zeitüberschreitung der Anfrage.</German>
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_ServerTOCTimeout">
             <English>Server did not respond in time. Please try again later.</English>

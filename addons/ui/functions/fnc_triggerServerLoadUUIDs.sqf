@@ -58,7 +58,7 @@ if (missionNamespace getVariable[_waitUUID, false] isEqualType false) exitWith {
     _treeView tvSetCurSel[-1];
     _treeView tvSetColor[_selectionPath, [1,0,0,1]];
     _treeView tvSetText[_selectionPath, _treeView getVariable QGVAR(loading) get _category];
-    _treeView tvSetTooltip[_selectionPath, "Failed to load vehicle data from server: request timed out."];
+    _treeView tvSetTooltip[_selectionPath, LLSTRING(GarageDialog_Status_ServerCategoryTimeout)];
 
     while { (_treeView tvCount _selectionPath) > 0 } do {
         _treeView tvDelete(_selectionPath + [0]);

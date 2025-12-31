@@ -52,7 +52,7 @@ if !assert(isClass _config) exitWith {};
 private _info = [_config] call EFUNC(util,getClassModInfo);
 private _credit = [];
 
-_credit = [parseText "<t size='1.33'>By:&#160;</t>"];
+_credit = [parseText format["<t size='1.33'>%1&#160;</t>", LLSTRING(GarageDialog_PreviewCredit_Label)]];
 
 if !(isNil { _info get "logo" }) then {
     _credit pushBack image(_info get "logo");

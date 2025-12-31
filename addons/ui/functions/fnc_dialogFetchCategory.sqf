@@ -34,7 +34,7 @@ private _count = _treeView tvCount _selectionPath;
 
 if (_count == 0) exitWith {};
 
-_treeView tvSetText[_selectionPath, format["%1 (Loading from server...)", _treeView getVariable QGVAR(loading) get _category]];
+_treeView tvSetText[_selectionPath, format[LLSTRING(GarageDialog_Status_CategoryLoading), _treeView getVariable QGVAR(loading) get _category]];
 
 private _vehicleUUIDs = [];
 for "_n" from 0 to (_count - 1) do {
