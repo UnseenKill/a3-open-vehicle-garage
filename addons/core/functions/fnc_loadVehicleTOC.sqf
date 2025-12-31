@@ -34,8 +34,6 @@ if !assert(params[
     ["_ownerId", nil, [0]]
 ]) exitWith {};
 
-if is3DENPreview then { uiSleep 1.0 };
-
 private _storage = [] call EFUNC(core,getStorage);
 private _toc = _storage call["getVehicleTOC", []];
 
