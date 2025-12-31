@@ -33,5 +33,6 @@ workshop = [
 ]
 
 [hemtt.launch.stratis]
+dlc = ["Reaction Forces"]
 extends = "default"
 mission = "a3ovg-stratis.Stratis"

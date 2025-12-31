@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=36;
+		nextID=38;
 	};
 	class Camera
 	{
-		pos[]={1669.2505,21.949825,5195.4473};
-		dir[]={0.82744735,-0.51282328,0.228855};
-		up[]={0.49427843,0.85848981,0.13670698};
-		aside[]={0.26657563,9.3597919e-08,-0.96383077};
+		pos[]={1663.2833,26.607241,5193.3994};
+		dir[]={0.82743442,-0.51281512,0.22885138};
+		up[]={0.494259,0.85849905,0.1367019};
+		aside[]={0.26657149,0,-0.96381509};
 	};
 };
 binarizationWanted=0;
@@ -36,13 +36,15 @@ addons[]=
 	"A3_Static_F_Sams_Radar_System_01",
 	"A3_Static_F_Mortar_01",
 	"A3_Soft_F_Enoch_Truck_01",
-	"A3_Soft_F_Gamma_Truck_01"
+	"A3_Soft_F_Gamma_Truck_01",
+	"A3_Armor_F_Tank_AFV_Wheeled_01",
+	"A3_Air_F_Jets_Plane_Fighter_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=13;
+		items=15;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -134,11 +136,26 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item13
+		{
+			className="A3_Armor_F_Tank";
+			name="Arma 3 Tank - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item14
+		{
+			className="A3_Air_F_Jets";
+			name="Arma 3 Jets - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
 {
-	"Enoch"
+	"Enoch",
+	"Jets"
 };
 randomSeed=12173546;
 class ScenarioData
@@ -167,7 +184,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=17;
+		items=19;
 		class Item0
 		{
 			dataType="Group";
@@ -221,7 +238,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={1722.6649,8.2582445,5188.5181};
-				angles[]={-0,4.9585676,0};
+				angles[]={0,4.9585676,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1225,7 +1242,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={1728.6151,8.2020283,5200.6489};
-				angles[]={-0,4.953506,0};
+				angles[]={0,4.953506,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1266,6 +1283,236 @@ class Mission
 			};
 			id=35;
 			type="B_Truck_01_fuel_F";
+		};
+		class Item17
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1685.991,7.7639475,5192.2388};
+				angles[]={0,1.1825652,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				textures="Green";
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+			};
+			id=36;
+			type="B_AFV_Wheeled_01_up_cannon_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
+					class Value
+					{
+						class data
+						{
+							singleType="ARRAY";
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="Green";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=6;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showCamonetHull";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item2
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showCamonetTurret";
+												};
+											};
+											class Item3
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+											class Item4
+											{
+												class data
+												{
+													singleType="STRING";
+													value="showSLATHull";
+												};
+											};
+											class Item5
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item18
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1690.9539,7.9950514,5228.4131};
+				angles[]={-0,3.0042164,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				textures="DarkGreyCamo";
+			};
+			id=37;
+			type="B_Plane_Fighter_01_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
+					class Value
+					{
+						class data
+						{
+							singleType="ARRAY";
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="DarkGreyCamo";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										singleType="ARRAY";
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													singleType="STRING";
+													value="wing_fold_l";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													singleType="SCALAR";
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };
