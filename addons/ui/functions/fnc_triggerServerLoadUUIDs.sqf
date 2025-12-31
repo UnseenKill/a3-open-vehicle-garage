@@ -43,7 +43,7 @@ private _stamp = diag_tickTime;
 
 waitUntil {
     (isNil { uiNamespace getVariable QGVAR(dialog) }) ||
-    { missionNamespace getVariable[_waitUUID, false] isEqualType createHashMap } ||
+    { missionNamespace getVariable[_waitUUID, false] isEqualType [] } ||
     { (diag_tickTime - _stamp) > 10 };
 };
 
@@ -79,5 +79,7 @@ _data apply {
 };
 
 _treeView tvSetText[_selectionPath, _treeView getVariable QGVAR(loading) get _category];
+_treeView getVariable QGVAR(loading) deleteAt _category;
+_treeView getVariable QGVAR(loaded) set[_category, true];
 
 nil;

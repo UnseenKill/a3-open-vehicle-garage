@@ -54,6 +54,7 @@ _entries apply {
         _treeView tvSetData[[_parentNode, _index], _uuid];
     } else {
         _treeView tvSetColor[[_parentNode, _index], [0.5, 0.5, 0.5, 1]];
+        _treeView tvSetTooltip[[_parentNode, _index], format[LLSTRING(GarageDialog_Status_VehicleClassUnknown), _data get "class"]];
     };
 
     TRACE_3("TOC",_uuid,_index,_data get "displayName");

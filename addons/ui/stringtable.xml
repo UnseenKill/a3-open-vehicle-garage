@@ -61,6 +61,10 @@
             <English>Server did not respond in time. Please try again later.</English>
             <German>Der Server hat nicht rechtzeitig geantwortet. Bitte versuche es später erneut.</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_VehicleClassUnknown">
+            <English>Unknown vehicle class "%1".</English>
+            <German>Unbekannte Fahrzeugklasse "%1".</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_WaitingForServerTOC">
             <English>Waiting for server to send vehicle list...</English>
             <German>Warte darauf, dass der Server die Fahrzeugliste sendet...</German>

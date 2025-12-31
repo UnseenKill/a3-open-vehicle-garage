@@ -30,7 +30,8 @@ if !assert(params[
 
 private _category = _treeView tvData _selectionPath;
 
-if !(_category in(_treeView getVariable QGVAR(loading))) then {
+if (!(_category in(_treeView getVariable QGVAR(loaded))) &&
+    {!(_category in(_treeView getVariable QGVAR(loading)))}) then {
     _treeView getVariable QGVAR(loading) set[_category, _treeView tvText _selectionPath];
     [_treeView, _selectionPath, _category] call FUNC(dialogFetchCategory);
     TRACE_1("loading",_treeView getVariable QGVAR(loading));
