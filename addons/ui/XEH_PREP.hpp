@@ -1,3 +1,4 @@
+PREP(dialogCreateVehicleDynamicInfo);
 PREP(dialogFetchCategory);
 PREP(dialogOnLoad);
 PREP(dialogOnUnload);

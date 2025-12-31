@@ -49,8 +49,10 @@ _display setVariable[QGVAR(controls), _dialogControls];
 _display setVariable[QGVAR(vehicles), createHashMap];
 
 allControls (_dialogControls get "tabHost") 
-    select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
-    apply {
+    select {
+        (ctrlType _x isEqualTo CT_CONTROLS_GROUP) &&
+        { _x getVariable[QGVAR(isMainTabhost), false] }
+    } apply {
         _x ctrlSetFade 1;
         _x ctrlCommit 0;
     };

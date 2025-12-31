@@ -49,20 +49,36 @@ private _config = configFile >> "CfgVehicles" >> _class;
 
 if !assert(isClass _config) exitWith {};
 
+// Vehicle display name
+private _displayName = [];
+
+if (isText(_config >> "picture") && { getText(_config >> "picture") isNotEqualTo "" }) then {
+    _displayName pushBack image getText(_config >> "picture");
+    _displayName pushBack parseText "&#160;";
+};
+
+_displayName pushBack parseText format["<t size='1.75'>%1</t>", getText(_config >> "displayName")];
+
+// Vehicle attribution
 private _info = [_config] call EFUNC(util,getClassModInfo);
 private _credit = [];
 
 _credit = [parseText format["<t size='1.33'>%1&#160;</t>", LLSTRING(GarageDialog_PreviewCredit_Label)]];
 
-if !(isNil { _info get "logo" }) then {
-    _credit pushBack image(_info get "logo");
-    _credit pushBack parseText "&#160;";
+if (isNil { _info get "logo" }) then {
+    _controls get "previewVehiclePicture" ctrlShow false;
+} else {
+    _controls get "previewVehiclePicture" ctrlShow true;
+    _controls get "previewVehiclePicture" ctrlSetText(_info get "logo");
 };
 
 _credit pushBack parseText format["<t size='1.33'>%1</t>", _info get "author"];
 
-_controls get "previewVehiclePicture" ctrlSetText getText(_config >> "picture");
-_controls get "previewVehicleName" ctrlSetText getText(_config >> "displayName");
+// Vehicle dynamic info
+[_controls get "previewVehicleTextHost", _uuid] call FUNC(dialogCreateVehicleDynamicInfo);
+
+// Update UI
+_controls get "previewVehicleName" ctrlSetStructuredText composeText _displayName;
 _controls get "previewVehicleCredit" ctrlSetStructuredText composeText _credit;
 _controls get "previewVehicleEditorPreview" ctrlSetText getText(_config >> "editorPreview");
 

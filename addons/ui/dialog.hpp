@@ -250,6 +250,8 @@ class GVAR(Dialog) {
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
 
+                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(isMainTabhost),true)]);
+
                                     class Controls {
                                         class Hourglass: RscPictureKeepAspect {
                                             text = "\z\a3ovg\addons\ui\icons\wait-large-hourglass.paa";
@@ -269,17 +271,19 @@ class GVAR(Dialog) {
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
 
+                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(isMainTabhost),true)]);
+
                                     class Controls {
-                                        class VehiclePicture: RscPicture {
+                                        class VehiclePicture: RscPictureKeepAspect {
                                             idc = IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLE;
                                             text = "\A3\Soft_F\MRAP_01\Data\UI\MRAP_01_hmg_F_ca.paa";
-                                            x = QUOTE(safeZoneW * 0.6 - pixelW * 24 - lineHeight * 1.5);
+                                            x = QUOTE(safeZoneW * 0.6 - pixelW * 24 - lineHeight * 3);
                                             y = 0;
-                                            w = QUOTE(lineHeight * 1.5);
-                                            h = QUOTE(lineHeight * 1.25);
+                                            w = QUOTE(lineHeight * 3);
+                                            h = QUOTE(lineHeight * 3);
                                         };
 
-                                        class VehicleName: RscText {
+                                        class VehicleName: RscStructuredText {
                                             idc = IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLENAME;
                                             text = "Hunter HMG";
                                             x = 0;
@@ -322,7 +326,6 @@ class GVAR(Dialog) {
                                             w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                             h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - 7 * lineHeight);
                                             sizeEx = QUOTE(safeZoneH * 0.02);
-                                            colorBackground[] = {-1,-1,-1,-1};
                                         };
                                     };
                                 };

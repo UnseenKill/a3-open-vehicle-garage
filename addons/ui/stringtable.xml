@@ -53,6 +53,38 @@
             <English>By:</English>
             <German>Von:</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Damage_Label">
+            <English>Damage</English>
+            <German>Schaden</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Fuel_Label">
+            <English>Fuel</English>
+            <German>Kraftstoff</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_InventoryEmpty_Text">
+            <English>Empty</English>
+            <German>Leer</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_InventorySaved_Text">
+            <English>Saved</English>
+            <German>Gespeichert</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Inventory_Label">
+            <English>Inventory</English>
+            <German>Inventar</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RearmCapacity_Label">
+            <English>Rearm Capacity</English>
+            <German>Nachladekapazität</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RefuelCapacity_Label">
+            <English>Refuel Capacity</English>
+            <German>Treibstoffkapazität</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RepairCapacity_Label">
+            <English>Repair Capacity</English>
+            <German>Reparaturkapazität</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_CategoryLoading">
             <English>%1 (Loading from server...)</English>
             <German>%1 (Lade vom Server...)</German>
