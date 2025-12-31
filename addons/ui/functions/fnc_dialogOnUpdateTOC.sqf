@@ -59,6 +59,6 @@ _entries apply {
     TRACE_3("TOC",_uuid,_index,_data get "displayName");
 };
 
-[_treeView, []] call FUNC(dialogOnTreeSelChanged);
+[_treeView, []] call FUNC(dialogTreeOnSelChanged);
 
 nil;

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_dialogOnTreeExpanded
+Function: A3OVG_ui_fnc_dialogTreeOnExpanded
 
 Description:
     Event handler function called when a node in the vehicle tree view is
@@ -21,7 +21,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogOnTreeExpanded),_display);
+A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogTreeOnExpanded),_display);
 
 if !assert(params[
     ["_treeView", nil, [controlNull]],

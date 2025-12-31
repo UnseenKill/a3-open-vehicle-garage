@@ -168,6 +168,7 @@ class GVAR(Dialog) {
                             w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
                             h = QUOTE(safeZoneH * 0.75 - pixelH * 32 - lineHeight * 3);
                             colorBackground[] = {0,0,0,0.4};
+                            onLoad = QUOTE(call FUNC(dialogTreeOnLoad));
                         };
 
                         class Buttons: RscControlsGroup {

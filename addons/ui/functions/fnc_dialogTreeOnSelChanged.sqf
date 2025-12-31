@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_dialogOnTreeSelChanged
+Function: A3OVG_ui_fnc_dialogTreeOnSelChanged
 
 Description:
     Event handler function called when the selection in the vehicle tree view
@@ -21,7 +21,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogOnTreeSelChanged),_display);
+A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogTreeOnSelChanged),_display);
 
 if !assert(params[
     ["_treeView", nil, [controlNull]],

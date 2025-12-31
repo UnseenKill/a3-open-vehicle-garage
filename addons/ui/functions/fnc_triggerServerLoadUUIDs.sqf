@@ -48,9 +48,10 @@ waitUntil {
 };
 
 if (isNil { uiNamespace getVariable QGVAR(dialog) }) exitWith {
-    INFO("Garage Dialog closed before vehicle UUIDs received from server.");
+    INFO_1("Garage Dialog closed before vehicle UUIDs received from server (%1).",_waitUUID);
 };
 
+// Request timed out; clean up tree branch, show error
 if (missionNamespace getVariable[_waitUUID, false] isEqualType false) exitWith {
     ERROR_1("Timed out waiting for vehicle UUIDs from server after %1 seconds.",diag_tickTime - _stamp);
 
@@ -64,6 +65,19 @@ if (missionNamespace getVariable[_waitUUID, false] isEqualType false) exitWith {
     };
 };
 
-// TODO: Process
+// Extract, store, signal completion
+INFO_2("response to request %1 received from server after %2 seconds.",_waitUUID,diag_tickTime - _stamp);
+
+private _data = missionNamespace getVariable _waitUUID;
+private _display = uiNamespace getVariable QGVAR(dialog);
+private _vehicles = _display getVariable QGVAR(vehicles);
+
+_data apply {
+    if assert(VALIDATE_OBJECT(_x,QUOTE(DOUBLES(PREFIX,vehicle)))) then {
+        _vehicles set[_x get "_uuid", _x];
+    };
+};
+
+_treeView tvSetText[_selectionPath, _treeView getVariable QGVAR(loading) get _category];
 
 nil;

@@ -44,7 +44,9 @@ private _dialogControls = createHashMapFromArray[
 ];
 
 uiNamespace setVariable[QGVAR(dialog), _display];
+
 _display setVariable[QGVAR(controls), _dialogControls];
+_display setVariable[QGVAR(vehicles), createHashMap];
 
 allControls (_dialogControls get "tabHost") 
     select { ctrlType _x isEqualTo CT_CONTROLS_GROUP }
@@ -52,11 +54,6 @@ allControls (_dialogControls get "tabHost")
         _x ctrlSetFade 1;
         _x ctrlCommit 0;
     };
-
-private _treeView = _dialogControls get "treeView";
-_treeView setVariable[QGVAR(loading), createHashMap];
-_treeView ctrlAddEventHandler["TreeExpanded", { call FUNC(dialogOnTreeExpanded) }];
-_treeView ctrlAddEventHandler["TreeSelChanged", { call FUNC(dialogOnTreeSelChanged) }];
 
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
