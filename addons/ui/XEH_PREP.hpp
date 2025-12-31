@@ -1,9 +1,14 @@
 PREP(dialogCreateVehicleDynamicInfo);
+PREP(dialogCustomizeUpdatePreview);
 PREP(dialogFetchCategory);
 PREP(dialogOnLoad);
+PREP(dialogOnTabButtonClick);
 PREP(dialogOnUnload);
 PREP(dialogOnUpdateTOC);
+PREP(dialogRegisterTabHostCtrl);
 PREP(dialogSetLoading);
+PREP(dialogSwitchToTab);
+PREP(dialogTabCustomizeOnActivate);
 PREP(dialogTreeOnExpanded);
 PREP(dialogTreeOnLoad);
 PREP(dialogTreeOnSelChanged);

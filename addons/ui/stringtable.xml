@@ -49,10 +49,6 @@
             <English>Available Vehicles</English>
             <German>Verfügbare Fahrzeuge</German>
         </Key>
-        <Key ID="STR_A3OVG_UI_GarageDialog_TabCustomize_PipDisabledHint_Label">
-            <English>Picture-in-picture is disabled in settings.\nYou won't see a preview, but you can still customize your vehicle.</English>
-            <German>Bild-in-Bild ist in den Einstellungen deaktiviert.\nDu wirst keine Vorschau sehen, kannst dein Fahrzeug aber trotzdem anpassen.</German>
-        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_PreviewCredit_Label">
             <English>By:</English>
             <German>Von:</German>
@@ -116,6 +112,10 @@
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_WaitingForServerTOC">
             <English>Waiting for server to send vehicle list...</English>
             <German>Warte darauf, dass der Server die Fahrzeugliste sendet...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TabCustomize_PipDisabledHint_Label">
+            <English>\n\n\n\nPicture-in-picture is disabled in settings.\nYou won't see a preview, but you can still customize your vehicle.</English>
+            <German>\n\n\n\nBild-in-Bild ist in den Einstellungen deaktiviert.\nDu wirst keine Vorschau sehen, kannst dein Fahrzeug aber trotzdem anpassen.</German>
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain_Label">
             <English>Vehicle Garage</English>

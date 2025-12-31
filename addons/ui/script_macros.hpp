@@ -4,3 +4,11 @@
     if !assert((!isNil QUOTE(displayVariable)) && {displayVariable isEqualType displayNull && {!isNull displayVariable}}) exitWith { \
         ERROR_3(QUOTE(ARR_2(UI namespace messed up. Abort call to QQUOTE(%1) from %2,line %3.)),function,__FILE__,__LINE__); \
     }
+
+#define A3OVG_UI_FUNCTION_PREAMBLE_WAIT_FOR_DISPLAY(function,displayVariable) \
+    if !(canSuspend) exitWith { \
+        TRACE_1("deferred:" + function,_this); \
+        _this spawn(missionNamespace getVariable function); \
+    }; \
+    waitUntil { !dialog || {!isNil { uiNamespace getVariable QGVAR(dialog) }} }; \
+    A3OVG_UI_FUNCTION_PREAMBLE(function,displayVariable)

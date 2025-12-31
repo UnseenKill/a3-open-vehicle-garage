@@ -20,12 +20,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(dialogTreeOnLoad),_this);
-A3OVG_MAKE_SCHEDULED(FUNC(dialogTreeOnLoad));
-
-waitUntil { !dialog || { !isNull(uiNamespace getVariable[QGVAR(dialog), displayNull]) } };
-
-A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogTreeOnLoad),_display);
+A3OVG_UI_FUNCTION_PREAMBLE_WAIT_FOR_DISPLAY(QFUNC(dialogTreeOnLoad),_display);
 
 if !assert(params[
     ["_treeView", nil, [controlNull]]

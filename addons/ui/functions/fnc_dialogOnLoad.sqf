@@ -31,6 +31,7 @@ if !assert(!isNull _display) exitWith {};
 INFO("Garage Dialog loading.");
 
 private _dialogControls = createHashMapFromArray[
+    ["customizePicPip", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP],
     ["hostGrpButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_BUTTONSHOST],
     ["hostGrpMiniButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MINIBTNHOST],
     ["hostGrpTabButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_BUTTONSHOST],
@@ -59,6 +60,14 @@ allControls (_dialogControls get "tabHost")
         _x ctrlSetFade 1;
         _x ctrlCommit 0;
     };
+
+allControls (_dialogControls get "hostGrpTabButtons") 
+    select { ctrlType _x isEqualTo CT_BUTTON }
+    apply { _x ctrlAddEventHandler["ButtonClick", { call FUNC(dialogOnTabButtonClick) }] };
+
+_display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_PREVIEW_PIPDISABLED ctrlShow !isPiPEnabled;
+_display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP ctrlShow isPiPEnabled;
+_display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP setVariable[QGVAR(camera), [30, 20, 1.15]];
 
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);

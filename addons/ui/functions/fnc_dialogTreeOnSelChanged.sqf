@@ -86,6 +86,8 @@ _controls get "previewVehicleCredit" ctrlSetStructuredText composeText _credit;
 _controls get "previewVehicleEditorPreview" ctrlSetText getText(_config >> "editorPreview");
 
 _display setVariable[QGVAR(vehicle), _display getVariable QGVAR(vehicles) get _uuid];
+
+[_display getVariable QGVAR(vehicle)] call FUNC(dialogCustomizeUpdatePreview);
 [true] call FUNC(dialogUpdateUI);
 
 nil;

@@ -42,7 +42,6 @@ private _mainGroup = _controls get "mainGroup";
 private _tabHost = _controls get "tabHost";
 private _statusBar = _controls get "statusBar";
 
-//allControls _mainGroup apply { _x ctrlEnable !_isLoading };
 [!_isLoading, true] call FUNC(dialogUpdateUI);
 
 private _tabs = allControls _tabHost select { ctrlType _x isEqualTo CT_CONTROLS_GROUP };

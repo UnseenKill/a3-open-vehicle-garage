@@ -337,13 +337,13 @@ class GVAR(Dialog) {
 
                                 class TabCustomize: RscControlsGroup {
                                     idc = IDC_RSCGARAGEDIALOG_GROUP_TAB_CUSTOMIZE;
-                                    fade = 0;
+                                    fade = 1;
                                     x = QUOTE(pixelW * 8);
                                     y = QUOTE(pixelH * 8);
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
 
-                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(isMainTabhost),true)]);
+                                    onLoad = QUOTE([ARR_2(_this select 0,{call FUNC(dialogTabCustomizeOnActivate)})] call FUNC(dialogRegisterTabHostCtrl));
 
                                     class Controls {
                                         class PipDisabledHint: RscText {
@@ -361,7 +361,7 @@ class GVAR(Dialog) {
 
                                         class CamPlaceholder: RscPicture {
                                             idc = IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP;
-                                            w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
+                                            w = QUOTE(safeZoneW * 0.5 - pixelW * 24);
                                             h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - 8 * lineHeight);
                                             text = "#(rgb,8,8,3)color(0,0,0,1)";
                                         };
