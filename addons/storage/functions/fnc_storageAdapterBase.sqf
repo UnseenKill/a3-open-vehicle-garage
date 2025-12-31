@@ -134,6 +134,13 @@ createHashMapFromArray[
     METHOD_DEFINE(read),
 
     /**
+     * readVehicle(String uuid) -> HashMap
+     *
+     * Load serialized vehicle storage data from storage backend.
+     */
+    METHOD_DEFINE(readVehicle),
+
+    /**
      * removeVehicle(String uuid) -> Bool
      *
      * Remove vehicle storage data from storage backend.

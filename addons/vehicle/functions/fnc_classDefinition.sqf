@@ -28,6 +28,7 @@ createHashMapFromArray[
     ["_category", nil],
     ["_displayName", nil],
     ["_owner", nil],
+    ["_serialized", nil],
     ["_uuid", nil],
     ["_vehicle", nil],
 

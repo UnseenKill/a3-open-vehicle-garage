@@ -33,4 +33,10 @@ if !assert(params[
 
 if is3DENPreview then { uiSleep 1.0 };
 
+private _payload = _vehicleUUIDs apply { [_x] call EFUNC(vehicle,load) };
+
+INFO_2("sending vehicle data payload response for %1 to player ID %2",_uuid,_requestor);
+
+missionNamespace setVariable[_uuid, _payload, _requestor];
+
 nil;

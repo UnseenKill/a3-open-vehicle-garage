@@ -5,6 +5,7 @@ PREP(method_getSectionKeys);
 PREP(method_getVehicleTOC);
 PREP(method_initialize);
 PREP(method_read);
+PREP(method_readVehicle);
 PREP(method_removeVehicle);
 PREP(method_toString);
 PREP(method_updateTOC);

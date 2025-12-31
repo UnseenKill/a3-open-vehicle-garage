@@ -3,6 +3,7 @@ PREP(compileCategoryFilters);
 PREP(determineCategory);
 PREP(garageClient);
 PREP(garageServer);
+PREP(load);
 PREP(new);
 PREP(sortTOC);
 
