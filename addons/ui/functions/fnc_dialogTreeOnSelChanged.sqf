@@ -38,6 +38,9 @@ _controls get "previewVehicleCredit" ctrlShow _show;
 _controls get "previewVehicleEditorPreview" ctrlShow _show;
 _controls get "previewVehicleTextHost" ctrlShow _show;
 
+_display setVariable[QGVAR(vehicle), nil];
+[false, false] call FUNC(dialogUpdateUI);
+
 if !(_show) exitWith {};
 
 private _data = _display getVariable QGVAR(toc) get _uuid;
@@ -81,5 +84,8 @@ _credit pushBack parseText format["<t size='1.33'>%1</t>", _info get "author"];
 _controls get "previewVehicleName" ctrlSetStructuredText composeText _displayName;
 _controls get "previewVehicleCredit" ctrlSetStructuredText composeText _credit;
 _controls get "previewVehicleEditorPreview" ctrlSetText getText(_config >> "editorPreview");
+
+_display setVariable[QGVAR(vehicle), _display getVariable QGVAR(vehicles) get _uuid];
+[true] call FUNC(dialogUpdateUI);
 
 nil;

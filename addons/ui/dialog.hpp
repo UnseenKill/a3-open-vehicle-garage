@@ -117,6 +117,7 @@ class GVAR(Dialog) {
                         };
 
                         class MiniButtons: RscControlsGroup {
+                            idc = IDC_RSCGARAGEDIALOG_GROUP_MINIBTNHOST;
                             x = 0;
                             y = QUOTE(pixelH * 8 + lineHeight);
                             w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
@@ -172,6 +173,7 @@ class GVAR(Dialog) {
                         };
 
                         class Buttons: RscControlsGroup {
+                            idc = IDC_RSCGARAGEDIALOG_GROUP_BUTTONSHOST;
                             x = 0;
                             y = QUOTE(safeZoneH * 0.75 - pixelH * 24 - lineHeight);
                             w = QUOTE(safeZoneW * 0.2 - pixelW * 16);
@@ -209,6 +211,7 @@ class GVAR(Dialog) {
 
                     class Controls {
                         class TabButtonBar: RscControlsGroup {
+                            idc = IDC_RSCGARAGEDIALOG_GROUP_TAB_BUTTONSHOST;
                             x = 0;
                             y = 0;
                             w = QUOTE(safeZoneW * 0.6 - pixelW * 8);

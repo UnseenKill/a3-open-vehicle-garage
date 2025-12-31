@@ -7,6 +7,7 @@ PREP(dialogSetLoading);
 PREP(dialogTreeOnExpanded);
 PREP(dialogTreeOnLoad);
 PREP(dialogTreeOnSelChanged);
+PREP(dialogUpdateUI);
 PREP(showHint);
 PREP(showHintSingle);
 PREP(triggerServerLoadTOC);

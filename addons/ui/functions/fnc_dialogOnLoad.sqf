@@ -31,6 +31,9 @@ if !assert(!isNull _display) exitWith {};
 INFO("Garage Dialog loading.");
 
 private _dialogControls = createHashMapFromArray[
+    ["hostGrpButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_BUTTONSHOST],
+    ["hostGrpMiniButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MINIBTNHOST],
+    ["hostGrpTabButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_BUTTONSHOST],
     ["mainGroup", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MAIN],
     ["previewVehiclePicture", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLE],
     ["previewVehicleName", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLENAME],

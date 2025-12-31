@@ -1,4 +1,5 @@
 #include "..\script_component.hpp"
+#include "..\ui_define.hpp"
 /* ----------------------------------------------------------------------------
 Function: A3OVG_ui_fnc_dialogCreateVehicleDynamicInfo
 
@@ -91,9 +92,11 @@ if (_data get "cargo" get "refuel" get "aceMax" > 0) then {
     };
 };
 
+/*
 private _keys = keys _data;
 _keys sort true;
 _keys apply { _items pushBack[format["<%1>", _x], str(_data get _x)] };
+*/
 
 _items apply {
     _x params[
