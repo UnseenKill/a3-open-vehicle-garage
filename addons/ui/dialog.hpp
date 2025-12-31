@@ -221,12 +221,14 @@ class GVAR(Dialog) {
                                 class ButtonOverview: GVAR(RscTabButton) {
                                     idc = IDC_RSCGARAGEDIALOG_BTN_TAB_OVERVIEW;
                                     text = CSTRING(GarageDialog_BtnTabOverview_Label);
+                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(idcTabHostCtrl),IDC_RSCGARAGEDIALOG_GROUP_TAB_OVERVIEW)]);
                                     x = 0;
                                 };
 
                                 class ButtonCustomize: GVAR(RscTabButton) {
                                     idc = IDC_RSCGARAGEDIALOG_BTN_TAB_CUSTOMIZE;
                                     text = CSTRING(GarageDialog_BtnTabCustomize_Label);
+                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(idcTabHostCtrl),IDC_RSCGARAGEDIALOG_GROUP_TAB_CUSTOMIZE)]);
                                     x = QUOTE(safeZoneW * 0.1 + pixelW * 8);
                                 };
                             };
@@ -329,6 +331,39 @@ class GVAR(Dialog) {
                                             w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                             h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - 7 * lineHeight);
                                             sizeEx = QUOTE(safeZoneH * 0.02);
+                                        };
+                                    };
+                                };
+
+                                class TabCustomize: RscControlsGroup {
+                                    idc = IDC_RSCGARAGEDIALOG_GROUP_TAB_CUSTOMIZE;
+                                    fade = 0;
+                                    x = QUOTE(pixelW * 8);
+                                    y = QUOTE(pixelH * 8);
+                                    w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
+                                    h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
+
+                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(isMainTabhost),true)]);
+
+                                    class Controls {
+                                        class PipDisabledHint: RscText {
+                                            idc = IDC_RSCGARAGEDIALOG_TEXT_TAB_PREVIEW_PIPDISABLED;
+                                            style = QUOTE(ST_MULTI + ST_CENTER);
+                                            text = CSTRING(GarageDialog_TabCustomize_PipDisabledHint_Label);
+                                            x = 0;
+                                            y = 0;
+                                            w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
+                                            h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - 8 * lineHeight);
+                                            sizeEx = QUOTE(safeZoneH * 0.025);
+                                            colorBackground[] = {0,0,0,1};
+                                            colorText[] = {1,1,1,1};
+                                        };
+
+                                        class CamPlaceholder: RscPicture {
+                                            idc = IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP;
+                                            w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
+                                            h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - 8 * lineHeight);
+                                            text = "#(rgb,8,8,3)color(0,0,0,1)";
                                         };
                                     };
                                 };
