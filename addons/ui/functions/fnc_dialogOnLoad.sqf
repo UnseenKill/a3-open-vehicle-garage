@@ -48,8 +48,8 @@ private _dialogControls = createHashMapFromArray[
 ];
 
 private _eventMap = [
-    // A3OVG_EVENT_UI_VEHICLE_CHANGED(Vehicle _vehicle)
-    [A3OVG_EVENT_UI_VEHICLE_CHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
+    // A3OVG_EVENT_UI_VEHICLE_DATACHANGED(Vehicle _vehicle)
+    [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
 ];
 
 uiNamespace setVariable[QGVAR(dialog), _display];

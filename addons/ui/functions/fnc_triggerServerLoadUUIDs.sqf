@@ -76,7 +76,7 @@ _data apply {
     if assert(VALIDATE_OBJECT(_x,QUOTE(DOUBLES(PREFIX,vehicle)))) then {
         _vehicles set[_x get "_uuid", _x];
 
-        [A3OVG_EVENT_UI_VEHICLE_CHANGED, [_x]] call CBA_fnc_localEvent;
+        [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, [_x]] call CBA_fnc_localEvent;
     };
 };
 

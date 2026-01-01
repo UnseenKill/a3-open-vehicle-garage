@@ -1,4 +1,5 @@
 #define A3OVG_EVENT_GARAGE_OPEN_AFTER QUOTE(TRIPLES(PREFIX,garage,openAfter))
 #define A3OVG_EVENT_GARAGE_OPEN_BEFORE QUOTE(TRIPLES(PREFIX,garage,openBefore))
 
-#define A3OVG_EVENT_UI_VEHICLE_CHANGED QUOTE(TRIPLES(PREFIX,event,uiVehicleChanged))
+// Params: [Vehicle _vehicle]
+#define A3OVG_EVENT_UI_VEHICLE_DATACHANGED QUOTE(TRIPLES(PREFIX,event,uiVehicleChanged))
