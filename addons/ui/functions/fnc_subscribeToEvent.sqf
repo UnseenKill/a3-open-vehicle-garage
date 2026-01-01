@@ -25,7 +25,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-TRACE_1(QFUNC(subscribeToEvent),_this);
+TRACE_1(QFUNC(subscribeToEvent),_this#0);
 
 if !assert(params[
     ["_event", nil, [""]],

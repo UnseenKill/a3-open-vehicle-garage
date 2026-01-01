@@ -1,3 +1,4 @@
+#define PREAMBLE_TRACE_NO_ARGS
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: A3OVG_vehicle_fnc_method_loadFrom

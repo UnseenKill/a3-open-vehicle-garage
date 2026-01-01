@@ -2,8 +2,18 @@
     #define A3OVG_PREAMBLE_BAILOUT nil
 #endif // A3OVG_PREAMBLE_BAILOUT
 
+#ifdef DEBUG_MODE_FULL
+    #ifndef PREAMBLE_TRACE_NO_ARGS
+        #define UI_PREAMBLE_TRACE(function) TRACE_1(function,_this)
+    #else
+        #define UI_PREAMBLE_TRACE(function) TRACE_1(function + "(...)",[])
+    #endif // PREAMBLE_TRACE_NO_ARGS
+#else
+    #define UI_PREAMBLE_TRACE(function) /* disabled */
+#endif
+
 #define A3OVG_UI_FUNCTION_PREAMBLE(function,displayVariable) \
-    TRACE_1(function,_this); \
+    UI_PREAMBLE_TRACE(function); \
     private displayVariable = uiNamespace getVariable QGVAR(dialog); \
     if !assert((!isNil QUOTE(displayVariable)) && {displayVariable isEqualType displayNull && {!isNull displayVariable}}) exitWith { \
         A3OVG_PREAMBLE_BAILOUT; \
