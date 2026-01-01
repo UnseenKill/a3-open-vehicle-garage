@@ -10,6 +10,8 @@ PREP(sortTOC);
 PREP(method_CTOR);
 PREP(method_isLocked);
 PREP(method_createUUID);
+PREP(method_getCategory);
+PREP(method_getUUID);
 PREP(method_loadFrom);
 PREP(method_serialize);
 PREP(method_serializeDamage);

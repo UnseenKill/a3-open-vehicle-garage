@@ -1,6 +1,7 @@
 PREP(dialogCreateVehicleDynamicInfo);
 PREP(dialogCustomizeUpdatePreview);
 PREP(dialogFetchCategory);
+PREP(dialogOnEventVehicleChanged);
 PREP(dialogOnLoad);
 PREP(dialogOnTabButtonClick);
 PREP(dialogOnUnload);
@@ -12,6 +13,7 @@ PREP(dialogTabCustomizeOnActivate);
 PREP(dialogTreeOnExpanded);
 PREP(dialogTreeOnLoad);
 PREP(dialogTreeOnSelChanged);
+PREP(dialogTreeUpdateVehicleEntry);
 PREP(dialogUpdateUI);
 PREP(showHint);
 PREP(showHintSingle);

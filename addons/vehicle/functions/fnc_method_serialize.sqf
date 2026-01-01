@@ -39,6 +39,7 @@ _data set["displayName", getText(configOf _vehicle >> "displayName")];
 
 _data set["_properties", createHashMapFromArray[
     ["_category", _self get "_category"],
+    ["_className", _self get "_className"],
     ["_displayName", _self get "_displayName"],
     ["_owner", _self get "_owner"],
     ["_ownerLock", _self get "_ownerLock"],

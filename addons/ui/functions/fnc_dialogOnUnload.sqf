@@ -26,6 +26,11 @@ INFO("Garage Dialog unloading. Cleaning UI namespace.");
 
 uiNamespace setVariable [QGVAR(dialog), nil];
 
+uiNamespace getVariable[QGVAR(events), []] apply {
+    TRACE_1(QFUNC(dialogOnUnload),_x);
+    _x call CBA_fnc_removeEventHandler;
+};
+
 private _camera = uiNamespace getVariable QGVAR(cameraPiP);
 if !(isNil "_camera") then {
     TRACE_1(QFUNC(dialogOnUnload),_camera);

@@ -47,7 +47,16 @@ private _dialogControls = createHashMapFromArray[
     ["waitTab", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT]
 ];
 
+private _eventMap = [
+    // A3OVG_EVENT_UI_VEHICLE_CHANGED(Vehicle _vehicle)
+    [A3OVG_EVENT_UI_VEHICLE_CHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
+];
+
 uiNamespace setVariable[QGVAR(dialog), _display];
+uiNamespace setVariable[QGVAR(events), _eventMap apply {
+    _x params["_event","_handler"];
+    [_event, [_event, _handler] call CBA_fnc_addEventHandler]
+}];
 
 _display setVariable[QGVAR(controls), _dialogControls];
 _display setVariable[QGVAR(vehicles), createHashMap];

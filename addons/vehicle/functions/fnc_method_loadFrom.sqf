@@ -24,9 +24,11 @@ METHOD_PREAMBLE(loadFrom);
 #define ADOPT_PROPERTY_NIL(property,validation,allowNil) if true then { \
     private _value = _data get QUOTE(_properties) get QUOTE(property); \
     if ((allowNil) && { isNil "_value" }) exitWith { \
+        TRACE_1(QUOTE(DOUBLES(loadFrom,property)),"<nil>"); \
         _self set[QUOTE(property), nil]; \
     }; \
     if assert([_value] params[["_validated", nil, validation]]) then { \
+        TRACE_1(QUOTE(DOUBLES(loadFrom,property)),_validated); \
         _self set[QUOTE(property), _validated]; \
     } else { \
         throw format["failed to load property '%1' from serialized data.", QUOTE(property)]; \
@@ -42,6 +44,7 @@ _self set["_serialized", _data];
 _self set["_vehicle", objNull];
 
 ADOPT_PROPERTY(_category,[""]);
+ADOPT_PROPERTY(_className,[""]);
 ADOPT_PROPERTY(_displayName,[""]);
 ADOPT_PROPERTY(_owner,[""]);
 ADOPT_PROPERTY_NIL(_ownerLock,[""],true);

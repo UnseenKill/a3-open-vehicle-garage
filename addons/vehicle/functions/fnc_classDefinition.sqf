@@ -28,6 +28,8 @@ createHashMapFromArray[
 
     // <STRING> - key of vehicle category, lowercase classname
     ["_category", nil],
+    // <STRING> - vehicle classname
+    ["_className", nil],
     // <STRING> - vehicle display name
     ["_displayName", nil],
     // <STRING> - vehicle owner's playerUID
@@ -56,6 +58,20 @@ createHashMapFromArray[
      * Generate a new UUID for the vehicle.
      */
     METHOD_DEFINE(createUUID),
+
+    /**
+     * getCategory() -> Hashmap
+     *
+     * Get vehicle category metadata.
+     */
+    METHOD_DEFINE(getCategory),
+
+    /**
+     * getUUID() -> String
+     *
+     * Get the UUID of the vehicle.
+     */
+    METHOD_DEFINE(getUUID),
 
     /**
      * isLocked() -> Boolean
