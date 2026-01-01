@@ -39,6 +39,7 @@ _controls get "previewVehicleEditorPreview" ctrlShow _show;
 _controls get "previewVehicleTextHost" ctrlShow _show;
 
 if !(_show) exitWith {
+    _display setVariable[QGVAR(vehicle), nil];
     [A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, []] call CBA_fnc_localEvent;
     [false, false] call FUNC(dialogUpdateUI);
 };
@@ -46,7 +47,8 @@ if !(_show) exitWith {
 private _vehicle = _display getVariable QGVAR(vehicles) get _uuid;
 if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
 
-[A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, [_vehicle]] call CBA_fnc_localEvent;
+_display setVariable[QGVAR(vehicle), _vehicle];
+[A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, []] call CBA_fnc_localEvent;
 [true] call FUNC(dialogUpdateUI);
 
 nil;

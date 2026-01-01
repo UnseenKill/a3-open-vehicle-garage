@@ -7,5 +7,5 @@
 #define A3OVG_EVENT_UI_DIALOG_TABCHANGED_BEFORE QUOTE(TRIPLES(PREFIX,event,uiDialogTabChangedBefore))
 // Params: [Vehicle _vehicle]
 #define A3OVG_EVENT_UI_VEHICLE_DATACHANGED QUOTE(TRIPLES(PREFIX,event,uiVehicleChanged))
-// Params: [(Vehicle _vehicle)]
+// Params: []
 #define A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED QUOTE(TRIPLES(PREFIX,event,uiVehicleSelectionChanged))

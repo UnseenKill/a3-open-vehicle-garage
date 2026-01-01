@@ -49,14 +49,7 @@ private _dialogControls = createHashMapFromArray[
 
 private _eventMap = [
     // A3OVG_EVENT_UI_VEHICLE_DATACHANGED(Vehicle _vehicle)
-    [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, { call FUNC(dialogOnEventVehicleChanged) }],
-    // A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED([Vehicle _vehicle])
-    [A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, {
-        if (_this isEqualTo []) exitWith { uiNamespace getVariable QGVAR(dialog) setVariable[QGVAR(vehicle), nil] };
-        if !assert(params[["_vehicle", nil, [createHashMap]]]) exitWith {};
-        if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
-        uiNamespace getVariable QGVAR(dialog) setVariable[QGVAR(vehicle), _vehicle];
-    }]
+    [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
 ];
 
 uiNamespace setVariable[QGVAR(dialog), _display];

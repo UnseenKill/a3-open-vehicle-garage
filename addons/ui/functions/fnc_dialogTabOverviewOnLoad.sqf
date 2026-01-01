@@ -29,12 +29,10 @@ if !assert(!isNull _tabHostCtrl) exitWith {};
 [A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, {
     A3OVG_UI_FUNCTION_PREAMBLE(A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED,_display);
 
-    if (_this isEqualTo []) exitWith {};
-    if !assert(params[
-        ["_vehicle", nil, [createHashMap]]
-    ]) exitWith {};
-    if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+    private _vehicle = _display getVariable QGVAR(vehicle);
+    if (isNil "_vehicle") exitWith {};
 
+    private _uuid = _vehicle call["getUUID", []];
     private _data = _display getVariable QGVAR(toc) get _uuid;
 
     if !assert(!isNil "_data") exitWith {};
