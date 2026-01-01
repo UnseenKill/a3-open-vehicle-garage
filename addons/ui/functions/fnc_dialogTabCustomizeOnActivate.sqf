@@ -29,7 +29,7 @@ if !assert(!isNull _tabHostCtrl) exitWith {};
 
 private _controls = _display getVariable QGVAR(controls);
 private _vehicle = _display getVariable QGVAR(vehicle);
-if !assert(VALIDATE_OBJECT(_vehicle, QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
 
 private _camera = if !(isNil { uiNamespace getVariable QGVAR(cameraPiP) }) then {
     uiNamespace getVariable QGVAR(cameraPiP);

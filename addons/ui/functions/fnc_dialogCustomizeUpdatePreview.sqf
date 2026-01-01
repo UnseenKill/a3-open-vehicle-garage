@@ -25,10 +25,11 @@ if !assert(params[
     ["_vehicle", nil, [createHashMap]]
 ]) exitWith {};
 
-if !assert(VALIDATE_OBJECT(_vehicle, QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
 if (isNil { uiNamespace getVariable QGVAR(cameraPiP) }) exitWith {};
 
 private _camera = uiNamespace getVariable QGVAR(cameraPiP);
+private _controls = _display getVariable QGVAR(controls);
 private _previewVehicle = uiNamespace getVariable[QGVAR(previewVehicle), objNull];
 
 if !isNull(_previewVehicle) then {
