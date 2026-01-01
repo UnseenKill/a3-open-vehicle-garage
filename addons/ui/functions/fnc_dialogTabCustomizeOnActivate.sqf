@@ -1,4 +1,5 @@
 #include "..\script_component.hpp"
+#include "..\ui_define.hpp"
 /* ----------------------------------------------------------------------------
 Function: A3OVG_ui_fnc_dialogTabCustomizeOnActivate
 
@@ -27,10 +28,10 @@ if !assert(params[
 ]) exitWith {};
 if !assert(!isNull _tabHostCtrl) exitWith {};
 
-private _controls = _display getVariable QGVAR(controls);
-private _vehicle = _display getVariable QGVAR(vehicle);
-if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+// This event is not for us.
+if (IDC_RSCGARAGEDIALOG_GROUP_TAB_CUSTOMIZE isNotEqualTo ctrlIDC _tabHostCtrl) exitWith {};
 
+private _controls = _display getVariable QGVAR(controls);
 private _camera = if !(isNil { uiNamespace getVariable QGVAR(cameraPiP) }) then {
     uiNamespace getVariable QGVAR(cameraPiP);
 } else {
@@ -53,6 +54,6 @@ private _camera = if !(isNil { uiNamespace getVariable QGVAR(cameraPiP) }) then 
 
 uiNamespace setVariable[QGVAR(cameraPiP), _camera];
 
-[_vehicle] call FUNC(dialogCustomizeUpdatePreview);
+[] call FUNC(dialogTabCustomizeUpdatePreview);
 
 nil;

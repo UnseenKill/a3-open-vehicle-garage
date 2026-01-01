@@ -1,12 +1,11 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_dialogCustomizeUpdatePreview
+Function: A3OVG_ui_fnc_dialogTabCustomizeUpdatePreview
 
 Description:
     Update customization preview with currently selected vehicle and customization.
 
 Parameters:
-    0: _vehicle - Vehicle object to update preview for <OBJECT>
 
 Optional:
 
@@ -19,13 +18,10 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogCustomizeUpdatePreview),_display);
+A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogTabCustomizeUpdatePreview),_display);
 
-if !assert(params[
-    ["_vehicle", nil, [createHashMap]]
-]) exitWith {};
-
-if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+private _vehicle = _display getVariable QGVAR(vehicle);
+if (isNil "_vehicle") exitWith {};
 if (isNil { uiNamespace getVariable QGVAR(cameraPiP) }) exitWith {};
 
 private _camera = uiNamespace getVariable QGVAR(cameraPiP);

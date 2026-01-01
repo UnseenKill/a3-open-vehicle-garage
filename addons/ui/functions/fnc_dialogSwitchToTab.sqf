@@ -15,12 +15,13 @@ Returns:
     Nothing
 
 Environment:
-    Client, Unscheduled
+    Client, Scheduled
 
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
 A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogSwitchToTab),_display);
+A3OVG_MAKE_SCHEDULED(FUNC(dialogSwitchToTab));
 
 if !assert(params[
     ["_idcTabHostCtrl", nil, [0]]
@@ -29,12 +30,15 @@ if !assert(params[
 private _tabHostCtrl = _display displayCtrl _idcTabHostCtrl;
 if !assert(!isNull _tabHostCtrl) exitWith {};
 
-private _onActivateCallback = _tabHostCtrl getVariable[QGVAR(onActivateCallback), {}];
-private _canSwitch = [_tabHostCtrl] call _onActivateCallback;
-
-if (!isNil "_canSwitch" && { _canSwitch isEqualTo false }) exitWith {
+private _canSwitch = try {
+    [A3OVG_EVENT_UI_DIALOG_TABCHANGED_BEFORE, [_tabHostCtrl]] call CBA_fnc_localEvent;
+    true;
+} catch {
     INFO("Tab switch prevented by onActivateCallback.");
+    false;
 };
+
+if !(_canSwitch) exitWith {};
 
 private _controls = _display getVariable QGVAR(controls);
 
@@ -47,5 +51,8 @@ allControls (_controls get "tabHost")
         _x ctrlSetFade(parseNumber(_x isNotEqualTo _tabHostCtrl));
         _x ctrlCommit 0.25;
     };
+
+waitUntil { ctrlCommitted _tabHostCtrl };
+[A3OVG_EVENT_UI_DIALOG_TABCHANGED_AFTER, [_tabHostCtrl]] call CBA_fnc_localEvent;
 
 nil;

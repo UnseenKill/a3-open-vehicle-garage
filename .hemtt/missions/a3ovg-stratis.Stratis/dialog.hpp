@@ -276,7 +276,7 @@ class GVAR(Dialog) {
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
 
-                                    onLoad = QUOTE((_this select 0) setVariable[ARR_2(QQGVAR(isMainTabhost),true)]);
+                                    onLoad = QUOTE([ARR_2(_this select 0,{call FUNC(dialogTabOverviewOnLoad)})] call FUNC(dialogRegisterTabHostCtrl));
 
                                     class Controls {
                                         class VehiclePicture: RscPictureKeepAspect {
@@ -343,7 +343,7 @@ class GVAR(Dialog) {
                                     w = QUOTE(safeZoneW * 0.6 - pixelW * 24);
                                     h = QUOTE(safeZoneH * 0.75 - pixelH * 40 - lineHeight);
 
-                                    onLoad = QUOTE([ARR_2(_this select 0,{call FUNC(dialogTabCustomizeOnActivate)})] call FUNC(dialogRegisterTabHostCtrl));
+                                    onLoad = QUOTE([ARR_2(_this select 0,{call FUNC(dialogTabCustomizeOnLoad)})] call FUNC(dialogRegisterTabHostCtrl));
 
                                     class Controls {
                                         class PipDisabledHint: RscText {

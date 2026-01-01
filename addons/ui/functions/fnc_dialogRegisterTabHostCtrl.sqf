@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     0: _tabHostCtrl - Tab host control <CONTROL>
-    1: _onActivateCallback - On activate callback <CODE>
+    1: _onLoadCallback - On activate callback <CODE>
 
 Optional:
 
@@ -24,11 +24,11 @@ A3OVG_UI_FUNCTION_PREAMBLE_WAIT_FOR_DISPLAY(QFUNC(dialogRegisterTabHostCtrl),_di
 
 if !assert(params[
     ["_tabHostCtrl", nil, [controlNull]],
-    ["_onActivateCallback", nil, [{}]]
+    ["_onLoadCallback", nil, [{}]]
 ]) exitWith {};
 if !assert(!isNull _tabHostCtrl) exitWith {};
 
 _tabHostCtrl setVariable[QGVAR(isMainTabhost), true];
-_tabHostCtrl setVariable[QGVAR(onActivateCallback), _onActivateCallback];
+[_tabHostCtrl] call _onLoadCallback;
 
 nil;
