@@ -52,15 +52,18 @@ private _eventMap = [
     [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
 ];
 
+// Set up UI namespace variables; keep those low and use the _display instead where applicable
 uiNamespace setVariable[QGVAR(dialog), _display];
 uiNamespace setVariable[QGVAR(events), _eventMap apply {
     _x params["_event","_handler"];
     [_event, [_event, _handler] call CBA_fnc_addEventHandler]
 }];
 
+// ...like so.
 _display setVariable[QGVAR(controls), _dialogControls];
 _display setVariable[QGVAR(vehicles), createHashMap];
 
+// Force-fade all tab host controls, so `ctrlFade` returns a correct value later on.
 allControls (_dialogControls get "tabHost") 
     select {
         (ctrlType _x isEqualTo CT_CONTROLS_GROUP) &&
@@ -70,14 +73,12 @@ allControls (_dialogControls get "tabHost")
         _x ctrlCommit 0;
     };
 
+// Set tab switcher buttons events handlers
 allControls (_dialogControls get "hostGrpTabButtons") 
     select { ctrlType _x isEqualTo CT_BUTTON }
     apply { _x ctrlAddEventHandler["ButtonClick", { call FUNC(dialogOnTabButtonClick) }] };
 
-_display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_PREVIEW_PIPDISABLED ctrlShow !isPiPEnabled;
-_display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP ctrlShow isPiPEnabled;
-_display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP setVariable[QGVAR(camera), [30, 20, 1.15]];
-
+// Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
 
