@@ -36,7 +36,12 @@ private _data = _storage call["readVehicle", [_uuid]];
 
 if (isNil "_data") exitWith {};
 
-private _vehicle = [QADDON, [objNull, _uuid]] call EFUNC(util,new);
-_vehicle set["_serialized", _data];
+try {
+    private _vehicle = [QADDON, [objNull, _uuid]] call EFUNC(util,new);
+    _vehicle call["loadFrom", [_data]];
 
-_vehicle;
+    _vehicle;
+} catch {
+    ERROR_2("failed to load vehicle data for UUID %1: %2",_uuid,_exception);
+    nil;
+};

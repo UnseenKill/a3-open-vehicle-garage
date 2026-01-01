@@ -31,7 +31,8 @@ if !assert(params[
     ["_vehicleUUIDs", nil, [[]]]
 ]) exitWith {};
 
-private _payload = _vehicleUUIDs apply { [_x] call EFUNC(vehicle,load) };
+private _payload = _vehicleUUIDs apply { [_x] call EFUNC(vehicle,load) }
+    select { !isNil "_x" };
 
 INFO_2("sending vehicle data payload response for %1 to player ID %2",_uuid,_requestor);
 

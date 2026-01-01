@@ -8,7 +8,9 @@ PREP(new);
 PREP(sortTOC);
 
 PREP(method_CTOR);
+PREP(method_isLocked);
 PREP(method_createUUID);
+PREP(method_loadFrom);
 PREP(method_serialize);
 PREP(method_serializeDamage);
 PREP(method_serializeFuel);
