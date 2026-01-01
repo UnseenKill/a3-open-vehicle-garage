@@ -10,6 +10,8 @@ Parameters:
     1: _handler - Event handler code <CODE>
 
 Optional:
+    2: _args - Optional event handler arguments <ARRAY>
+        Those will be available as `_thisArgs` (see: https://cbateam.github.io/CBA_A3/docs/files/events/fnc_addEventHandlerArgs-sqf.html)
 
 Example:
     (begin example)
@@ -32,6 +34,12 @@ if !assert(params[
     ["_handler", nil, [{}]]
 ]) exitWith {};
 
-uiNamespace getVariable QGVAR(events) pushBack[_event, [_event, _handler] call CBA_fnc_addEventHandler];
+private _args = param[2, nil, [[]]];
+
+if !(isNil "_args") then {
+    uiNamespace getVariable QGVAR(events) pushBack[_event, [_event, _handler, _args] call CBA_fnc_addEventHandlerArgs];
+} else {
+    uiNamespace getVariable QGVAR(events) pushBack[_event, [_event, _handler] call CBA_fnc_addEventHandler];
+};
 
 nil;

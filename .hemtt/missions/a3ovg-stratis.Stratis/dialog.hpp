@@ -131,6 +131,7 @@ class GVAR(Dialog) {
                                 };
 
                                 class ButtonShortLock: GVAR(RscMiniButton) {
+                                    idc = IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK;
                                     tooltip = CSTRING(GarageDialog_BtnLock_Label);
                                     text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayDynamicGroups\Lock.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 80);

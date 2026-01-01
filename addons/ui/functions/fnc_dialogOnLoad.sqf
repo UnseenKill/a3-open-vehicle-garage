@@ -78,6 +78,20 @@ allControls (_dialogControls get "hostGrpTabButtons")
     select { ctrlType _x isEqualTo CT_BUTTON }
     apply { _x ctrlAddEventHandler["ButtonClick", { call FUNC(dialogOnTabButtonClick) }] };
 
+// Lock button behavior
+[A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, {
+    TRACE_1(A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED,_this);
+    _thisArgs params[["_display", nil, [displayNull]]];
+
+    private _vehicle = _display getVariable QGVAR(vehicle);
+    private _label = [LSTRING(GarageDialog_BtnLock_Label), LSTRING(GarageDialog_BtnUnlock_Label)] select(
+        !(isNil "_vehicle") && { _vehicle call["isLocked", []] }
+    );
+
+    _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_LOCK ctrlSetText localize _label;
+    _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK ctrlSetTooltip localize _label;
+}, [_display]] call FUNC(subscribeToEvent);
+
 // Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);

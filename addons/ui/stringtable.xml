@@ -11,7 +11,7 @@
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Label">
             <English>Lock Vehicle</English>
-            <German>Fahrzeug verriegeln</German>
+            <German>Fahrzeug sperren</German>
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Tooltip">
             <English>Prevent others from removing this vehicle from the garage.</English>
@@ -44,6 +44,10 @@
         <Key ID="STR_A3OVG_UI_GarageDialog_BtnTabOverview_Label">
             <English>Overview</English>
             <German>Übersicht</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnUnlock_Label">
+            <English>Unlock Vehicle</English>
+            <German>Fahrzeug entsperren</German>
         </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle_Label">
             <English>Available Vehicles</English>
