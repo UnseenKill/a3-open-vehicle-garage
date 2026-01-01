@@ -132,33 +132,52 @@ class GVAR(Dialog) {
 
                                 class ButtonShortLock: GVAR(RscMiniButton) {
                                     idc = IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK;
+
                                     tooltip = CSTRING(GarageDialog_BtnLock_Label);
                                     text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayDynamicGroups\Lock.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 80);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED;
                                 };
 
                                 class ButtonShortRename: GVAR(RscMiniButton) {
+                                    idc = IDC_RSCGARAGEDIALOG_BTN_MINI_RENAME;
+
                                     tooltip = CSTRING(GarageDialog_BtnMiniRename_Label);
                                     text = "\z\a3ovg\addons\ui\icons\action-edit.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 128);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINIRENAME_CLICKED;
                                 };
 
                                 class ButtonShortRearm: GVAR(RscMiniButton) {
+                                    idc = IDC_RSCGARAGEDIALOG_BTN_MINI_REARM;
+
                                     tooltip = CSTRING(GarageDialog_BtnMiniRearm_Label);
                                     text = "\A3\Ui_F\data\IGUI\Cfg\Actions\reammo_ca.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 172);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINIREARM_CLICKED;
                                 };
 
                                 class ButtonShortRepair: GVAR(RscMiniButton) {
+                                    idc = IDC_RSCGARAGEDIALOG_BTN_MINI_REPAIR;
+
                                     tooltip = CSTRING(GarageDialog_BtnMiniRepair_Label);
                                     text = "\A3\Ui_F\data\IGUI\Cfg\Actions\repair_ca.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 220);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINIREPAIR_CLICKED;
                                 };
 
                                 class ButtonShortRefuel: GVAR(RscMiniButton) {
+                                    idc = IDC_RSCGARAGEDIALOG_BTN_MINI_REFUEL;
+
                                     tooltip = CSTRING(GarageDialog_BtnMiniRefuel_Label);
                                     text = "\A3\Ui_F\data\IGUI\Cfg\Actions\refuel_ca.paa";
                                     x = QUOTE(safeZoneW * 0.2 - pixelW * 268);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINIREFUEL_CLICKED;
                                 };
                             };
                         };
@@ -198,6 +217,8 @@ class GVAR(Dialog) {
                                     y = QUOTE(pixelH * 8);
                                     w = QUOTE((safeZoneW * 0.2 - pixelW * 16) / 2 - pixelW * 4);
                                     h = QUOTE(lineHeight);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED;
                                 };
                             };
                         };

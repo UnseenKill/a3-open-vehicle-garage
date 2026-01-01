@@ -92,6 +92,27 @@ allControls (_dialogControls get "hostGrpTabButtons")
     _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK ctrlSetTooltip localize _label;
 }, [_display]] call FUNC(subscribeToEvent);
 
+// Buttons dialog config event handlers setup
+private _buttonsConfigs = [configFile >> QGVAR(Dialog), {
+    isText(_config >> QGVAR(buttonClickEvent));
+}] call EFUNC(util,scourConfig);
+
+_buttonsConfigs apply {
+    private _idc = getNumber(_x >> "idc");
+    private _control = _display displayCtrl _idc;
+
+    TRACE_2(QFUNC(dialogOnLoad),_idc,_control);
+
+    if assert(_control isEqualType controlNull) then {
+        _control setVariable[QGVAR(event), getText(_x >> QGVAR(event))];
+        _control ctrlAddEventHandler["ButtonClick", {
+            params["_control"];
+            TRACE_1(_control getVariable QGVAR(event),_control);
+            [_control getVariable QGVAR(event), [_control, uiNamespace getVariable QGVAR(dialog)]] call CBA_fnc_localEvent;
+        }];
+    };
+};
+
 // Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
