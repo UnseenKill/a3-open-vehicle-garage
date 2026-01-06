@@ -1,3 +1,4 @@
+PREP(broadcastEvent);
 PREP(getClassModInfo);
 PREP(getParentMethod);
 PREP(new);

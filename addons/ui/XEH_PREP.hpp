@@ -1,3 +1,4 @@
+PREP(dialogButtonLockClicked);
 PREP(dialogCreateVehicleDynamicInfo);
 PREP(dialogFetchCategory);
 PREP(dialogOnEventVehicleChanged);

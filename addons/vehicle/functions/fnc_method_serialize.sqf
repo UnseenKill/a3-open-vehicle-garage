@@ -37,19 +37,9 @@ _data set["class", typeOf _vehicle];
 _data set["custom", [_vehicle] call BIS_fnc_getVehicleCustomization];
 _data set["displayName", getText(configOf _vehicle >> "displayName")];
 
-_data set["_properties", createHashMapFromArray[
-    ["_category", _self get "_category"],
-    ["_className", _self get "_className"],
-    ["_displayName", _self get "_displayName"],
-    ["_owner", _self get "_owner"],
-    ["_ownerLock", _self get "_ownerLock"],
-    ["_serialized", nil],
-    ["_uuid", _self get "_uuid"],
-    ["_vehicle", nil]
-]];
-
 _self call["serializeFuel", [_data]];
 _self call["serializeDamage", [_data]];
+_self call["serializeProperties", [_data]];
 _self call["serializeResupply", [_data]];
 _self call["serializeWeaponry", [_data]];
 _self call["serializeInventory", [_data]];

@@ -113,6 +113,9 @@ _buttonsConfigs apply {
     };
 };
 
+// Set up buttons event handlers
+[A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockClicked) }, [_display]] call FUNC(subscribeToEvent);
+
 // Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);
 [] spawn FUNC(triggerServerLoadTOC);
