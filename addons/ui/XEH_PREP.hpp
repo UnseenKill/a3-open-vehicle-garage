@@ -6,6 +6,8 @@ PREP(dialogOnLoad);
 PREP(dialogOnTabButtonClick);
 PREP(dialogOnUnload);
 PREP(dialogOnUpdateTOC);
+PREP(dialogPopStatusMessage);
+PREP(dialogPushStatus);
 PREP(dialogRegisterTabHostCtrl);
 PREP(dialogSetLoading);
 PREP(dialogSwitchToTab);

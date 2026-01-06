@@ -40,7 +40,6 @@ private _idcTabActivate = param[1, -1, [0]];
 private _controls = _display getVariable QGVAR(controls);
 private _mainGroup = _controls get "mainGroup";
 private _tabHost = _controls get "tabHost";
-private _statusBar = _controls get "statusBar";
 
 [!_isLoading, true] call FUNC(dialogUpdateUI);
 
@@ -54,9 +53,9 @@ private _active = _tabs findIf {
 };
 
 if (_isLoading) then {
-    _statusBar ctrlSetText LLSTRING(GarageDialog_Status_Loading);
+    [A3OVG_EVENT_UI_PUSHSTATUS, [LLSTRING(GarageDialog_Status_Loading), false, 0]] call CBA_fnc_localEvent;
 } else {
-    _statusBar ctrlSetText LLSTRING(GarageDialog_Status_Ready);
+    [A3OVG_EVENT_UI_PUSHSTATUS, [LLSTRING(GarageDialog_Status_Ready), false, 0]] call CBA_fnc_localEvent;
 };
 
 (_tabs select 0) ctrlSetFade([1, 0] select _isLoading);

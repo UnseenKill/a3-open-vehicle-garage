@@ -396,13 +396,31 @@ class GVAR(Dialog) {
             };
         };
 
-        class StatusBar: GVAR(RscTextTitle) {
-            idc = IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR;
-            text = "";
+        class StatusControlHost: RscControlsGroup {
             x = QUOTE(safeZoneX + safeZoneW * 0.1);
             y = QUOTE(safeZoneY + safeZoneH * 0.88 + pixelH * 16);
             w = QUOTE(safeZoneW * 0.725);
             h = QUOTE(lineHeight);
+
+            class Controls {
+                class Background: GVAR(RscTextTitle) {
+                    w = QUOTE(safeZoneW * 0.725);
+                    h = QUOTE(lineHeight);
+                };
+
+                class StatusBar0: GVAR(RscTextTitle) {
+                    idc = IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR0;
+                    w = QUOTE(safeZoneW * 0.725);
+                    h = QUOTE(lineHeight);
+                };
+
+                class StatusBar1: GVAR(RscTextTitle) {
+                    fade = 1;
+                    idc = IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR1;
+                    w = QUOTE(safeZoneW * 0.725);
+                    h = QUOTE(lineHeight);
+                };
+            };
         };
 
         class BtnClose: GVAR(RscButtonDefault) {

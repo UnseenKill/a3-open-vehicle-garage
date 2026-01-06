@@ -57,9 +57,8 @@ while { !(_loadSuccess) } do {
 
     if ((diag_tickTime - _stamp) > 5) then {
         WARNING_1("Waiting a long time for vehicle TOC from server: %1 seconds.",diag_tickTime - _stamp);
-        _display getVariable QGVAR(controls)
-            get "statusBar"
-            ctrlSetText LLSTRING(GarageDialog_Status_WaitingForServerTOC);
+        
+        [A3OVG_EVENT_UI_PUSHSTATUS, [LLSTRING(GarageDialog_Status_WaitingForServerTOC), true, 0]] call CBA_fnc_localEvent;
     };
 
     if ((diag_tickTime - _stamp) > 15) then {

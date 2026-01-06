@@ -42,7 +42,7 @@ private _dialogControls = createHashMapFromArray[
     ["previewVehicleCredit", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_TAB_OVERVIEW_VEHICLEAUTHOR],
     ["previewVehicleEditorPreview", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_OVERVIEW_VEHICLEEDITORPREVIEW],
     ["previewVehicleTextHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_OVERVIEW_VEHICLEDYNAMICTEXTHOST],
-    ["statusBar", _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR],
+    ["statusBar", [_display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR0, _display displayCtrl IDC_RSCGARAGEDIALOG_TEXT_STATUSBAR1]],
     ["tabHost", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TABHOST],
     ["treeView", _display displayCtrl IDC_RSCGARAGEDIALOG_LIST_VEHICLES],
     ["waitTab", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_TAB_WAIT]
@@ -62,6 +62,8 @@ uiNamespace setVariable[QGVAR(events), _eventMap apply {
 
 // ...like so.
 _display setVariable[QGVAR(controls), _dialogControls];
+_display setVariable[QGVAR(messageIndex), 0];
+_display setVariable[QGVAR(messageStack), []];
 _display setVariable[QGVAR(vehicles), createHashMap];
 
 // Force-fade all tab host controls, so `ctrlFade` returns a correct value later on.
@@ -117,6 +119,9 @@ _buttonsConfigs apply {
 
 // Set up buttons event handlers
 [A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockClicked) }, [_display]] call FUNC(subscribeToEvent);
+
+// Status bar messages
+[A3OVG_EVENT_UI_PUSHSTATUS, { call FUNC(dialogPushStatus) }, [_display]] call FUNC(subscribeToEvent);
 
 // Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);

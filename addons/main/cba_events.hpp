@@ -16,6 +16,10 @@
 #define A3OVG_EVENT_UI_DIALOG_TABCHANGED_AFTER QUOTE(TRIPLES(PREFIX,event,uiDialogTabChangedAfter))
 // Params: [Control _tabHostCtrl]
 #define A3OVG_EVENT_UI_DIALOG_TABCHANGED_BEFORE QUOTE(TRIPLES(PREFIX,event,uiDialogTabChangedBefore))
+
+// Params: [String _statusText[, Bool _isError[, Number _displayTime]]]
+#define A3OVG_EVENT_UI_PUSHSTATUS QUOTE(TRIPLES(PREFIX,event,uiSetStatus))
+
 // Params: [Vehicle _vehicle]
 #define A3OVG_EVENT_UI_VEHICLE_DATACHANGED QUOTE(TRIPLES(PREFIX,event,uiVehicleChanged))
 // Params: []
