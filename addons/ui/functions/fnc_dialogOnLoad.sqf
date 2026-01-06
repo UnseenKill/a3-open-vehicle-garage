@@ -31,6 +31,7 @@ if !assert(!isNull _display) exitWith {};
 INFO("Garage Dialog loading.");
 
 private _dialogControls = createHashMapFromArray[
+    ["btnSelect", _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_SPAWN],
     ["customizePicPip", _display displayCtrl IDC_RSCGARAGEDIALOG_PIC_TAB_PREVIEW_PIP],
     ["hostGrpButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_BUTTONSHOST],
     ["hostGrpMiniButtons", _display displayCtrl IDC_RSCGARAGEDIALOG_GROUP_MINIBTNHOST],
@@ -83,13 +84,14 @@ allControls (_dialogControls get "hostGrpTabButtons")
     TRACE_1(A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED,_this);
     _thisArgs params[["_display", nil, [displayNull]]];
 
+    // Call update UI
     private _vehicle = _display getVariable QGVAR(vehicle);
-    private _label = [LSTRING(GarageDialog_BtnLock_Label), LSTRING(GarageDialog_BtnUnlock_Label)] select(
-        !(isNil "_vehicle") && { _vehicle call["isLocked", []] }
-    );
 
-    _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_LOCK ctrlSetText localize _label;
-    _display displayCtrl IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK ctrlSetTooltip localize _label;
+    if !(isNil "_vehicle") then {
+        [true] call FUNC(dialogUpdateUI);
+    } else {
+        [false, false] call FUNC(dialogUpdateUI);
+    };
 }, [_display]] call FUNC(subscribeToEvent);
 
 // Buttons dialog config event handlers setup
@@ -104,11 +106,11 @@ _buttonsConfigs apply {
     TRACE_2(QFUNC(dialogOnLoad),_idc,_control);
 
     if assert(_control isEqualType controlNull) then {
-        _control setVariable[QGVAR(event), getText(_x >> QGVAR(event))];
+        _control setVariable[QGVAR(buttonClickEvent), getText(_x >> QGVAR(buttonClickEvent))];
         _control ctrlAddEventHandler["ButtonClick", {
             params["_control"];
-            TRACE_1(_control getVariable QGVAR(event),_control);
-            [_control getVariable QGVAR(event), [_control, uiNamespace getVariable QGVAR(dialog)]] call CBA_fnc_localEvent;
+            TRACE_1(_control getVariable QGVAR(buttonClickEvent),_control);
+            [_control getVariable QGVAR(buttonClickEvent), [_control, uiNamespace getVariable QGVAR(dialog)]] call CBA_fnc_localEvent;
         }];
     };
 };

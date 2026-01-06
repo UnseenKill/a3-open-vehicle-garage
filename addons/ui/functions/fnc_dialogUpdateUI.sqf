@@ -35,7 +35,8 @@ if !assert(params[
 
 private _hardLock = param[1, false, [true]];
 private _controls = _display getVariable QGVAR(controls);
-private _haveSelection = (_display getVariable[QGVAR(vehicle), false] isEqualType createHashMap);
+private _vehicle = _display getVariable QGVAR(vehicle);
+private _haveSelection = !(isNil "_vehicle");
 private ["_hostCtrl","_isLocked"];
 
 // Buttons below the vehicle tree
@@ -43,6 +44,12 @@ _hostCtrl = _controls get "hostGrpButtons";
 _isLocked = !_isUiAvailable || { !_haveSelection };
 
 APPLY_LOCK();
+
+// Select button
+if (!_isLocked && { _vehicle call["isLocked", []] }) then {
+    _hostCtrl = _controls get "btnSelect";
+    _hostCtrl ctrlEnable false;
+};
 
 // Mini buttons above the vehicle tree
 _hostCtrl = _controls get "hostGrpMiniButtons";
@@ -61,5 +68,13 @@ _hostCtrl = _controls get "treeView";
 _isLocked = !_isUiAvailable && { _hardLock };
 
 _hostCtrl ctrlEnable !(_isLocked);
+
+// Update lock button and mini-button text according to vehicle selection
+private _label = [LSTRING(GarageDialog_BtnLock_Label), LSTRING(GarageDialog_BtnUnlock_Label)] select(
+    !(isNil "_vehicle") && { _vehicle call["isLocked", []] }
+);
+
+_display displayCtrl IDC_RSCGARAGEDIALOG_BTN_LOCK ctrlSetText localize _label;
+_display displayCtrl IDC_RSCGARAGEDIALOG_BTN_MINI_LOCK ctrlSetTooltip localize _label;
 
 nil;

@@ -85,11 +85,15 @@ if !isClass(configFile >> "CfgVehicles" >> (_vehicle get "_className")) then {
     _treeView tvSetColor[_nodePath, [0.5, 0.5, 0.5, 1]];
     _treeView tvSetTooltip[_nodePath, format[LLSTRING(GarageDialog_Status_VehicleClassUnknown), _vehicle get "_className"]];
 } else {
+    private _locked = _vehicle call["isLocked", []];
+
     _treeView tvSetData[_nodePath, _uuid];
     _treeView tvSetText[_nodePath, _vehicle get "_displayName"];
 
+    TRACE_2(QFUNC(dialogTreeUpdateVehicleEntry),_uuid,_locked);
+
     if !(_vehicle call["isLocked", []]) then {
-        _treeView tvSetPictureRight[_nodePath, ""];
+        _treeView tvSetPictureRight[_nodePath, "#(rgb,8,8,3)color(0,0,0,0)"];
     } else {
         _treeView tvSetPictureRight[_nodePath, "\A3\Ui_f\data\GUI\Rsc\RscDisplayDynamicGroups\Lock.paa"];
     };

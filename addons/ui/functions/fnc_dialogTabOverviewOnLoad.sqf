@@ -42,6 +42,8 @@ if !assert(!isNull _tabHostCtrl) exitWith {};
 
     if !assert(isClass _config) exitWith {};
 
+    private _controls = _display getVariable QGVAR(controls);
+
     // Vehicle display name
     private _displayName = [];
 

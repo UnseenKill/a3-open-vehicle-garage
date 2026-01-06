@@ -38,7 +38,7 @@ if (_vehicle call["isLocked", []]) then {
 
 _vehicle call["saveProperties", []];
 
-[A3OVG_EVENT_UI_VEHICLE_DATACHANGED, [_vehicle], true] call EFUNC(util,broadcastEvent);
+[A3OVG_EVENT_UI_VEHICLE_DATACHANGED, [_vehicle]] call EFUNC(util,broadcastEvent);
 [A3OVG_EVENT_UI_VEHICLE_SELECTIONCHANGED, []] call CBA_fnc_localEvent;
 
 nil;

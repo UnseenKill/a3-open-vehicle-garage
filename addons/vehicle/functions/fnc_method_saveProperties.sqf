@@ -26,6 +26,6 @@ private _data = createHashMap;
 
 _self call["serializeProperties", [_data]];
 
-[_self call["getUUID", []], _data] remoteExecCall[QFUNC(saveProperties), 2];
+[_self call["getUUID", []], _data get "_properties"] remoteExecCall[QFUNC(saveProperties), 2];
 
 nil;

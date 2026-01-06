@@ -88,6 +88,13 @@ createHashMapFromArray[
     METHOD_DEFINE(loadFrom),
 
     /**
+     * saveProperties() -> Nothing
+     *
+     * Save vehicle properties to persistent storage.
+     */
+    METHOD_DEFINE(saveProperties),
+
+    /**
      * serialize() -> HashMap
      *
      * Convert vehicle to serializable data.
@@ -116,6 +123,13 @@ createHashMapFromArray[
     METHOD_DEFINE(serializeInventory),
 
     /**
+     * serializeProperties(HashMap data) -> Nothing
+     *
+     * Serialize vehicle properties into data.
+     */
+    METHOD_DEFINE(serializeProperties),
+
+    /**
      * serializeResupply(HashMap data) -> Nothing
      *
      * Serialize vehicle resupply state into data.
@@ -128,6 +142,14 @@ createHashMapFromArray[
      * Serialize vehicle weaponry state into data.
      */
     METHOD_DEFINE(serializeWeaponry),
+
+    /**
+     * setLocked(Boolean locked) -> Nothing
+     * setLocked(String uid) -> Nothing
+     *
+     * Clear vehicle lock (locked=false) or set to specific playerUID.
+     */
+    METHOD_DEFINE(setLocked),
 
     /**
      * setOwner(Number playerUID) -> Nothing
