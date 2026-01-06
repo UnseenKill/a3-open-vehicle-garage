@@ -1,5 +1,6 @@
 #define __A3OVG_IS_3DEN__
 #include "script_component.hpp"
+#include "dialog.hpp"
 
 missionGroup = "A3OVG_MISSION_GROUP";
 

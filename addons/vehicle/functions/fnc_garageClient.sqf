@@ -33,6 +33,23 @@ if !assert(params[
 
 if !assert(!isNull _vehicle) exitWith {};
 
-[_vehicle, player] remoteExecCall[QFUNC(garageServer), 2];
+A3OVG_UI_PUSH_CONTEXT();
+
+private _attached = attachedObjects _vehicle select {
+    !(["canIgnoreAttached", [_x]] call EFUNC(core,runCallback));
+};
+
+private _index = _attached findIf {
+    !(["canVehicleGarage", [_x, player]] call EFUNC(core,runCallback));
+};
+
+if (_index != -1) exitWith {
+    INFO_3("vehicle garaging of %1 denied by attached object %2 for %3",_vehicle,_attached select _index,player);
+    [format[LELSTRING(UI,VehicleGarageDeniedAttached), A3OVG_VEH_NAME(_attached select _index)]] call EFUNC(ui,showHint);
+};
+
+A3OVG_UI_POP_CONTEXT();
+
+[_attached + [_vehicle], player] remoteExecCall[QFUNC(garageServer), 2];
 
 nil;

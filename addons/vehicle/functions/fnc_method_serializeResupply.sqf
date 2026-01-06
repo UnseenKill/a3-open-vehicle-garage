@@ -36,11 +36,13 @@ private _vehicle = _self get "_vehicle";
 _data set["cargo", createHashMapFromArray[
     ["rearm", createHashMapFromArray[
         ["cargo", getAmmoCargo _vehicle],
-        ["ace", if (A3OVG_HAVE_ACE()) then[{[_vehicle] call ace_rearm_fnc_getSupplyCount}, {0}]]
+        ["aceCurrent", if (A3OVG_HAVE_ACE()) then[{[_vehicle] call ace_rearm_fnc_getSupplyCount}, {-1}]],
+        ["aceMax", getNumber(configOf _vehicle >> "ace_rearm_defaultSupply")]
     ]],
     ["refuel", createHashMapFromArray[
         ["cargo", getFuelCargo _vehicle],
-        ["ace", if (A3OVG_HAVE_ACE()) then[{_vehicle getVariable["ace_refuel_currentFuelCargo", getNumber(configOf _vehicle >> "ace_refuel_fuelCargo")]}, {0}]]
+        ["aceCurrent", if (A3OVG_HAVE_ACE()) then[{_vehicle getVariable["ace_refuel_currentFuelCargo", -1]}, {-1}]],
+        ["aceMax", getNumber(configOf _vehicle >> "ace_refuel_fuelCargo")]
     ]],
     ["repair", createHashMapFromArray[
         ["cargo", getRepairCargo _vehicle]
