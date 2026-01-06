@@ -53,6 +53,20 @@ createHashMapFromArray[
     METHOD_DEFINE_NAME(#create,CTOR),
 
     /**
+     * canLock(Object player) -> Boolean
+     *
+     * Check if the vehicle can be locked by a player.
+     */
+    METHOD_DEFINE(canLock),
+
+    /**
+     * canUnlock(Object player) -> Boolean
+     *
+     * Check if the vehicle can be unlocked by a player.
+     */
+    METHOD_DEFINE(canUnlock),
+
+    /**
      * createUUID() -> String
      *
      * Generate a new UUID for the vehicle.

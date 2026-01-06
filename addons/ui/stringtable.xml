@@ -209,5 +209,25 @@
             <English>Garage %1</English>
             <German>Fahrzeug %1 abstellen</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_VehicleLockDeniedOwner">
+            <English>You are not the owner of this vehicle.</English>
+            <German>Du bist nicht der Besitzer dieses Fahrzeugs.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleLockSuccess">
+            <English>%1 has been locked successfully.</English>
+            <German>%1 wurde erfolgreich gesperrt.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleToggleLockDenied">
+            <English>You are not allowed to lock/unlock this vehicle.</English>
+            <German>Du darfst dieses Fahrzeug nicht sperren/entsperren.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleUnlockDeniedOwner">
+            <English>You are not the owner of this vehicle.</English>
+            <German>Du bist nicht der Besitzer dieses Fahrzeugs.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleUnlockSuccess">
+            <English>%1 has been unlocked successfully.</English>
+            <German>%1 wurde erfolgreich entsperrt.</German>
+        </Key>
     </Package>
 </Project>

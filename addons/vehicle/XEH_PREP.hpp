@@ -9,6 +9,8 @@ PREP(saveProperties);
 PREP(sortTOC);
 
 PREP(method_CTOR);
+PREP(method_canLock);
+PREP(method_canUnlock);
 PREP(method_isLocked);
 PREP(method_createUUID);
 PREP(method_getCategory);
