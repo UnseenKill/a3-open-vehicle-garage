@@ -55,6 +55,13 @@ createHashMapFromArray[
     METHOD_ABSTRACT(readKey),
 
     /**
+     * readSectionKeys(String section) -> Array
+     *
+     * Get all keys in given section from storage backend.
+     */
+    METHOD_ABSTRACT(readSectionKeys),
+
+    /**
      * writeKey(String section, String key, Any value) -> Bool
      *
      * Write value to storage backend.
@@ -99,6 +106,20 @@ createHashMapFromArray[
     METHOD_DEFINE(getKey),
 
     /**
+     * getSectionKeys(String section[, String prefix]) -> Array
+     *
+     * Get all keys in given section from storage backend with optional prefix.
+     */
+    METHOD_DEFINE(getSectionKeys),
+
+    /**
+     * getVehicleTOC() -> Hashmap
+     *
+     * Retrieve the Table of Contents (TOC) for vehicles.
+     */
+    METHOD_DEFINE(getVehicleTOC),
+
+    /**
      * initialize() -> Nothing
      *
      * Initialize storage adapter instance. Called after construction.
@@ -111,6 +132,13 @@ createHashMapFromArray[
      * Read serialized data from storage backend.
      */
     METHOD_DEFINE(read),
+
+    /**
+     * readVehicle(String uuid) -> HashMap
+     *
+     * Load serialized vehicle storage data from storage backend.
+     */
+    METHOD_DEFINE(readVehicle),
 
     /**
      * removeVehicle(String uuid) -> Bool

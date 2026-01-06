@@ -40,6 +40,7 @@ private _result = if !(_create) then {
 } else {
     _self call["write", [SECTION_TOC, _key, createHashMapFromArray[
         ["class", _data get "class"],
+        ["category", _data get "category"],
         ["displayName", _data get "displayName"]
     ]]];
 };

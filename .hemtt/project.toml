@@ -17,11 +17,22 @@ workshop = [
     "1779063631", # ZEN
 ]
 
+[hemtt.launch.ace3]
+workshop = [
+    "463939057", # ACE3
+]
+
 [hemtt.launch.inidbi2]
 workshop = [
     "1768992669", # INIDBI2
 ]
 
+[hemtt.launch.bwmod]
+workshop = [
+    "1200127537", # BwMOD
+]
+
 [hemtt.launch.stratis]
+dlc = ["Reaction Forces"]
 extends = "default"
 mission = "a3ovg-stratis.Stratis"

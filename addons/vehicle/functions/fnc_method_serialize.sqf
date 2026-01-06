@@ -39,6 +39,7 @@ _data set["displayName", getText(configOf _vehicle >> "displayName")];
 
 _self call["serializeFuel", [_data]];
 _self call["serializeDamage", [_data]];
+_self call["serializeProperties", [_data]];
 _self call["serializeResupply", [_data]];
 _self call["serializeWeaponry", [_data]];
 _self call["serializeInventory", [_data]];
