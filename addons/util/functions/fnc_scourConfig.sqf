@@ -24,7 +24,8 @@ Example:
     (end example)
 
 Returns:
-    <ARRAY> An array of config classes that meet the condition.
+    <ARRAY> An array of config classes that meet the condition (_findFirst=false).
+    <CONFIG> First config class to meet the condition (_findFirst=true).
 
 Environment:
     Client/Server, Unscheduled

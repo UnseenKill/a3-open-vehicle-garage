@@ -49,6 +49,10 @@ private _dialogControls = createHashMapFromArray[
 ];
 
 private _eventMap = [
+    // Buttons event handlers
+    [A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockClicked) }],
+    // Status bar messages
+    [A3OVG_EVENT_UI_PUSHSTATUS, { call FUNC(dialogPushStatus) }],
     // A3OVG_EVENT_UI_VEHICLE_DATACHANGED(Vehicle _vehicle)
     [A3OVG_EVENT_UI_VEHICLE_DATACHANGED, { call FUNC(dialogOnEventVehicleChanged) }]
 ];
@@ -116,12 +120,6 @@ _buttonsConfigs apply {
         }];
     };
 };
-
-// Set up buttons event handlers
-[A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockClicked) }, [_display]] call FUNC(subscribeToEvent);
-
-// Status bar messages
-[A3OVG_EVENT_UI_PUSHSTATUS, { call FUNC(dialogPushStatus) }, [_display]] call FUNC(subscribeToEvent);
 
 // Set dialog to "loading" and trigger loading of TOC from server
 [true] call FUNC(dialogSetLoading);

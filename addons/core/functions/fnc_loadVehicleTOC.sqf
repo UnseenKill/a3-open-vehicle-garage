@@ -13,7 +13,8 @@ Optional:
 
 Example:
     (begin example)
-    private _vehicleTOC = [] call EFUNC(core,loadVehicleTOC);
+    // Server stores result in missionNamespace with UUID for player with ID 123
+    ["some-uuid-string", 123] call EFUNC(core,loadVehicleTOC);
     (end example)
 
 Returns:
