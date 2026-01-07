@@ -45,6 +45,7 @@ private _object = (_vehicle get "_className") createVehicle[0,0,0];
 try {
     if !assert(!isNull _object) then { throw "Vehicle creation returned null object." };
 
+    _vehicle call["restore", [_object]];
     _object setPosATL _position;
     _object setVectorDirAndUp _vectorDirAndUp;
     _vehicle call["delete", []];
