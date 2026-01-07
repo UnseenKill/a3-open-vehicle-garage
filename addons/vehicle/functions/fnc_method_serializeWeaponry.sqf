@@ -35,7 +35,7 @@ private _vehicle = _self get "_vehicle";
 
 _data set["weaponry", createHashMapFromArray[
     ["magazines", magazinesAllTurrets _vehicle],
-    ["pylons", getAllPylonsInfo _vehicle]
+    ["pylons", getAllPylonsInfo _vehicle apply { _x select[0, 5] }]
 ]];
 
 nil;
