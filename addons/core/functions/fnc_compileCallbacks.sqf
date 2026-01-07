@@ -30,12 +30,10 @@ private _callbacks = createHashMap;
 
 configProperties[_config >> "Callbacks", "true", true] apply {
     private _key = toLowerANSI configName _x;
-    private _statements = if isText(_x) then {
-        [getText _x]
-    } else {
-        if isArray(_x) then {
-            getArray _x
-        };
+    private _statements = switch true do {
+        case isText(_x): { [getText _x] };
+        case isArray(_x): { getArray _x };
+        default { nil };
     };
 
     if !assert(!isNil "_statements") exitWith { ERROR_2("Callback %1 not found or not array/text: %2",_key,_x) };

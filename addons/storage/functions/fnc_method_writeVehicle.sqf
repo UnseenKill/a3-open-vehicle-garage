@@ -31,7 +31,7 @@ if !assert(params[
 
 try {
     if !(_self call["removeVehicle", [_uuid]]) then {
-        throw format["failed to delete vehicle UUID %1: %2", _uuid, str _exception];
+        throw format["failed to delete vehicle UUID %1", _uuid];
     };
 
     private _key = _self call["getKey", [_uuid]];
