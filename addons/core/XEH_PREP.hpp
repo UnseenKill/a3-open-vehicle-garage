@@ -7,6 +7,7 @@ PREP(loadVehicleUUIDs);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
 PREP(setMutex);
+PREP(vehicleSelect);
 PREP(verifyConfig);
 PREP(verifyConfigServer);
 PREP(verifyConfigStorage);
