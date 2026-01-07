@@ -97,6 +97,10 @@
             <English>Loading stuff...</English>
             <German>Lade Sachen...</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_OperationTimedOut">
+            <English>Operation timed out after %1 seconds. Please try again.</English>
+            <German>Die Operation wurde nach %1 Sekunden abgebrochen. Bitte versuche es erneut.</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_Ready">
             <English>Ready.</English>
             <German>Bereit.</German>
@@ -216,6 +220,14 @@
         <Key ID="STR_A3OVG_UI_VehicleLockSuccess">
             <English>%1 has been locked successfully.</English>
             <German>%1 wurde erfolgreich gesperrt.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleSelectAwaitMutex">
+            <English>Waiting for server to acknowledge reservation...</English>
+            <German>Warte darauf, dass der Server die Reservierung bestätigt...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleSelectDeniedMutex">
+            <English>Another selection for this vehicle is in progress. Please wait a moment and try again.</English>
+            <German>Eine andere Fahrzeugauswahl ist im Gange. Bitte warte einen Moment und versuche es erneut.</German>
         </Key>
         <Key ID="STR_A3OVG_UI_VehicleToggleLockDenied">
             <English>You are not allowed to lock/unlock this vehicle.</English>

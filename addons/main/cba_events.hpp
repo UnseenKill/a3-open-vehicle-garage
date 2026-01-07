@@ -11,6 +11,8 @@
 #define A3OVG_EVENT_UI_BUTTON_MINIREPAIR_CLICKED QUOTE(TRIPLES(PREFIX,event,uiButtonMiniRepairClicked))
 // Params: [Control _button, Display _display]
 #define A3OVG_EVENT_UI_BUTTON_MINIREFUEL_CLICKED QUOTE(TRIPLES(PREFIX,event,uiButtonMiniRefuelClicked))
+// Params: [Control _button, Display _display]
+#define A3OVG_EVENT_UI_BUTTON_SELECT_CLICKED QUOTE(TRIPLES(PREFIX,event,uiButtonSelectClicked))
 
 // Params: [Control _tabHostCtrl]
 #define A3OVG_EVENT_UI_DIALOG_TABCHANGED_AFTER QUOTE(TRIPLES(PREFIX,event,uiDialogTabChangedAfter))

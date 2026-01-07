@@ -207,6 +207,8 @@ class GVAR(Dialog) {
                                     y = QUOTE(pixelH * 8);
                                     w = QUOTE((safeZoneW * 0.2 - pixelW * 16) / 2 - pixelW * 4);
                                     h = QUOTE(lineHeight);
+
+                                    GVAR(buttonClickEvent) = A3OVG_EVENT_UI_BUTTON_SELECT_CLICKED;
                                 };
 
                                 class ButtonLock: RscButton {
