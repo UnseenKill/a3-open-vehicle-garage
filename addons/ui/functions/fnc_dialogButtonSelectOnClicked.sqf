@@ -49,7 +49,9 @@ if ([_uuid] call EFUNC(core,isMutexLocked)) exitWith {
         params["_uuid"];
 
         while { dialog } do { closeDialog 0 };
-        [_uuid] call EFUNC(core,vehicleSelect);
+        [createHashMapFromArray[
+            ["_uuid", _uuid]
+        ]] call EFUNC(core,vehicleSelect);
     },
     [_uuid]
 ] call FUNC(dialogWaitUntilTrue);

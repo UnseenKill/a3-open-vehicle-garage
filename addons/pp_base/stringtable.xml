@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="PP_Base">
+        <Key ID="STR_A3OVG_PP_Base_Component">
+            <English>A3OVG - Position provider base class component</English>
+            <German>A3OVG - Positionsanbieter Basisklassenkomponente</German>
+        </Key>
+    </Package>
+</Project>
