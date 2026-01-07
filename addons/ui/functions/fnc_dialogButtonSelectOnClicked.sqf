@@ -31,22 +31,25 @@ if !assert(!isNil "_vehicle") exitWith {};
 
 private _uuid = _vehicle call["getUUID", []];
 
-if (_uuid in GVAR(uuidMutex)) exitWith {
+if ([_uuid] call EFUNC(core,isMutexLocked)) exitWith {
     [A3OVG_EVENT_UI_PUSHSTATUS, [format[LLSTRING(VehicleSelectDeniedMutex), _vehicle get "displayName"], true]] call CBA_fnc_localEvent;
 };
 
-[_uuid, player] remoteExecCall[QFUNC(setMutex), 2];
+[_uuid, player] remoteExecCall[QEFUNC(core,setMutex), 2];
 
 [
     LLSTRING(VehicleSelectAwaitMutex),
     {
         params["_uuid"];
-        [_uuid] call FUNC(isMutexLocked);
+
+        [_uuid] call EFUNC(core,isMutexLocked);
     },
     {
         TRACE_1(QFUNC(dialogButtonSelectOnClicked),_this);
         params["_uuid"];
-        [_uuid] call FUNC(vehicleSelect);
+
+        while { dialog } do { closeDialog 0 };
+        [_uuid] call EFUNC(core,vehicleSelect);
     },
     [_uuid]
 ] call FUNC(dialogWaitUntilTrue);
