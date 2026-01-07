@@ -22,8 +22,6 @@ PREP(dialogTreeOnSelChanged);
 PREP(dialogTreeUpdateVehicleEntry);
 PREP(dialogUpdateUI);
 PREP(dialogWaitUntilTrue);
-PREP(isMutexLocked);
-PREP(setMutex);
 PREP(showHint);
 PREP(showHintSingle);
 PREP(subscribeToEvent);

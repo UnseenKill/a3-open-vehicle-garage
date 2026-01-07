@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_setMutex
+Function: A3OVG_core_fnc_setMutex
 
 Description:
     Sets or clears a mutex for a vehicle UUID to prevent concurrent selections.

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_isMutexLocked
+Function: A3OVG_core_fnc_isMutexLocked
 
 Description:
     Checks if a mutex is currently locked for a given vehicle UUID.

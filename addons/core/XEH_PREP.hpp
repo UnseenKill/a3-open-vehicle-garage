@@ -1,10 +1,12 @@
 PREP(compileCallbacks);
 PREP(compileStatements);
 PREP(getStorage);
+PREP(isMutexLocked);
 PREP(loadVehicleTOC);
 PREP(loadVehicleUUIDs);
 PREP(runCallback);
 PREP(sanitizeStoragePrefix);
+PREP(setMutex);
 PREP(verifyConfig);
 PREP(verifyConfigServer);
 PREP(verifyConfigStorage);
