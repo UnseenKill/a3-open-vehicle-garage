@@ -37,6 +37,9 @@ class A3OVG_CONFIG_CLASS_BASE {
 
     // Feature configurations
     class Features {
+        // Time (in seconds) after which a vehicle mutex expires. Mutexes are granted during vehicle selection.
+        // Prevents two players from selecting the same vehicle at the same time.
+        mutexTTL = 180;
         // Save vehicle inventory on garage store
         storeInventory = 1;
         // Add "garage vehicle" user actions to any vehicle
