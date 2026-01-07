@@ -9,7 +9,8 @@ Description:
 
 Parameters:
     0: _request - vehicle selection request <HASHMAP>
-        - "_uuid" : vehicle UUID <STRING>
+        - "_pp" : position provider addon name <STRING> (default: "A3OVG_pp_simple")
+        - "_vehicle" : vehicle object <HASHMAP>
 
 Optional:
 
@@ -29,9 +30,28 @@ if !assert(params[
 ]) exitWith {};
 
 if !assert([_request, [
-    ["_uuid", nil, [""]]
+    ["_pp", QUOTE(DOUBLES(PREFIX,pp_simple)), [""]],
+    ["_vehicle", nil, [createHashMap]]
 ]] call EFUNC(util,validateHashMap)) exitWith {};
 
+private _vehicle = _request get "_vehicle";
+if !assert(VALIDATE_OBJECT(_vehicle,QUOTE(DOUBLES(PREFIX,vehicle)))) exitWith {};
+
+private _uuid = _vehicle call["getUUID", []];
+private _pp = _request get "_pp";
+
 TRACE_1(QFUNC(vehicleSelect),_request);
+TRACE_2(QFUNC(vehicleSelect),_uuid,_pp);
+
+private _provider = [_pp, [_vehicle]] call EFUNC(util,new);
+
+if !assert(VALIDATE_OBJECT(_provider,QUOTE(DOUBLES(PREFIX,pp_base)))) exitWith {};
+
+try {
+    _provider call["getPositionAsync", [{ call FUNC(vehiclePositionClient) }]];
+} catch {
+    ERROR_1("Error trying to get vehicle position from provider: %1",_exception);
+    [_uuid, objNull] remoteExecCall[QFUNC(setMutex), 2];
+};
 
 nil;
