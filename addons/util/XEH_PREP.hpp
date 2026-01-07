@@ -4,3 +4,4 @@ PREP(getParentMethod);
 PREP(new);
 PREP(registerClassDefinition);
 PREP(scourConfig);
+PREP(validateHashMap);
