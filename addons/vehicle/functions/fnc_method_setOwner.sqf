@@ -31,12 +31,10 @@ if !assert(params[
     ["_player", nil, [objNull,""]]
 ]) exitWith {};
 
-private _uid = if (_player isEqualType "") then {
-    _player
-} else {
-    if assert(!isNull _player) then {
-        getPlayerUID _player;
-    };
+private _uid = switch true do {
+    case (_player isEqualType ""): { _player };
+    case assert(!isNull _player): { getPlayerUID _player };
+    default { nil };
 };
 
 if !assert(!isNil "_uid") exitWith {};
