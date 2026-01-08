@@ -26,5 +26,11 @@ Author:
 METHOD_PREAMBLE(getStorage);
 
 private _key = ["_nsKeyTemp","_nsKey"] select(_self get "_autoCommit");
+_key = _self get _key;
 
-profileNamespace getVariable(_self get _key);
+// We're keeping this check even though this storage adapter's DTOR should not
+// be called anymore when creating the singleton instance.
+// DTOR fix: 572ef6692f6340792d8d6b5daaa4f57f3564095f
+if !assert(!isNil { profileNamespace getVariable _key }) then { throw "Something is veeerry messed up." };
+
+profileNamespace getVariable _key;
