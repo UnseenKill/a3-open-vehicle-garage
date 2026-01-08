@@ -80,6 +80,11 @@ _display setVariable[QGVAR(toc), _toc];
 
 TRACE_1(QFUNC(triggerServerLoadTOC),_toc);
 
+if (keys _toc isEqualTo []) exitWith {
+    [LLSTRING(GarageDialog_Status_NoVehiclesInGarage)] call FUNC(showHintSingle);
+    while { dialog } do { closeDialog 1 };
+};
+
 [] call FUNC(dialogOnUpdateTOC);
 [false] call FUNC(dialogSetLoading);
 
