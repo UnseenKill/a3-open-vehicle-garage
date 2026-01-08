@@ -59,9 +59,7 @@ if (isNil QGVAR(storageSingleton)) then {
 
     _object call["initialize", []];
 
-    GVAR(storageSingleton) = compileFinal createHashMapFromArray[
-        ["_", _object]
-    ];
+    GVAR(storageSingleton) = _object;
 };
 
-GVAR(storageSingleton) get "_";
+GVAR(storageSingleton);
