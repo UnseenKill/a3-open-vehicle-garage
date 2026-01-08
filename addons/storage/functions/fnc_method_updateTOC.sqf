@@ -34,11 +34,10 @@ if !assert(params[
     ["_create", nil, [false]]
 ]) exitWith { false };
 
-private _key = _self call["getKey", [_uuid]];
 private _result = if !(_create) then {
-    _self call["deleteKey", [SECTION_TOC, _key]];
+    _self call["removeKey", [SECTION_TOC, _uuid]];
 } else {
-    _self call["write", [SECTION_TOC, _key, createHashMapFromArray[
+    _self call["write", [SECTION_TOC, _uuid, createHashMapFromArray[
         ["class", _data get "class"],
         ["category", _data get "category"],
         ["displayName", _data get "displayName"]

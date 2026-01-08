@@ -20,7 +20,7 @@ Example:
     (end example)
 
 Returns:
-    <ARRAY> - An array of keys in the specified section.
+    <ARRAY> - An array of UUID_raw in the specified section.
 
 Environment:
     Server, Unscheduled

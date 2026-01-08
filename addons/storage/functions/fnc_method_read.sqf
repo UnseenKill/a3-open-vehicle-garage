@@ -7,7 +7,7 @@ Description:
 
 Parameters:
     0: _section - Section name <STRING>
-    1: _key - Key name <STRING>
+    1: _key - Key name UUID_raw <STRING>
 
 Optional:
     2: _expectedDataTypes - Expected data types <ARRAY>
@@ -34,7 +34,7 @@ if !assert(params[
 ]) exitWith {};
 
 private _expectedDataTypes = param[2, nil, [[]]];
-private _value = _self call["readKey", [_section, _key]];
+private _value = _self call["readKey", [_section, _self call["getKey", [_key]]]];
 
 if (isNil "_value" || { isNil "_expectedDataTypes" }) exitWith { RETNIL(_value) };
 
