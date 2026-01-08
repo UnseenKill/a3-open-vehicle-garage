@@ -28,7 +28,7 @@ private _keys = _self call["getSectionKeys", [SECTION_TOC, _self get "_storagePr
 _keys apply {
     TRACE_1(QFUNC(method_purge),_x);
 
-    _self call["deleteKey", [SECTION_TOC, _x]];
+    _self call["removeKey", [SECTION_TOC, _x]];
     _self call["removeVehicle", [_x]];
 };
 

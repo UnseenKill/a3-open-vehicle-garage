@@ -148,6 +148,13 @@ createHashMapFromArray[
     METHOD_DEFINE(readVehicle),
 
     /**
+     * removeKey(String uuid) -> Bool
+     *
+     * Remove a single key.
+     */
+    METHOD_DEFINE(removeKey),
+
+    /**
      * removeVehicle(String uuid) -> Bool
      *
      * Remove vehicle storage data from storage backend.

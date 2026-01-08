@@ -34,9 +34,11 @@ if !assert(params[
     ["_value", nil]
 ]) exitWith { false };
 
+private _prefixedKey = _self call["getKey", [_key]];
+
 try {
-    _self call["writeKey", [_section, _key, _value]];
+    _self call["writeKey", [_section, _prefixedKey, _value]];
 } catch {
-    ERROR_4("%1() failed to write data for section %2, key %3: %4",QFUNC(method_write),_section,_key,str _exception);
+    ERROR_4("%1() failed to write data for section %2, key %3: %4",QFUNC(method_write),_section,_prefixedKey,str _exception);
     false;
 };
