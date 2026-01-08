@@ -1,21 +1,17 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_storage_fnc_method_getVehicleTOC
+Function: A3OVG_storage_fnc_method_purge
 
 Description:
-    Retrieves the Table of Contents (TOC) for vehicles.
+    Purges items from storage based on defined criteria.
 
 Parameters:
 
 Optional:
-
-Example:
-    (begin example)
-    private _toc = _storage call["getVehicleTOC", []];
-    (end example)
+    0: _prefix - Optional prefix <STRING>
 
 Returns:
-    <HASHMAP> - A hashmap representing the vehicle TOC (UUID_raw -> <HASHMAP>).
+    Nothing
 
 Environment:
     Server, Unscheduled
@@ -23,11 +19,19 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-METHOD_PREAMBLE(getVehicleTOC);
+METHOD_PREAMBLE(purge);
 A3OVG_VERIFY_SERVER();
 
+private _prefix = param[0, nil, [""]];
 private _keys = _self call["getSectionKeys", [SECTION_TOC, _self get "_storagePrefix"]];
 
-createHashMapFromArray(_keys apply {
-    [_x, _self call["read", [SECTION_TOC, _x]]];
-});
+_keys apply {
+    TRACE_1(QFUNC(method_purge),_x);
+
+    _self call["removeKey", [SECTION_TOC, _x]];
+    _self call["removeVehicle", [_x]];
+};
+
+_self call["commit", []];
+
+nil;

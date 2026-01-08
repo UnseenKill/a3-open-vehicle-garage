@@ -32,7 +32,7 @@ if !assert(params[
 ]) exitWith {};
 
 private _storage = [] call EFUNC(core,getStorage);
-private _key = _storage call["getKey", [[_uuid, "_properties"] joinString(_storage get "_prefixSeparator")]];
+private _key = [_uuid, "_properties"] joinString(_storage get "_prefixSeparator");
 
 INFO_2("Writing vehicle properties %1: %2",_key,_properties);
 _storage call["write", [SECTION_VEHICLE, _key, _properties]];
