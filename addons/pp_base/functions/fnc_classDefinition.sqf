@@ -26,6 +26,8 @@ createHashMapFromArray[
 
     // Properties
 
+    // Placement request hashmap
+    ["_request", nil],
     // Vehicle hashmap object
     ["_vehicle", nil],
 
@@ -40,7 +42,7 @@ createHashMapFromArray[
     METHOD_ABSTRACT(getPositionAsync),
 
     /**
-     * #create(Vehicle vehicle) -> PositionProvider
+     * #create(Hashmap request, Vehicle vehicle) -> PositionProvider
      */
     METHOD_DEFINE_NAME(#create,CTOR)
 ];
