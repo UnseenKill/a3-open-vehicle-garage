@@ -34,16 +34,15 @@ try {
         throw format["failed to delete vehicle UUID %1", _uuid];
     };
 
-    private _key = _self call["getKey", [_uuid]];
     private _keys = keys _data;
     private _separator = _self get "_prefixSeparator";
 
     _keys sort true;
 
-    if !(_self call["write", [SECTION_VEHICLE, _key, _keys]]) exitWith { false };
+    if !(_self call["write", [SECTION_VEHICLE, _uuid, _keys]]) exitWith { false };
 
     _keys apply {
-        _self call["write", [SECTION_VEHICLE, [_key, _x] joinString _separator, _data get _x]];
+        _self call["write", [SECTION_VEHICLE, [_uuid, _x] joinString _separator, _data get _x]];
     };
 
     _self call["commit", []];

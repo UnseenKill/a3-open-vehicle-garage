@@ -127,6 +127,13 @@ createHashMapFromArray[
     METHOD_DEFINE(initialize),
 
     /**
+     * purge([String prefix]) -> Nothing
+     *
+     * Clean storage data.
+     */
+    METHOD_DEFINE(purge),
+
+    /**
      * read(String section, String key[, Array expectedDataTypes]) -> Any
      *
      * Read serialized data from storage backend.
@@ -139,6 +146,13 @@ createHashMapFromArray[
      * Load serialized vehicle storage data from storage backend.
      */
     METHOD_DEFINE(readVehicle),
+
+    /**
+     * removeKey(String uuid) -> Bool
+     *
+     * Remove a single key.
+     */
+    METHOD_DEFINE(removeKey),
 
     /**
      * removeVehicle(String uuid) -> Bool

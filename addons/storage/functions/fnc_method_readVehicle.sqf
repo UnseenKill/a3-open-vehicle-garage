@@ -6,7 +6,7 @@ Description:
     Load serialized vehicle storage data from storage backend.
 
 Parameters:
-    0: _uuid - Vehicle UUID <STRING>
+    0: _uuid - Vehicle UUID_raw <STRING>
 
 Optional:
 
@@ -30,12 +30,11 @@ if !assert(params[
     ["_uuid", nil, [""]]
 ]) exitWith {};
 
-private _key = _self call["getKey", [_uuid]];
-private _dataKeys = _self call["read", [SECTION_VEHICLE, _key, [[]]]];
+private _dataKeys = _self call["read", [SECTION_VEHICLE, _uuid, [[]]]];
 private _data = createHashMap;
 
 _dataKeys apply {
-    private _subKey = [_key, _x] joinString (_self get "_prefixSeparator");
+    private _subKey = [_uuid, _x] joinString (_self get "_prefixSeparator");
     _data set[_x, _self call["read", [SECTION_VEHICLE, _subKey]]];
 };
 
