@@ -127,6 +127,13 @@ createHashMapFromArray[
     METHOD_DEFINE(initialize),
 
     /**
+     * purge([String prefix]) -> Nothing
+     *
+     * Clean storage data.
+     */
+    METHOD_DEFINE(purge),
+
+    /**
      * read(String section, String key[, Array expectedDataTypes]) -> Any
      *
      * Read serialized data from storage backend.
