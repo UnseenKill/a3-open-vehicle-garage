@@ -43,7 +43,7 @@ private _pp = _request get "_pp";
 TRACE_1(QFUNC(vehicleSelect),_request);
 TRACE_2(QFUNC(vehicleSelect),_uuid,_pp);
 
-private _provider = [_pp, [_vehicle]] call EFUNC(util,new);
+private _provider = [_pp, [_request, _vehicle]] call EFUNC(util,new);
 
 if !assert(VALIDATE_OBJECT(_provider,QUOTE(DOUBLES(PREFIX,pp_base)))) exitWith {};
 
