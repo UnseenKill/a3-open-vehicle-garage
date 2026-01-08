@@ -46,14 +46,14 @@ if ([_uuid] call EFUNC(core,isMutexLocked)) exitWith {
     },
     {
         TRACE_1(QFUNC(dialogButtonSelectOnClicked),_this);
-        params["_uuid"];
+        params["_uuid","_vehicle"];
 
         while { dialog } do { closeDialog 0 };
         [createHashMapFromArray[
-            ["_uuid", _uuid]
+            ["_vehicle", _vehicle]
         ]] call EFUNC(core,vehicleSelect);
     },
-    [_uuid]
+    [_uuid, _vehicle]
 ] call FUNC(dialogWaitUntilTrue);
 
 nil;
