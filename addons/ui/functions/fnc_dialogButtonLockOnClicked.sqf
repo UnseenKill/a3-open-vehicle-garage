@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_ui_fnc_dialogButtonLockClicked
+Function: A3OVG_ui_fnc_dialogButtonLockOnClicked
 
 Description:
     Function called when the Lock Button in the Garage Dialog is clicked. Toggles
@@ -20,7 +20,7 @@ Environment:
 Author:
     UnseenKill/gor3Splatter
 ---------------------------------------------------------------------------- */
-A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogButtonLockClicked),_display);
+A3OVG_UI_FUNCTION_PREAMBLE(QFUNC(dialogButtonLockOnClicked),_display);
 
 if !assert(params[
     ["_control", nil, [controlNull]]
@@ -35,7 +35,7 @@ private _locked = _vehicle call["isLocked", []];
 private _newLockState = [getPlayerUID player, false] select _locked;
 private _callback = ["canVehicleLock", "canVehicleUnlock"] select _locked;
 
-TRACE_3(QFUNC(dialogButtonLockClicked),_uuid,_locked,_newLockState);
+TRACE_3(QFUNC(dialogButtonLockOnClicked),_uuid,_locked,_newLockState);
 
 A3OVG_UI_PUSH_CONTEXT();
 private _canDo = [_callback, [_vehicle, player]] call EFUNC(core,runCallback);

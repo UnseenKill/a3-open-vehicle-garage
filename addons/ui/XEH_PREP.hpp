@@ -1,4 +1,5 @@
-PREP(dialogButtonLockClicked);
+PREP(dialogButtonLockOnClicked);
+PREP(dialogButtonSelectOnClicked);
 PREP(dialogCreateVehicleDynamicInfo);
 PREP(dialogFetchCategory);
 PREP(dialogOnEventVehicleChanged);
@@ -20,6 +21,7 @@ PREP(dialogTreeOnLoad);
 PREP(dialogTreeOnSelChanged);
 PREP(dialogTreeUpdateVehicleEntry);
 PREP(dialogUpdateUI);
+PREP(dialogWaitUntilTrue);
 PREP(showHint);
 PREP(showHintSingle);
 PREP(subscribeToEvent);

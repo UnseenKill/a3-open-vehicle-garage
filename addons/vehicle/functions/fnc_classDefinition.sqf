@@ -53,6 +53,13 @@ createHashMapFromArray[
     METHOD_DEFINE_NAME(#create,CTOR),
 
     /**
+     * toString() -> String
+     *
+     * Convert vehicle object to string representation.
+     */
+    METHOD_DEFINE_NAME(#str,toString),
+
+    /**
      * canLock(Object player) -> Boolean
      *
      * Check if the vehicle can be locked by a player.
@@ -72,6 +79,13 @@ createHashMapFromArray[
      * Generate a new UUID for the vehicle.
      */
     METHOD_DEFINE(createUUID),
+
+    /**
+     * delete() -> Nothing
+     *
+     * Delete the vehicle from storage.
+     */
+    METHOD_DEFINE(delete),
 
     /**
      * getCategory() -> Hashmap
@@ -100,6 +114,55 @@ createHashMapFromArray[
      * Load vehicle data from serialized data.
      */
     METHOD_DEFINE(loadFrom),
+
+    /**
+     * restore(Object vehicle) -> Nothing
+     *
+     * Restore fuel, damage, inventory, customization etc.
+     */
+    METHOD_DEFINE(restore),
+
+    /**
+     * restoreCustomization(Object vehicle, Array data) -> Nothing
+     *
+     * Restore vehicle customization from serialized data.
+     */
+    METHOD_DEFINE(restoreCustomization),
+
+    /**
+     * restoreDamage(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle damage from serialized data.
+     */
+    METHOD_DEFINE(restoreDamage),
+
+    /**
+     * restoreFuel(Object vehicle, Number data) -> Nothing
+     *
+     * Restore vehicle fuel from serialized data.
+     */
+    METHOD_DEFINE(restoreFuel),
+
+    /**
+     * restoreInventory(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle inventory from serialized data.
+     */
+    METHOD_DEFINE(restoreInventory),
+
+    /**
+     * restoreResupply(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle resupply from serialized data.
+     */
+    METHOD_DEFINE(restoreResupply),
+
+    /**
+     * restoreWeaponry(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle weaponry from serialized data.
+     */
+    METHOD_DEFINE(restoreWeaponry),
 
     /**
      * saveProperties() -> Nothing
