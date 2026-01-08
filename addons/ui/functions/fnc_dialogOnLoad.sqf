@@ -50,7 +50,8 @@ private _dialogControls = createHashMapFromArray[
 
 private _eventMap = [
     // Buttons event handlers
-    [A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockClicked) }],
+    [A3OVG_EVENT_UI_BUTTON_MINILOCK_CLICKED, { call FUNC(dialogButtonLockOnClicked) }],
+    [A3OVG_EVENT_UI_BUTTON_SELECT_CLICKED, { call FUNC(dialogButtonSelectOnClicked) }],
     // Status bar messages
     [A3OVG_EVENT_UI_PUSHSTATUS, { call FUNC(dialogPushStatus) }],
     // A3OVG_EVENT_UI_VEHICLE_DATACHANGED(Vehicle _vehicle)
