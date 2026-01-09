@@ -42,11 +42,15 @@ if !assert(_extract params[
 ]) exitWith {};
 
 [_vehicle] call FUNCMAIN(userActionVehicleGarageRemove);
+
 _vehicle enableSimulation false;
 _vehicle allowDamage false;
+_vehicle lockInventory true;
+_vehicle lock true;
 _vehicle setPosATL [0,0,1000];
 _vehicle setVectorUp [0,0,1];
 _vehicle setDir 0;
+_vehicle setVariable[QGVAR(bbRelative), 0 boundingBoxReal _vehicle];
 
 uiSleep 0.1;
 
@@ -61,9 +65,6 @@ GVAR(paintBBs) = [_vehicle];
 GVAR(ignoreKeys) = flatten[["Action", "leanLeft", "leanRight", "ingamePause"] apply {
     actionKeys _x;
 }];
-
-private _bb = 0 boundingBoxReal _vehicle;
-_vehicle setVariable[QGVAR(bb), _bb];
 
 _events pushBack["KeyDown", _display displayAddEventHandler["KeyDown", {
     params["_display", "_key", "_shift", "_ctrl", "_alt"];
@@ -137,24 +138,67 @@ GVAR(eachFrameEH_Preview) = addMissionEventHandler["EachFrame", {
     GVAR(paintBBs) = GVAR(paintBBs) - GVAR(collisions);
     GVAR(collisions) = [];
 
-    GVAR(validPlacement) = true;
+    GVAR(validPlacement) = !surfaceIsWater getPosATL _vehicle;
     GVAR(validPlacement) = GVAR(validPlacement) && { player distance _vehicle < 50 };
 
     if GVAR(validPlacement) then {
-        private _bb = _vehicle getVariable QGVAR(bb);
-        private _radius = _bb select 2;
-        private _vicinity = nearestObjects[_vehicle, ["LandVehicle","House"], _radius * 2] - [_vehicle];
-        private _index = _vicinity findIf { [_bb, _x] call EFUNC(util,bbCollides) };
+        private _bbRelative = _vehicle getVariable QGVAR(bbRelative);
+        private _radius = _bbRelative select 2;
+        private _vicinity = nearestObjects[_vehicle, ["LandVehicle","Air","CAManBase","House"], _radius * 2] - [_vehicle];
+        private _marker = GVAR(marker);
 
+        _marker setMarkerColorLocal "ColorBrown";
+        _marker setMarkerShapeLocal "RECTANGLE";
+        _marker setMarkerBrushLocal "FDiagonal";
+
+        private _index = _vicinity findIf {
+            private _bb = 0 boundingBoxReal _x;
+            _bb set[0, _x modelToWorld(_bb select 0)];
+            _bb set[1, _x modelToWorld(_bb select 1)];
+
+            private _markerCenter = ((_bb select 0) vectorAdd (_bb select 1)) vectorMultiply 0.5;
+            private _markerDimensions = (_bb select 1) vectorAdd ((_bb select 0) vectorMultiply -1) vectorMultiply 0.5;
+
+            _marker setMarkerDirLocal getDir _x;
+            _marker setMarkerPosLocal _markerCenter;
+            _marker setMarkerSizeLocal(_markerDimensions vectorMultiply 1.5 select[0,2]);
+            _x inArea _marker;
+        };
+
+        // Only shoot rays if we found a potential collision
         if (_index > -1) then {
             private _collider = _vicinity select _index;
+            private _boxMin = AGLToASL(_vehicle modelToWorld (_bbRelative select 0));
+            private _boxMax = AGLToASL(_vehicle modelToWorld (_bbRelative select 1));
+            private _rays = [];
 
-            GVAR(validPlacement) = false;
+            // Cross (minX,minY,minZ) -> (maxX,maxY,minZ)
+            _rays pushBack[[_boxMin select 0, _boxMin select 1, _boxMin select 2], [_boxMax select 0, _boxMin select 1, _boxMin select 2]];
+            // Diagonal left side face bottom to top (minX,minY,minZ) -> (minX,maxY,maxZ)
+            _rays pushBack[[_boxMin select 0, _boxMin select 1, _boxMin select 2], [_boxMin select 0, _boxMax select 1, _boxMax select 2]];
+            // Diagonal left side face top to bottom (minX,minY,maxZ) -> (minX,maxY,minZ)
+            _rays pushBack[[_boxMin select 0, _boxMin select 1, _boxMax select 2], [_boxMin select 0, _boxMax select 1, _boxMin select 2]];
+            // Diagonal right side face bottom to top (maxX,minY,minZ) -> (maxX,maxY,maxZ)
+            _rays pushBack[[_boxMax select 0, _boxMin select 1, _boxMin select 2], [_boxMax select 0, _boxMax select 1, _boxMax select 2]];
+            // Diagonal right side face top to bottom (maxX,minY,maxZ) -> (maxX,maxY,minZ)
+            _rays pushBack[[_boxMax select 0, _boxMin select 1, _boxMax select 2], [_boxMax select 0, _boxMax select 1, _boxMin select 2]];
+            // Diagonal front face bottom to top (minX,minY,minZ) -> (maxX,minY,maxZ)
+            _rays pushBack[[_boxMin select 0, _boxMin select 1, _boxMin select 2], [_boxMax select 0, _boxMin select 1, _boxMax select 2]];
+            // Diagonal front face top to bottom (minX,minY,maxZ) -> (maxX,minY,minZ)
+            _rays pushBack[[_boxMin select 0, _boxMin select 1, _boxMax select 2], [_boxMax select 0, _boxMin select 1, _boxMin select 2]];
+            // Diagonal back face bottom to top (minX,maxY,minZ) -> (maxX,maxY,maxZ)
+            _rays pushBack[[_boxMin select 0, _boxMax select 1, _boxMin select 2], [_boxMax select 0, _boxMax select 1, _boxMax select 2]];
+            // Diagonal back face top to bottom (minX,maxY,maxZ) -> (maxX,maxY,minZ)
+            _rays pushBack[[_boxMin select 0, _boxMax select 1, _boxMax select 2], [_boxMax select 0, _boxMax select 1, _boxMin select 2]];
 
-            if !(_collider in GVAR(collisions)) then {
+            GVAR(validPlacement) = _rays findIf {
+                lineIntersects[_x # 0, _x # 1, _vehicle];
+            } == -1;
+
+            if (!GVAR(validPlacement) && { !(_collider in GVAR(collisions)) }) then {
                 diag_log format["Collision with %1", _collider];
 
-                _collider setVariable[QGVAR(bb), 0 boundingBoxReal _collider];
+                _collider setVariable[QGVAR(bbRelative), 0 boundingBoxReal _collider];
 
                 GVAR(collisions) pushBack _collider;
                 GVAR(paintBBs) pushBackUnique _collider;
@@ -178,59 +222,55 @@ GVAR(eachFrameEH_Debug) = addMissionEventHandler["EachFrame", {
     if isNil(QGVAR(placeVehicle)) exitWith {};
 
     GVAR(paintBBs) apply {
+        //       7(0,0;1,1;1,2)      +------------------+    6(1,0;1,1;1,2)
+        //                          /|H                /|G
+        //                         / |                / |
+        //                        /  |               /  |
+        //       4(0,0;0,1;1,2)  +------------------+   |    5(1,0;0,1;1,2)
+        //                       |E  |            F |   |
+        //                       |   |              |   |
+        //       3(0,0;1,1;02)   |   +--------------|---+    2(1,0;1,1;0,2)
+        //                       |  /D              |  /C
+        //                       | /                | /
+        //                       |/                 |/
+        //                       +------------------+    
+        //       0(0,0;0,1;0,2)  A                  B        1(1,0;0,1;0,2)
+
         private _vehicle = _x;
-        private _dir = (getDir _vehicle % 360);
-        private _cos_0 = cos -_dir;
-        private _sin_0 = sin -_dir;
-        private _cos_1 = cos _dir;
-        private _sin_1 = sin _dir;
-        private _bb = _vehicle getVariable QGVAR(bb);
-        private _center = _vehicle modelToWorld[0,0,0];
+        private _direction = getDir _vehicle;
+        private _bb = _vehicle getVariable QGVAR(bbRelative);
         private _lines = [];
+        private _bounds = [];
 
+        _bounds pushBack[_bb select 0 select 0, _bb select 0 select 1, _bb select 0 select 2]; // Min X,Y
+        _bounds pushBack[_bb select 1 select 0, _bb select 0 select 1, _bb select 0 select 2]; // Max X, Min Y
+        _bounds pushBack[_bb select 1 select 0, _bb select 1 select 1, _bb select 0 select 2]; // Max X,Y
+        _bounds pushBack[_bb select 0 select 0, _bb select 1 select 1, _bb select 0 select 2]; // Min X, Max Y
 
-        //       (00,11,12)       +------------------+    (10,11,12)
-        //                      / |H                /|G
-        //                     /  |                / |
-        //                    /   |               /  |
-        //       (00,01,12)   +------------------+   |    (10,01,12)
-        //                    |E  |            F |   |
-        //                    |   |              |   |
-        //       (00,11,02)1  |   +--------------|---+    (10,11,02)0
-        //                    |  /D              |  /C
-        //                    | /                | /
-        //                    |/                 |/
-        //                    +------------------+    
-        //       (00,01,02)0  A                  B        (10,01,02)1
+        _bounds pushBack[_bb select 0 select 0, _bb select 0 select 1, _bb select 1 select 2]; // Min X,Y
+        _bounds pushBack[_bb select 1 select 0, _bb select 0 select 1, _bb select 1 select 2]; // Max X, Min Y
+        _bounds pushBack[_bb select 1 select 0, _bb select 1 select 1, _bb select 1 select 2]; // Max X,Y
+        _bounds pushBack[_bb select 0 select 0, _bb select 1 select 1, _bb select 1 select 2]; // Min X, Max Y
 
-
-        private _pt_0 = _bb select 0;
-        private _pt_1 = _bb select 1;
-
-        #define P(x,y,z) [DOUBLES(_pt,x) select 0, DOUBLES(_pt,y) select 1, DOUBLES(_pt,z) select 2]
-        #define R(a,x,y,z) [\
-            ((DOUBLES(_pt,x) select 0) * DOUBLES(_cos,a)) - ((DOUBLES(_pt,x) select 1) * DOUBLES(_sin,a)), \
-            ((DOUBLES(_pt,y) select 0) * DOUBLES(_sin,a)) + ((DOUBLES(_pt,y) select 1) * DOUBLES(_cos,a)), \
-            DOUBLES(_pt,z) select 2 \
-        ] vectorAdd _center
+        _bounds = _bounds apply { _vehicle modelToWorld _x };
 
         // Bottom square
-        _lines pushBack [R(0,0,0,0), R(1,1,0,0), [1,0,0,1]]; // A-B
-        _lines pushBack [R(1,0,1,0), R(0,1,1,0), [1,0,0,1]]; // D-C
-        _lines pushBack [R(0,0,0,0), R(1,0,1,0), [1,0,0,1]]; // A-D
-        _lines pushBack [R(1,1,0,0), R(0,1,1,0), [1,0,0,1]]; // B-C
+        _lines pushBack[_bounds select 0, _bounds select 1, [1,0,0,1]]; // A-B
+        _lines pushBack[_bounds select 1, _bounds select 2, [1,0,0,1]]; // B-C
+        _lines pushBack[_bounds select 2, _bounds select 3, [1,0,0,1]]; // C-D
+        _lines pushBack[_bounds select 3, _bounds select 0, [1,0,0,1]]; // D-A
 
         // Top square
-        _lines pushBack [R(0,0,0,1), R(1,1,0,1), [0,0.5,0,1]]; // E-F
-        _lines pushBack [R(1,0,1,1), R(0,1,1,1), [0,0.5,0,1]]; // H-G
-        _lines pushBack [R(0,0,0,1), R(1,0,1,1), [0,0.5,0,1]]; // E-H
-        _lines pushBack [R(1,1,0,1), R(0,1,1,1), [0,0.5,0,1]]; // F-G
+        _lines pushBack[_bounds select 4, _bounds select 5, [1,1,0,1]]; // A-B
+        _lines pushBack[_bounds select 5, _bounds select 6, [1,1,0,1]]; // B-C
+        _lines pushBack[_bounds select 6, _bounds select 7, [1,1,0,1]]; // C-D
+        _lines pushBack[_bounds select 7, _bounds select 4, [1,1,0,1]]; // D-A
 
         // Vertical lines
-        _lines pushBack [R(0,0,0,0), R(0,0,0,1), [1,1,0,1]]; // A-E
-        _lines pushBack [R(1,1,0,0), R(1,1,0,1), [1,1,0,1]]; // B-F
-        _lines pushBack [R(1,0,1,0), R(1,0,1,1), [1,1,0,1]]; // C-G
-        _lines pushBack [R(0,1,1,0), R(0,1,1,1), [1,1,0,1]]; // D-H
+        _lines pushBack[_bounds select 0, _bounds select 4, [0,0,1,1]]; // A-E
+        _lines pushBack[_bounds select 1, _bounds select 5, [0,0,1,1]]; // B-F
+        _lines pushBack[_bounds select 2, _bounds select 6, [0,0,1,1]]; // C-G
+        _lines pushBack[_bounds select 3, _bounds select 7, [0,0,1,1]]; // D-H
 
         _lines apply {
             drawLine3D[_x select 0, _x select 1, _x select 2, 40];
@@ -238,12 +278,15 @@ GVAR(eachFrameEH_Debug) = addMissionEventHandler["EachFrame", {
     };
 }];
 
+GVAR(marker) = createMarkerLocal[hashValue _vehicle, [0,0,0]];
+
 while { true } do {
     uiSleep 0.1;
     if ((isNil QGVAR(placeVehicle)) || { isNull GVAR(placeVehicle) }) then { break };
 };
 
 diag_log "DONE";
+deleteMarker GVAR(marker);
 
 removeMissionEventHandler["EachFrame", GVAR(eachFrameEH_Preview)];
 removeMissionEventHandler["EachFrame", GVAR(eachFrameEH_Debug)];
