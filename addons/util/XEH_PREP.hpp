@@ -1,6 +1,5 @@
 PREP(adjustDIK);
 PREP(bbCollides);
-PREP(bbRotate);
 PREP(broadcastEvent);
 PREP(getClassModInfo);
 PREP(getParentMethod);
