@@ -1,4 +1,5 @@
 #define __A3OVG_IS_3DEN__
+//#define __A3OVG_USE_NS__
 #include "script_component.hpp"
 #include "dialog.hpp"
 
@@ -27,12 +28,11 @@ class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
     class Features : Features {
         uiHintsCollapse = 1;
     };
-
+#ifndef __A3OVG_USE_NS__
     class Storage : Storage {
         defaultAdapter = "Adapter_INIDBI2";
     };
-
-/*
+#else
     class Storage : Storage {
         defaultAdapter = "Adapter_NS";
 
@@ -40,5 +40,5 @@ class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
             autoCommit = 0;
         };
     };
-*/
+#endif
 };
