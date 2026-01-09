@@ -51,6 +51,7 @@ try {
     };
 
     _self call["removeKey", [SECTION_VEHICLE, _uuid]];
+    _self call["removeKey", [SECTION_TOC, _uuid]];
     _self call["commit", []];
 
     true;
