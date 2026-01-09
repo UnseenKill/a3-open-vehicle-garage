@@ -97,6 +97,10 @@
             <English>Loading stuff...</English>
             <German>Lade Sachen...</German>
         </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_NoVehiclesInGarage">
+            <English>You have no vehicles in your garage.</English>
+            <German>Du hast keine Fahrzeuge in deiner Garage.</German>
+        </Key>
         <Key ID="STR_A3OVG_UI_GarageDialog_Status_OperationTimedOut">
             <English>Operation timed out after %1 seconds. Please try again.</English>
             <German>Die Operation wurde nach %1 Sekunden abgebrochen. Bitte versuche es erneut.</German>

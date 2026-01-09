@@ -31,6 +31,7 @@ private _loadSuccess = false;
 private _display = uiNamespace getVariable QGVAR(dialog);
 private _ctrl = _display getVariable QGVAR(controls) get "waitTab";
 private _n = 1;
+private _longWait = false;
 
 _ctrl ctrlSetFade 0.5;
 _ctrl ctrlCommit 0.75;
@@ -58,7 +59,10 @@ while { !(_loadSuccess) } do {
     if ((diag_tickTime - _stamp) > 5) then {
         WARNING_1("Waiting a long time for vehicle TOC from server: %1 seconds.",diag_tickTime - _stamp);
         
-        [A3OVG_EVENT_UI_PUSHSTATUS, [LLSTRING(GarageDialog_Status_WaitingForServerTOC), true, 0]] call CBA_fnc_localEvent;
+        if !(_longWait) then {
+            [A3OVG_EVENT_UI_PUSHSTATUS, [LLSTRING(GarageDialog_Status_WaitingForServerTOC), true, 0]] call CBA_fnc_localEvent;
+            _longWait = true;
+        };
     };
 
     if ((diag_tickTime - _stamp) > 15) then {
@@ -75,6 +79,11 @@ missionNamespace setVariable[_waitUUID, nil];
 _display setVariable[QGVAR(toc), _toc];
 
 TRACE_1(QFUNC(triggerServerLoadTOC),_toc);
+
+if (keys _toc isEqualTo []) exitWith {
+    [LLSTRING(GarageDialog_Status_NoVehiclesInGarage)] call FUNC(showHintSingle);
+    while { dialog } do { closeDialog 1 };
+};
 
 [] call FUNC(dialogOnUpdateTOC);
 [false] call FUNC(dialogSetLoading);
