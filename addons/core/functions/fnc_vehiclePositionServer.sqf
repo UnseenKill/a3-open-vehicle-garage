@@ -40,7 +40,7 @@ if !assert(!isNull _player) exitWith {};
 
 INFO_2("Received vehicle position request; type=%1, position=%2",_vehicle get "_className",_position);
 
-private _object = (_vehicle get "_className") createVehicle[0,0,0];
+private _object = (_vehicle get "_className") createVehicle[0,0,1000];
 
 try {
     if !assert(!isNull _object) then { throw "Vehicle creation returned null object." };

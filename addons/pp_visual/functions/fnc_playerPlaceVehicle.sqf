@@ -24,12 +24,28 @@ A3OVG_FUNCTION_PREAMBLE(QFUNC(playerPlaceVehicle));
 A3OVG_MAKE_SCHEDULED(FUNC(playerPlaceVehicle));
 
 if !assert(params[
-    ["_vehicleClass", nil, ["", objNull]]
+    ["_vehicleClass", nil, ["", objNull]],
+    ["_parameters", nil, [createHashMap]]
 ]) exitWith {};
 
 if !assert(!(_vehicleClass isEqualType objNull) || { !isNull _vehicleClass }) exitWith {};
 if !assert(!(_vehicleClass isEqualType "") || { _vehicleClass isNotEqualTo "" }) exitWith {};
+if !assert([_parameters, [
+    ["callbackAbort", {}, [{}, []]],
+    ["callbackStart", {}, [{}, []]],
+    ["callbackPlaced", nil, [{}, []]]
+]] call EFUNC(util,validateHashMap)) exitWith {};
 
+// Normalize callbacks to [{}, []] format
+_parameters apply {
+    if (_x find "callback" isEqualTo 0) then {
+        if (_y isEqualType {}) then {
+            _parameters set[_x, [_y, []]];
+        };
+    };
+};
+
+private _canDelete = (_vehicleClass isEqualType "");
 private _extract = if (_vehicleClass isEqualType objNull) then {
     [_vehicleClass, typeOf _vehicleClass];
 } else {
@@ -52,6 +68,10 @@ _vehicle setVectorUp [0,0,1];
 _vehicle setDir 0;
 _vehicle setVariable[QGVAR(bbRelative), 0 boundingBoxReal _vehicle];
 
+if assert(_parameters get "callbackStart" params[["_callbackCode", nil, [{}]], ["_callbackParams", nil, [[]]]]) then {
+    [_vehicle, _callbackParams] call _callbackCode;
+};
+
 uiSleep 0.1;
 
 private _display = findDisplay 46;
@@ -59,6 +79,7 @@ private _events = [];
 
 GVAR(rotateCW) = false;
 GVAR(rotateCCW) = false;
+GVAR(placementAbort) = false;
 GVAR(placeVehicle) = _vehicle;
 GVAR(collisions) = [];
 GVAR(paintBBs) = [_vehicle];
@@ -75,6 +96,7 @@ _events pushBack["KeyDown", _display displayAddEventHandler["KeyDown", {
     switch true do {
         case(_key arrayIntersect actionKeys "ingamePause" isNotEqualTo []): {
             GVAR(placeVehicle) = nil;
+            GVAR(placementAbort) = true;
             true;
         };
 
@@ -131,8 +153,6 @@ GVAR(eachFrameEH_Preview) = addMissionEventHandler["EachFrame", {
     _vehicle setVariable[QGVAR(dir), getDir _vehicle];
     _vehicle setVariable[QGVAR(pos), getPosATL _vehicle];
     _vehicle setVariable[QGVAR(vdup), [vectorDir _vehicle, vectorUp _vehicle]];
-
-    diag_log "------------------ Checking placement validity -----------------";
 
     GVAR(collisions) apply { [_x, []] call EFUNC(util,setObjectColor) };
     GVAR(paintBBs) = GVAR(paintBBs) - GVAR(collisions);
@@ -196,7 +216,7 @@ GVAR(eachFrameEH_Preview) = addMissionEventHandler["EachFrame", {
             } == -1;
 
             if (!GVAR(validPlacement) && { !(_collider in GVAR(collisions)) }) then {
-                diag_log format["Collision with %1", _collider];
+                INFO_1("Collision with %1",_collider);
 
                 _collider setVariable[QGVAR(bbRelative), 0 boundingBoxReal _collider];
 
@@ -280,19 +300,38 @@ GVAR(eachFrameEH_Debug) = addMissionEventHandler["EachFrame", {
 
 GVAR(marker) = createMarkerLocal[hashValue _vehicle, [0,0,0]];
 
-while { true } do {
-    uiSleep 0.1;
-    if ((isNil QGVAR(placeVehicle)) || { isNull GVAR(placeVehicle) }) then { break };
-};
+INFO_1("%1: placement loop starting",QFUNC(playerPlaceVehicle));
+waitUntil { (isNil QGVAR(placeVehicle)) || { isNull GVAR(placeVehicle) } };
+INFO_1("%1: placement loop ended",QFUNC(playerPlaceVehicle));
 
-diag_log "DONE";
 deleteMarker GVAR(marker);
+
+GVAR(validPlacement) = GVAR(validPlacement) && { !GVAR(placementAbort) };
 
 removeMissionEventHandler["EachFrame", GVAR(eachFrameEH_Preview)];
 removeMissionEventHandler["EachFrame", GVAR(eachFrameEH_Debug)];
 _events apply { _display displayRemoveEventHandler _x };
 
-attachedObjects _vehicle apply { deleteVehicle _x };
-deleteVehicle _vehicle;
+private _position = getPosATL _vehicle;
+private _vectorDirAndUp = [vectorDir _vehicle, vectorUp _vehicle];
+
+if (_canDelete || { !GVAR(validPlacement) }) then {
+    attachedObjects _vehicle apply { deleteVehicle _x };
+    deleteVehicle _vehicle;
+};
+
+if !GVAR(validPlacement) then {
+    INFO_1("%1: placement aborted",QFUNC(playerPlaceVehicle));
+
+    if assert(_parameters get "callbackAbort" params[["_callbackCode", nil, [{}]], ["_callbackParams", nil, [[]]]]) then {
+        [_vehicleClass, _callbackParams] call _callbackCode;
+    };
+} else {
+    INFO_1("%1: placement confirmed",QFUNC(playerPlaceVehicle));
+
+    if assert(_parameters get "callbackPlaced" params[["_callbackCode", nil, [{}]], ["_callbackParams", nil, [[]]]]) then {
+        [_vehicle, _position, _vectorDirAndUp, _callbackParams] call _callbackCode;
+    };
+};
 
 nil;
