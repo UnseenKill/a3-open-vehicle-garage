@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Storage">
+        <Key ID="STR_A3OVG_Storage_Component">
+            <English>A3OVG - Storage adapter definition component</English>
+            <German>A3OVG - Speicher Adapter Definitionskomponente</German>
+        </Key>
+    </Package>
+</Project>

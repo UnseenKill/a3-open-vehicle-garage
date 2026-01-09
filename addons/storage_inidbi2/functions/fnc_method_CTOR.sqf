@@ -1,0 +1,38 @@
+#include "..\script_component.hpp"
+/* ----------------------------------------------------------------------------
+Function: A3OVG_storage_inidbi2_fnc_method_CTOR
+
+Description:
+    Constructor method for INIDBI2 storage adapter.
+
+Parameters:
+    0: _adapterConfig - Storage adapter config <CONFIG>
+    1: _databaseName - Storage database name <STRING>
+
+Optional:
+    2: _prefix - Storage key prefix <STRING>
+
+Optional:
+
+Example:
+
+Returns:
+    Nothing
+
+Environment:
+    Client/Server, Unscheduled
+
+Author:
+    UnseenKill/gor3Splatter
+---------------------------------------------------------------------------- */
+METHOD_PREAMBLE(CTOR);
+
+private _dbName = _self get "_storageDatabase";
+LOG_1("creating/using INIDBI2 database %1",str _dbName);
+
+private _dbi = ["new", _dbName] call OO_INIDBI;
+LOG_1("using INIDBI2 storage addon v%1","getVersion" call _dbi);
+
+_self set["_dbi", _dbi];
+
+nil;

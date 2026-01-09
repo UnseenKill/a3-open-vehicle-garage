@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Vehicle">
+        <Key ID="STR_A3OVG_Vehicle_Component">
+            <English>A3OVG - Vehicle Component</English>
+            <German>A3OVG - Fahrzeugkomponente</German>
+        </Key>
+    </Package>
+</Project>

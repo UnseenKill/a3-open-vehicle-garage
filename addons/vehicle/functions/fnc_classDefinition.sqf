@@ -1,0 +1,251 @@
+#include "..\script_component.hpp"
+/* ----------------------------------------------------------------------------
+Function: A3OVG_vehicle_fnc_classDefinition
+
+Description:
+    Return vehicle OO class definition.
+
+Parameters:
+
+Optional:
+
+Example:
+
+Returns:
+    <HASHMAP> - Vehicle class definition
+
+Environment:
+    Client/Server, Unscheduled
+
+Author:
+    UnseenKill/gor3Splatter
+---------------------------------------------------------------------------- */
+createHashMapFromArray[
+    ["#type", QADDON],
+    ["#flags", ["sealead", "unscheduled"]],
+
+    // Properties
+
+    // <STRING> - key of vehicle category, lowercase classname
+    ["_category", nil],
+    // <STRING> - vehicle classname
+    ["_className", nil],
+    // <STRING> - vehicle display name
+    ["_displayName", nil],
+    // <STRING> - vehicle owner's playerUID
+    ["_owner", nil],
+    // <STRING> - vehicle locked to owner only (UID)
+    ["_ownerLock", nil],
+    // <HASHMAP> - serialized vehicle data; populated on load
+    ["_serialized", nil],
+    // <STRING> - vehicle unique identifier
+    ["_uuid", nil],
+    // <OBJECT> - vehicle object
+    ["_vehicle", nil],
+
+    // Methods
+
+    /**
+     * CTOR(Object vehicle[, String uuid]) -> Nothing
+     *
+     * Constructor method for vehicle object.
+     */
+    METHOD_DEFINE_NAME(#create,CTOR),
+
+    /**
+     * toString() -> String
+     *
+     * Convert vehicle object to string representation.
+     */
+    METHOD_DEFINE_NAME(#str,toString),
+
+    /**
+     * canLock(Object player) -> Boolean
+     *
+     * Check if the vehicle can be locked by a player.
+     */
+    METHOD_DEFINE(canLock),
+
+    /**
+     * canUnlock(Object player) -> Boolean
+     *
+     * Check if the vehicle can be unlocked by a player.
+     */
+    METHOD_DEFINE(canUnlock),
+
+    /**
+     * createUUID() -> String
+     *
+     * Generate a new UUID for the vehicle.
+     */
+    METHOD_DEFINE(createUUID),
+
+    /**
+     * delete() -> Nothing
+     *
+     * Delete the vehicle from storage.
+     */
+    METHOD_DEFINE(delete),
+
+    /**
+     * getCategory() -> Hashmap
+     *
+     * Get vehicle category metadata.
+     */
+    METHOD_DEFINE(getCategory),
+
+    /**
+     * getUUID() -> String
+     *
+     * Get the UUID of the vehicle.
+     */
+    METHOD_DEFINE(getUUID),
+
+    /**
+     * isLocked() -> Boolean
+     *
+     * Check if the vehicle is locked to its owner.
+     */
+    METHOD_DEFINE(isLocked),
+
+    /**
+     * loadFrom(HashMap data) -> Nothing
+     *
+     * Load vehicle data from serialized data.
+     */
+    METHOD_DEFINE(loadFrom),
+
+    /**
+     * restore(Object vehicle) -> Nothing
+     *
+     * Restore fuel, damage, inventory, customization etc.
+     */
+    METHOD_DEFINE(restore),
+
+    /**
+     * restoreCustomization(Object vehicle, Array data) -> Nothing
+     *
+     * Restore vehicle customization from serialized data.
+     */
+    METHOD_DEFINE(restoreCustomization),
+
+    /**
+     * restoreDamage(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle damage from serialized data.
+     */
+    METHOD_DEFINE(restoreDamage),
+
+    /**
+     * restoreFuel(Object vehicle, Number data) -> Nothing
+     *
+     * Restore vehicle fuel from serialized data.
+     */
+    METHOD_DEFINE(restoreFuel),
+
+    /**
+     * restoreInventory(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle inventory from serialized data.
+     */
+    METHOD_DEFINE(restoreInventory),
+
+    /**
+     * restoreResupply(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle resupply from serialized data.
+     */
+    METHOD_DEFINE(restoreResupply),
+
+    /**
+     * restoreWeaponry(Object vehicle, HashMap data) -> Nothing
+     *
+     * Restore vehicle weaponry from serialized data.
+     */
+    METHOD_DEFINE(restoreWeaponry),
+
+    /**
+     * saveProperties() -> Nothing
+     *
+     * Save vehicle properties to persistent storage.
+     */
+    METHOD_DEFINE(saveProperties),
+
+    /**
+     * serialize() -> HashMap
+     *
+     * Convert vehicle to serializable data.
+     */
+    METHOD_DEFINE(serialize),
+
+    /**
+     * serializeDamage(HashMap data) -> Nothing
+     *
+     * Serialize vehicle damage state into data.
+     */
+    METHOD_DEFINE(serializeDamage),
+
+    /**
+     * serializeFuel(HashMap data) -> Nothing
+     *
+     * Serialize vehicle fuel state into data.
+     */
+    METHOD_DEFINE(serializeFuel),
+
+    /**
+     * serializeInventory(HashMap data) -> Nothing
+     *
+     * Serialize vehicle inventory into data.
+     */
+    METHOD_DEFINE(serializeInventory),
+
+    /**
+     * serializeProperties(HashMap data) -> Nothing
+     *
+     * Serialize vehicle properties into data.
+     */
+    METHOD_DEFINE(serializeProperties),
+
+    /**
+     * serializeResupply(HashMap data) -> Nothing
+     *
+     * Serialize vehicle resupply state into data.
+     */
+    METHOD_DEFINE(serializeResupply),
+
+    /**
+     * serializeWeaponry(HashMap data) -> Nothing
+     *
+     * Serialize vehicle weaponry state into data.
+     */
+    METHOD_DEFINE(serializeWeaponry),
+
+    /**
+     * setLocked(Boolean locked) -> Nothing
+     * setLocked(String uid) -> Nothing
+     *
+     * Clear vehicle lock (locked=false) or set to specific playerUID.
+     */
+    METHOD_DEFINE(setLocked),
+
+    /**
+     * setOwner(Number playerUID) -> Nothing
+     *
+     * Set the vehicle owner.
+     */
+    METHOD_DEFINE(setOwner),
+
+    /**
+     * setVehicle(Object vehicle) -> Nothing
+     *
+     * Set the vehicle object.
+     */
+    METHOD_DEFINE(setVehicle),
+
+    /**
+     * write() -> HashMap
+     *
+     * Write vehicle data to a storage backend.
+     */
+    METHOD_DEFINE(write)
+];

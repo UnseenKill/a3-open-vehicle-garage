@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Ace">
+        <Key ID="STR_A3OVG_Ace_Component">
+            <English>A3OVG - ACE compatibility component</English>
+            <German>A3OVG - ACE-Kompatibilitätskomponente</German>
+        </Key>
+    </Package>
+</Project>

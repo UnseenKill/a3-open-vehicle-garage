@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="UI">
+        <Key ID="STR_A3OVG_UI_Component">
+            <English>A3OVG - UI Component</English>
+            <German>A3OVG - Benutzeroberfläche</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnClose_Label">
+            <English>Close</English>
+            <German>Schließen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Label">
+            <English>Lock Vehicle</English>
+            <German>Fahrzeug sperren</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnLock_Tooltip">
+            <English>Prevent others from removing this vehicle from the garage.</English>
+            <German>Verhindert, dass andere dieses Fahrzeug aus der Garage entfernen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRearm_Label">
+            <English>Rearm Vehicle</English>
+            <German>Fahrzeug nachladen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRefuel_Label">
+            <English>Refuel Vehicle</English>
+            <German>Fahrzeug betanken</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRename_Label">
+            <English>Rename Vehicle</English>
+            <German>Fahrzeug umbenennen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnMiniRepair_Label">
+            <English>Repair Vehicle</English>
+            <German>Fahrzeug reparieren</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnSpawn_Label">
+            <English>Select Vehicle</English>
+            <German>Fahrzeug auswählen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnTabCustomize_Label">
+            <English>Customize</English>
+            <German>Anpassen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnTabOverview_Label">
+            <English>Overview</English>
+            <German>Übersicht</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_BtnUnlock_Label">
+            <English>Unlock Vehicle</English>
+            <German>Fahrzeug entsperren</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PanelLeftTitle_Label">
+            <English>Available Vehicles</English>
+            <German>Verfügbare Fahrzeuge</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewCredit_Label">
+            <English>By:</English>
+            <German>Von:</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Damage_Label">
+            <English>Damage</English>
+            <German>Schaden</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Fuel_Label">
+            <English>Fuel</English>
+            <German>Kraftstoff</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_InventoryEmpty_Text">
+            <English>Empty</English>
+            <German>Leer</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_InventorySaved_Text">
+            <English>Saved</English>
+            <German>Gespeichert</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_Inventory_Label">
+            <English>Inventory</English>
+            <German>Inventar</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RearmCapacity_Label">
+            <English>Rearm Capacity</English>
+            <German>Nachladekapazität</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RefuelCapacity_Label">
+            <English>Refuel Capacity</English>
+            <German>Treibstoffkapazität</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_PreviewDynamic_RepairCapacity_Label">
+            <English>Repair Capacity</English>
+            <German>Reparaturkapazität</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_CategoryLoading">
+            <English>%1 (Loading from server...)</English>
+            <German>%1 (Lade vom Server...)</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_Loading">
+            <English>Loading stuff...</English>
+            <German>Lade Sachen...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_NoVehiclesInGarage">
+            <English>You have no vehicles in your garage.</English>
+            <German>Du hast keine Fahrzeuge in deiner Garage.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_OperationTimedOut">
+            <English>Operation timed out after %1 seconds. Please try again.</English>
+            <German>Die Operation wurde nach %1 Sekunden abgebrochen. Bitte versuche es erneut.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_Ready">
+            <English>Ready.</English>
+            <German>Bereit.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_ServerCategoryTimeout">
+            <English>Failed to load vehicle data from server: request timed out.</English>
+            <German>Fehler beim Laden der Fahrzeugdaten vom Server: Zeitüberschreitung der Anfrage.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_ServerTOCTimeout">
+            <English>Server did not respond in time. Please try again later.</English>
+            <German>Der Server hat nicht rechtzeitig geantwortet. Bitte versuche es später erneut.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_VehicleClassUnknown">
+            <English>Unknown vehicle class "%1".</English>
+            <German>Unbekannte Fahrzeugklasse "%1".</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_Status_WaitingForServerTOC">
+            <English>Waiting for server to send vehicle list...</English>
+            <German>Warte darauf, dass der Server die Fahrzeugliste sendet...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TabCustomize_PipDisabledHint_Label">
+            <English>\n\n\n\nPicture-in-picture is disabled in settings.\nYou won't see a preview, but you can still customize your vehicle.</English>
+            <German>\n\n\n\nBild-in-Bild ist in den Einstellungen deaktiviert.\nDu wirst keine Vorschau sehen, kannst dein Fahrzeug aber trotzdem anpassen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitleMain_Label">
+            <English>Vehicle Garage</English>
+            <German>Fahrzeuggarage</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_GarageDialog_TitlePoweredBy_Label">
+            <English>Powered by A3OVG</English>
+            <German>Bereitgestellt von A3OVG</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_OpenGarageDenied">
+            <English>You are not allowed to open the garage.</English>
+            <German>Du darfst die Garage nicht öffnen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_OpenGarageUA">
+            <English>Open Garage</English>
+            <German>Garage öffnen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryCar">
+            <English>Cars</English>
+            <German>Autos</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryDefault">
+            <English>Default</English>
+            <German>Standard</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryHelicopter">
+            <English>Helicopters</English>
+            <German>Hubschrauber</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryPlane">
+            <English>Planes</English>
+            <German>Flugzeuge</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryShip">
+            <English>Ships</English>
+            <German>Schiffe</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleCategoryTank">
+            <English>Armored vehicles</English>
+            <German>Gepanzerte Fahrzeuge</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDenied">
+            <English>You are not allowed to garage this vehicle.</English>
+            <German>Du darfst dieses Fahrzeug nicht abstellen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedAttached">
+            <English>Other vehicle "%1" attached to this vehicle cannot be garaged.</English>
+            <German>Ein anderes Fahrzeug "%1", das an dieses Fahrzeug befestigt ist, kann nicht abgestellt werden.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedAttachedToSomething">
+            <English>You cannot garage a vehicle that is attached to something.</English>
+            <German>Du kannst kein Fahrzeug abstellen, das an etwas befestigt ist.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedCrewed">
+            <English>You cannot garage a crewed vehicle.</English>
+            <German>Du kannst kein besetztes Fahrzeug abstellen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedDead">
+            <English>You cannot garage a destroyed vehicle.</English>
+            <German>Du kannst kein Fahrzeug abstellen, das zerstört ist.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedLocked">
+            <English>You cannot garage a locked vehicle.</English>
+            <German>Du kannst kein abgeschlossenes Fahrzeug abstellen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedNotAVehicle">
+            <English>The object is not a vehicle.</English>
+            <German>Das Objekt ist kein Fahrzeug.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageDeniedTooFarFromGarage">
+            <English>You are too far from the vehicle to garage it.</English>
+            <German>Du bist zu weit vom Fahrzeug entfernt, um es abzustellen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageFailure">
+            <English>Failed to garage %1.</English>
+            <German>Abstellen von %1 fehlgeschlagen.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageSuccess">
+            <English>%1 has been garaged successfully.</English>
+            <German>%1 wurde erfolgreich abgestellt.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageUA">
+            <English>Garage vehicle</English>
+            <German>Fahrzeug abstellen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleGarageUALong">
+            <English>Garage %1</English>
+            <German>Fahrzeug %1 abstellen</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleLockDeniedOwner">
+            <English>You are not the owner of this vehicle.</English>
+            <German>Du bist nicht der Besitzer dieses Fahrzeugs.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleLockSuccess">
+            <English>%1 has been locked successfully.</English>
+            <German>%1 wurde erfolgreich gesperrt.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleSelectAwaitMutex">
+            <English>Waiting for server to acknowledge reservation...</English>
+            <German>Warte darauf, dass der Server die Reservierung bestätigt...</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleSelectDeniedMutex">
+            <English>Another selection for this vehicle is in progress. Please wait a moment and try again.</English>
+            <German>Eine andere Fahrzeugauswahl ist im Gange. Bitte warte einen Moment und versuche es erneut.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleToggleLockDenied">
+            <English>You are not allowed to lock/unlock this vehicle.</English>
+            <German>Du darfst dieses Fahrzeug nicht sperren/entsperren.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleUnlockDeniedOwner">
+            <English>You are not the owner of this vehicle.</English>
+            <German>Du bist nicht der Besitzer dieses Fahrzeugs.</German>
+        </Key>
+        <Key ID="STR_A3OVG_UI_VehicleUnlockSuccess">
+            <English>%1 has been unlocked successfully.</English>
+            <German>%1 wurde erfolgreich entsperrt.</German>
+        </Key>
+    </Package>
+</Project>

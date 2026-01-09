@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Storage_INIDBI2">
+        <Key ID="STR_A3OVG_Storage_INIDBI2_Component">
+            <English>A3OVG - Storage Adapter for INIDBI2</English>
+            <German>A3OVG - Speicher Adapter für INIDBI2</German>
+        </Key>
+    </Package>
+</Project>

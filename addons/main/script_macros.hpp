@@ -1,0 +1,43 @@
+#include "script_macros_common.hpp"
+#include "script_macros_oo.hpp"
+
+#define A3OVG_ADDON(name) DOUBLES(PREFIX,name)
+#define A3OVG_ADDON_ACE A3OVG_ADDON(ace)
+#define A3OVG_ADDON_API A3OVG_ADDON(api)
+#define A3OVG_ADDON_CORE A3OVG_ADDON(core)
+#define A3OVG_ADDON_PP A3OVG_ADDON(pp_base)
+#define A3OVG_ADDON_STORAGE A3OVG_ADDON(storage)
+#define A3OVG_ADDON_UI A3OVG_ADDON(ui)
+#define A3OVG_ADDON_UTIL A3OVG_ADDON(util)
+#define A3OVG_ADDON_VEHICLE A3OVG_ADDON(vehicle)
+
+#define A3OVG_CONFIG_CLASS_BASE TRIPLES(PREFIX,Config,Base)
+#define A3OVG_CONFIG_CLASS DOUBLES(PREFIX,Config)
+#define A3OVG_FEATURE_ENABLED(config,feature) (getNumber(_config >> "Features" >> QUOTE(feature)) != 0)
+#define A3OVG_FUNCTION_PREAMBLE(function) \
+    TRACE_1(function,_this); \
+    if isNull(localNamespace getVariable[QEGVAR(core,configVerified), configNull]) exitWith { \
+        ERROR_3(QUOTE(ARR_2(Configuration not found. Abort call to QQUOTE(%1) from %2,line %3.)),function,__FILE__,__LINE__); \
+        if (hasInterface) then { \
+            [LELSTRING(API,ConfigVerificationFailed)] call BIS_fnc_error; \
+        }; \
+    }
+
+#define A3OVG_GET_CONFIG(var) \
+    private var = localNamespace getVariable[QEGVAR(core,configVerified), configNull]; \
+    if !assert(!isNull(var)) exitWith {}
+
+#define A3OVG_HAVE_ACE() (!isNil QEGVAR(ace,aceAddonLoaded))
+
+#define A3OVG_MAKE_SCHEDULED(function) \
+    if (!canSuspend) exitWith { _this spawn function }
+
+#define A3OVG_UI_PUSH_CONTEXT() \
+    (EGVAR(ui,context) pushBack [])
+#define A3OVG_UI_POP_CONTEXT() \
+    (EGVAR(ui,context) deleteAt[-1])
+
+#define A3OVG_VERIFY_CLIENT() if !assert(hasInterface) exitWith {}
+#define A3OVG_VERIFY_SERVER() if !assert(isServer) exitWith {}
+
+#define A3OVG_VEH_NAME(vehicle) getText((if (vehicle isEqualType objNull) then[{configOf(vehicle)}, {configFile >> QUOTE(CfgVehicles) >> (vehicle)}]) >> QUOTE(displayName))

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="A3OVG">
+    <Package name="Core">
+        <Key ID="STR_A3OVG_Core_Component">
+            <English>A3OVG - Core Component</English>
+            <German>A3OVG - Core Komponente</German>
+        </Key>
+    </Package>
+</Project>
