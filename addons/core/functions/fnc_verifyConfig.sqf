@@ -28,7 +28,7 @@ if !(isNull(localNamespace getVariable[QGVAR(configVerified), configNull])) exit
 };
 
 private _accessor = QUOTE(A3OVG_CONFIG_CLASS);
-private _config = ([configFile, missionConfigFile] select(is3DEN || {is3DENPreview})) >> _accessor;
+private _config = ([configFile, missionConfigFile] select isClass(missionConfigFile >> _accessor)) >> _accessor;
 
 LOG_2("%1: verifying configuration from %2",QFUNC(verifyConfig),_config);
 
