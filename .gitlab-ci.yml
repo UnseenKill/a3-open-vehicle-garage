@@ -1,0 +1,57 @@
+variables:
+  HEMTT_TEMP: "/tmp/hemtt-$CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA"
+  WORK_ON_BRANCH: "dev"
+
+stages:
+  - validate
+  - release
+
+default:
+  after_script:
+    - echo "Cleaning temp '$HEMTT_TEMP'"
+    - (test -d $HEMTT_TEMP && rm -rf $HEMTT_TEMP) || true
+
+.release_artifacts: &release_artifacts
+  name: a3ovg
+  when: on_success
+  expire_in: 30 days
+  paths:
+    - .hemttout/release/
+
+.release_upload_package: &release_upload_package
+  - PACKAGE_LINK="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${CI_PROJECT_NAME}/${GL_UPLOAD_VERSION}/${GL_UPLOAD_ARCHIVE}"
+  - echo "--upload:$GL_UPLOAD_ARCHIVE"
+  - echo "--version:$GL_UPLOAD_VERSION"
+  - response=$(curl --header "JOB-TOKEN:$CI_JOB_TOKEN" --upload-file ${GL_UPLOAD_ARCHIVE} ${PACKAGE_LINK})
+  - echo "--response:$response"
+
+validate-job:
+  stage: validate
+  script:
+    - TMPDIR=$HEMTT_TEMP $HEMTT_BIN check
+
+release_latest-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $WORK_ON_BRANCH
+  stage: release
+  artifacts: *release_artifacts
+  script:
+    - echo "Building lastest..."
+    - TMPDIR=$HEMTT_TEMP $HEMTT_BIN release
+    - GL_UPLOAD_ARCHIVE="a3ovg-latest-$(date '+%Y%m%d_%H%M%S').zip"
+    - GL_UPLOAD_VERSION=latest
+    - cp releases/a3ovg-latest.zip ${GL_UPLOAD_ARCHIVE}
+    - *release_upload_package
+
+release_version-job:
+  rules:
+    - if: $CI_COMMIT_TAG
+  stage: release
+  artifacts: *release_artifacts
+  script:
+    - echo "Building release... ($CI_COMMIT_TAG)"
+    - TMPDIR=$HEMTT_TEMP $HEMTT_BIN release
+    - cp releases/a3ovg-1*.zip .
+    - GL_UPLOAD_ARCHIVE=$(basename `ls ./a3ovg-1*.zip`)
+    - GL_UPLOAD_VERSION=${CI_COMMIT_TAG}
+    - *release_upload_package
