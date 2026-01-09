@@ -30,7 +30,7 @@ if !assert(params[
 ]) exitWith { false };
 
 try {
-    if !(_self call["removeVehicle", [_uuid]]) then {
+    if !(_self call["removeVehicle", [_uuid, true]]) then {
         throw format["failed to delete vehicle UUID %1", _uuid];
     };
 
