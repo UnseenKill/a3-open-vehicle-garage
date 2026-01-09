@@ -1,0 +1,10 @@
+PREP(adjustDIK);
+PREP(bbCollides);
+PREP(broadcastEvent);
+PREP(getClassModInfo);
+PREP(getParentMethod);
+PREP(new);
+PREP(registerClassDefinition);
+PREP(scourConfig);
+PREP(setObjectColor);
+PREP(validateHashMap);

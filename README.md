@@ -7,6 +7,8 @@ A3OVG
 
 An open source vehicle garage mod for use with Arma 3 mods.
 
+![A3OVG Hero](images/a3ovg-hero.png)
+
 Features
 --------
 

@@ -1,0 +1,44 @@
+#define __A3OVG_IS_3DEN__
+//#define __A3OVG_USE_NS__
+#include "script_component.hpp"
+#include "dialog.hpp"
+
+missionGroup = "A3OVG_MISSION_GROUP";
+
+import A3OVG_CONFIG_CLASS_BASE;
+
+class CfgSettings {
+    class CBA {
+        class Caching {
+            compile = 0;
+            xeh = 0;
+            functions = 0;
+        };
+    };
+};
+
+class A3OVG_CONFIG_CLASS : A3OVG_CONFIG_CLASS_BASE {
+    scope = 1;
+
+    class Callbacks : Callbacks {
+        //canOpenGarage = "false";
+        //canVehicleGarage[] += {QUOTE(['You are not an engineer!'] call A3OVG_fnc_uiStackHint;false)};
+    };
+
+    class Features : Features {
+        uiHintsCollapse = 1;
+    };
+#ifndef __A3OVG_USE_NS__
+    class Storage : Storage {
+        defaultAdapter = "Adapter_INIDBI2";
+    };
+#else
+    class Storage : Storage {
+        defaultAdapter = "Adapter_NS";
+
+        class Adapter_NS : Adapter_NS {
+            autoCommit = 0;
+        };
+    };
+#endif
+};
