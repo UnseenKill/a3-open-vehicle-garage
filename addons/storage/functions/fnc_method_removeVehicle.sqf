@@ -9,6 +9,8 @@ Parameters:
     0: _uuid - Vehicle UUID <STRING>
 
 Optional:
+    1: _keepTOC - If true, do not remove Table of Contents entry <BOOL> (default: false)
+        Used when adding vehicles and doing the safety remove-before-adding thing.
 
 Example:
     (begin example)
@@ -30,6 +32,8 @@ if !assert(params[
     ["_uuid", nil, [""]]
 ]) exitWith { false };
 
+private _keepTOC = param[1, false, [true]];
+
 try {
     private _properties = _self call["read", [SECTION_VEHICLE, _uuid, [[]]]];
     private _separator = _self get "_prefixSeparator";
@@ -40,6 +44,10 @@ try {
         _properties apply {
             _self call["removeKey", [SECTION_VEHICLE, [_uuid, _x] joinString _separator]];
         };
+    };
+
+    if !(_keepTOC) then {
+        _self call["removeKey", [SECTION_TOC, _uuid]];
     };
 
     _self call["removeKey", [SECTION_VEHICLE, _uuid]];
