@@ -2,6 +2,7 @@
 .hemtt/missions/~*
 .hemtt/missions/*/script.sqf
 .hemttout
+.hemttprivatekey
 .local
 releases
 *.biprivatekey

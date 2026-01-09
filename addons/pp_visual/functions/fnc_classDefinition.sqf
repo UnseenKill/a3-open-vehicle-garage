@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 /* ----------------------------------------------------------------------------
-Function: A3OVG_pp_base_fnc_classDefinition
+Function: A3OVG_pp_visual_fnc_classDefinition
 
 Description:
-    Return class definition hash map for position provider base class.
+    Return class definition hash map for simple position provider class.
 
 Parameters:
 
@@ -21,15 +21,11 @@ Author:
 TRACE_1(QFUNC(classDefinition),_this);
 
 createHashMapFromArray[
+    ["#base", QUOTE(DOUBLES(PREFIX,pp_base))],
     ["#type", QADDON],
     ["#flags", ["sealed"]],
 
     // Properties
-
-    // Placement request hashmap
-    ["_request", nil],
-    // Vehicle hashmap object
-    ["_vehicle", nil],
 
     // Methods
 
@@ -37,12 +33,7 @@ createHashMapFromArray[
      * getPositionAsync(Code callback) -> Nothing
      *
      * Call `callback` with vehicle position when available.
-     * `callback` signature: `void callback(PositionProvider self, Vehicle vehicle, Position3D position, Vector vectorDirAndUp)`.
+     * `callback` signature: `void callback(PositionProvider self, Position3D position, Vector vectorUp)`.
      */
-    METHOD_ABSTRACT(getPositionAsync),
-
-    /**
-     * #create(Hashmap request, Vehicle vehicle) -> PositionProvider
-     */
-    METHOD_DEFINE_NAME(#create,CTOR)
+    METHOD_DEFINE(getPositionAsync)
 ];

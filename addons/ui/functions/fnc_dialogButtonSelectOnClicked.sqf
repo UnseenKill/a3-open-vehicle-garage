@@ -49,7 +49,9 @@ if ([_uuid] call EFUNC(core,isMutexLocked)) exitWith {
         params["_uuid","_vehicle"];
 
         while { dialog } do { closeDialog 0 };
+
         [createHashMapFromArray[
+            ["_pp", QUOTE(DOUBLES(PREFIX,pp_visual)), [""]],
             ["_vehicle", _vehicle]
         ]] call EFUNC(core,vehicleSelect);
     },
