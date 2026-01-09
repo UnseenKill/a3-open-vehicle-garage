@@ -238,6 +238,7 @@ GVAR(eachFrameEH_Preview) = addMissionEventHandler["EachFrame", {
     };
 }];
 
+#ifndef __A3OVG_PRODUCTION__
 GVAR(eachFrameEH_Debug) = addMissionEventHandler["EachFrame", {
     if isNil(QGVAR(placeVehicle)) exitWith {};
 
@@ -297,8 +298,12 @@ GVAR(eachFrameEH_Debug) = addMissionEventHandler["EachFrame", {
         };
     };
 }];
+#endif
 
 GVAR(marker) = createMarkerLocal[hashValue _vehicle, [0,0,0]];
+#ifndef __A3OVG_PRODUCTION__
+GVAR(marker) setMarkerAlphaLocal 0;
+#endif
 
 INFO_1("%1: placement loop starting",QFUNC(playerPlaceVehicle));
 waitUntil { (isNil QGVAR(placeVehicle)) || { isNull GVAR(placeVehicle) } };
